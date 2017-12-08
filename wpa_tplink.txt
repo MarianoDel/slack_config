@@ -1,5 +1,0 @@
-network={
-	ssid="TP-LINK_962DFC"
-	#psk="telefonica123"
-	psk=c9548219b04d639c49d138beef0e4690bcd66b27d0b5bb4d819bf93c2b468a68
-}
