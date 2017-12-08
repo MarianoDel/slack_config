@@ -1,0 +1,18 @@
+#instalar libxkbcommon y xdotool
+
+##devuelve el pid de la ventana con ese nombre
+xdotool search --name "LTspice"
+
+xdotool search --name "Edit Text"
+
+##manda ctrl izq + m a la ventana con ese pid
+
+xdotool key "Control_L+m" type --window 5772 "Control_L+m"
+
+##busco la ventana
+xdotool search --name "LTspice"
+##envio el comando
+xdotool key --window 85983233 "Control_L+r"
+
+#escribo el comando
+xdotool type --window 85983233 "Control_L+r"

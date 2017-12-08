@@ -1,0 +1,84 @@
+##Atom comandos comunes
+CTRL + SHIFT + P
+abre la ventana con comandos
+la exploracion de carpetas la busco con tree toggle
+
+el sidebar de carpetas (tree) tiene varias funciones, accedo con CTRL+SHIFT+p tree
+
+###con Menu->Edit->Preferences (o CTRL ,) puede ver settings cambiar themes e instalar pauetes nuevos
+
+###documentacion en linea
+https://atom.io/docs
+
+###youtube tutorials
+https://www.youtube.com/user/LevelUpTuts/search?query=atom
+
+https://www.youtube.com/playlist?list=PL17B02FFA8CDA7966
+
+https://www.youtube.com/user/ChelinTutorials/playlists
+
+
+coffee tutorials
+www.devdungeon.com/content/coffeescript-basics
+
+
+### Funcionalidad de Archivos
+CTRL + n nuevo archivo
+CTRL + w cierra el tab de archivo
+CTRL + s guarda archivo
+CTRL + o Abre archivo
+CTRL + t Atom listado de archivos en el directorio
+
+### Funcionalidad de PANES
+###con Menu->View->Panes divido la pantalla para ver archivos en forma simultanea, o boton derecho
+
+###Buscar o buscar y reemplazar
+CTRL + f
+CTRL + SHIFT + F buscar en todo el proyecto
+###ESC me saca del modo
+
+###multi selector de cursor, con el maouse miesntras tengo CTRL presionado, luego escribo multiples lineas
+###ESC me saca del modo
+
+###para activar modo go to declaration o ver paquetes mas abajo
+### ir al directorio y activar ctargs
+cd $working directory
+ctags -R .
+###
+
+
+CTRL+m		#Matching Bracket
+CTRL+ALT+	#inside bracket selection
+
+
+############# Funcionalidad de paquetes ###################
+##Symbol-Gen package
+con CTRL+SHIFT+g	genero el archivo ctags
+
+CTRL+SHIFT+r  dialogo de busqueda de elemento en todos los archivos del proyecto (paquete de atom)
+CTRL+r dialogo de busqueda de elementos en el archivo (paquete de atom)
+
+CTRL+ALT+ENTER go to Definitions
+
+##Goto Definition package
+boton derecho y Go To Definition	(usa ctags) entonces cada tanto un CTRL+SHIFT+g (ahora ya no hace falta)
+CTRL+g go to line
+CTRL+SHIFT+7 multiple coments
+CTRL+m go to matching bracket
+CTRL+ALT+, select beetwen brackets
+
+##Bookmarks
+CTRL+SHIFT+f2  toggle bookmark
+f2        next bookmark
+SHIFT+f2  prev bookmark
+
+##TODO package
+CTRL-k CTRL-t	abre el navegador de TODOs
+o abrir panel CTRL+SHIFT+p y buscar todo
+
+##autocomplete-plus
+#muestra opciones a medida que se escribe, le agregue autocomplete-clang (pare mejores opciones en c)
+#pero demora muucho la carga
+#configuracion que cambie
+Keymap for complete suggestions TAB (solo con tab confirmo)
+Use Core movements command ON (me muevo con Up DWN por las selecciones)

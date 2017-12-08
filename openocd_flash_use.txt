@@ -1,0 +1,59 @@
+###openocd para ver option-bytes
+
+> reset halt
+> flash probe 0
+> stm32f1x options_write 0 RSTSTNDBY
+> stm32f1x options_read 0
+
+$$$$$$
+Option Byte: 0xfffffb00
+Readout Protection Off
+Software Watchdog
+Stop: No reset generated
+Standby: Reset generated
+User Option0: 0xff
+User Option1: 0xff
+
+> dump_image opti1.bin 0x1FFFF800 32
+
+$ hexdump -x opti1.bin
+0000000    55aa    04fb    00ff    00ff    00ff    00ff    00ff    00ff
+0000010    ffff    ffff    ffff    ffff    ffff    ffff    ffff    ffff
+
+> stm32f1x options_write 0 NORSTSTNDBY
+> stm32f1x options_read 0
+
+$$$$$$
+Option Byte: 0xfffffb00
+Readout Protection Off
+Software Watchdog
+Stop: No reset generated
+Standby: Reset generated	(todavia no cambia, necesita reset)
+User Option0: 0xff
+User Option1: 0xff
+
+> dump_image opti2.bin 0x1FFFF800 32
+
+$ hexdump -x opti2.bin
+0000000    55aa    00ff    00ff    00ff    00ff    00ff    00ff    00ff
+0000010    ffff    ffff    ffff    ffff    ffff    ffff    ffff    ffff
+
+> stm32f1x lock 0
+> stm32f1x options_read 0
+Option Byte: 0xfffffb00
+Readout Protection Off
+Software Watchdog
+Stop: No reset generated
+Standby: Reset generated
+User Option0: 0xff
+User Option1: 0xff
+
+$reset al micro
+> stm32f1x options_read 0
+Option Byte: 0xfffffb02
+Readout Protection On
+Software Watchdog
+Stop: No reset generated
+Standby: Reset generated
+User Option0: 0xff
+User Option1: 0xff

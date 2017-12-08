@@ -1,0 +1,10 @@
+##vivaldi puede utilizar las configuraciones avanzadas tipo chrome
+
+#para cambiar lenguage por ejemplo
+vivaldi://chrome/settings/fonts to adjust fonts and font sizes
+vivaldi://chrome/settings/passwords for a separate password manager
+vivaldi://chrome/settings/cookies for a separate cookie manager
+vivaldi://chrome/settings/autofill for data to fill web forms automatically
+vivaldi://chrome/settings/content lets you adjust site-specific settings
+
+vivaldi://chrome/settings --> avanzado --> language

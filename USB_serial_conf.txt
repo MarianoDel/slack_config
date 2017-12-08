@@ -1,0 +1,30 @@
+###serial ports en USB
+colocar el dispositivo
+
+lsusb		#lista de dispositivos
+
+#en alguna linea aparece algo asi:
+Bus 001 Device 024: ID 04d8:00df Microchip Technology, Inc.
+
+##crear un archivo en /etc/udev/rules.d/
+98-microchip.rules
+
+##copiar la linea
+SUBSYSTEMS=="usb", ATTRS{idProduct}=="04d8", ATTRS{idVendor}=="00df", SYMLINK+="ttyACM%n"		#con id product y id vendor que sale en lsusb
+
+##en la consolo
+ejecutar
+udevadm control --reload-rules
+
+##salir de root y ejecutar ls -l /dev/ttyACM0
+$ ls -l /dev/ttyACM0
+crw-rw---- 1 root dialout 166, 0 Jun 21 20:11 /dev/ttyACM0
+
+##como root agregar el grupo al usuario
+#usermod -a -G group-name username
+usermod -a -G dialout med
+
+##ver los grupos de med
+groups med
+
+##login again

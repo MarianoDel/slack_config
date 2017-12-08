@@ -1,0 +1,10 @@
+#### SLACKWARE LIVE USB ####
+#los .iso en
+https://docs.slackware.com/slackware:liveslak
+
+
+el script iso2usb.sh
+http://bear.alienbase.nl/cgit/liveslak/tree/
+
+#para crear el USB (como root)
+./iso2usb.sh -i slackware64-live-current.iso -o /dev/sdb

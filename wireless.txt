@@ -1,0 +1,32 @@
+PARA CONECTAR CON RED WIRELESS PUEDO UTILIZAR LOS SIGUIENTES COMANDOS Y PROGRAMAS
+
+iwconfig      //funciona algo parecido a ifconfig pero para red wireless
+
+iwconfig wlan0		 //contesta el estado de la interface y si esta asociada al AP
+
+ifconfig 		 //si existe la interface wlan0 me dice si tiene ip asignada (y cual es)
+
+iwlist wlan0 scanning	 //me constesta las redes que ve en el aire con su ESSID
+iwlist wlan0 scanning | grep ESSID
+
+
+
+//archivos de configuracion
+
+/etc/rc.d/rc.wireless.conf	//tiene configuraciones relacionadas con la MAC de la placa de red, es mejor no configurar aca
+
+/etc/rc.d/rc.inet1.conf		//tiene la configuracion de las ip de placas eth y wlan
+
+/etc/wpa_supplicant.conf	//tiene las claves de acceso de wpa relacionadas con el ESSID (CONFIGURAR ESTE)
+
+
+//para generar la clave wpa conociendo el ESSID y la clave
+wpa_passphrase [ssid] [password]
+
+###### A VECES VE LA RED PERO NO CONSIGUE IP PORQUE EL DHCP YA TERMINO O NO TIENE CLAVE
+#con wpa_gui conecto la red
+#como root
+/sbin/dhcpcd -t 60 wlan0
+
+#para liberarlo (release)
+/sbin/dhcpcd -k wlan0

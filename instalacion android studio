@@ -1,0 +1,40 @@
+PARA INSTALAR ANDROID-STUDIO EN SLACKWARE
+
+a.- Desde Slackbuilds.org busque los paquetes de android studio para version slack 14.1
+	recomendaban primero instalar java en el sistema (jdk)
+	
+	Baje de la pagina de java la ultima version y modifique el slackbuild con ese nuevo numero
+	instalo perfecto
+
+	Con android studio hice lo mismo, pero tiro error a la hora de hacer un link de archivos
+	asique lo solicione agregando en la linea del slackbuild del ld -f para ue forzara el link
+	instalo perfecto
+
+b.- En el uso parece que va perfecto, a la hora de emular el soft, aparece el problema de que el
+	usuario no tiene permisos en el dispositivo /dev/kvm (memoria virtual), para lograr sortear
+	esto hice lo siguiente:
+
+	utilice esta pagina como ayuda http://www.computerhope.com/unix/groupadd.htm
+	groupadd kvm		#cree un nuevo grupo de linux kvm
+	usermod -G kvm med	#agregue sobre mi usuario este grupo secundario
+
+	verifique grupos y usuarios con cat /etc/group; cat /etc/passwd
+
+	En los sitemas que utilizan udev hay que permitir el uso, y parece ue existe un archivo perdido
+	entonces cree un archivo en:
+
+	archivo 65-kvm.rules
+	
+	/etc/udev/rules.d/65-kvm.rules
+	
+	adentro del archivo
+	KERNEL=="kvm", NAME="%k", GROUP="kvm", MODE="0660"
+
+	reinicio linux y listo, el android studio no me tira mas el error de los permisos
+
+c.- Cuando compila e intenta correr tira un error nuevo de libpulse.so (aparentemente faltan archivos de audio)
+	en 14.1 en 14.2 podria estar puesto
+
+	instale speex, json-c y pulseaudio
+
+d.- Ahora funciona pero tarda una vida en abrir el simulador!!!

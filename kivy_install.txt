@@ -1,0 +1,77 @@
+###INSTALLACION DE KIVY --> IR AL FINAL
+#luego de ejecutar el slackbuild
+
+y una pequenia app, da el siguiente error
+[CRITICAL] [App         ] Unable to get a Window, abort.
+
+##prueba
+##abrir interprete pytony ejecutar
+>>> import kivy.core.window._window_sdl2
+
+#da el siguiente error
+
+ImportError: No module named _window_sdl2
+x11 - ImportError: No module named window_x11
+pygame - ImportError: No module named pygame
+egl_rpi - ImportError: cannot import name bcm
+
+##otro test
+python -c "import pkg_resources; print(pkg_resources.resource_filename('kivy', '../share/kivy-examples'))"
+
+##contesta
+[INFO   ] [Logger      ] Record log in /home/med/.kivy/logs/kivy_17-06-28_4.txt
+[INFO   ] [Kivy        ] v1.10.0
+[INFO   ] [Python      ] v2.7.11 (default, Mar  3 2016, 13:35:30)
+[GCC 5.3.0]
+/usr/lib64/python2.7/site-packages/kivy/../share/kivy-examples
+
+##pruebo con instalacion recomendada ##https://kivy.org/docs/installation/installation-linux.html
+# Make sure Pip, Virtualenv and Setuptools are updated
+sudo pip install --upgrade pip virtualenv setuptools
+
+# Then create a virtualenv named "kivyinstall" by either:
+# 1. using the default interpreter
+virtualenv --no-site-packages kivyinstall
+
+# Enter the virtualenv
+. kivyinstall/bin/activate
+
+# Use correct Cython version here
+pip install Cython==0.23
+
+# Install stable version of Kivy into the virtualenv
+pip install kivy
+
+# Install development version of buildozer into the virtualenv
+pip install git+https://github.com/kivy/buildozer.git@master
+
+# Install development version of plyer into the virtualenv
+pip install git+https://github.com/kivy/plyer.git@master
+
+# Install a couple of dependencies for KivyCatalog
+pip install -U pygments docutils
+
+###FINALMENTE faltaban archivos de instalacion y por eso no corria, instale nuevo paquete desde
+###https://slackware.pkgs.org/14.2/
+https://slackware.pkgs.org/14.2/slackonly-x86_64/Kivy-1.10.0-x86_64-1_slonly.txz.html	#aca figuraban todos loas archivos
+#necesarios y me di cuenta los que me faltaban
+1.- Download Kivy-1.10.0-x86_64-1_slonly.txz
+2.- Install Kivy txz package:
+upgradepkg --install-new Kivy-1.10.0-x86_64-1_slonly.txz
+
+###LISTOOOOO
+
+###BUILDOZER es una aplicacion que crea la apk en forma automatica (o debiera hacerlo)
+siguiendo los consejos de instalacion tuve 1000 problemas
+#el primero
+Aidl not found, please install it
+#tuve que ejecutar a mano y varias veces el android sdk
+Android SDK Manager: "/home/username/.buildozer/android/platform/android-sdk-20/tools/android"
+
+#el segundo
+AttributeError: 'Context' object has no attribute 'hostpython'
+requirements = hostpython2			#tengo que agregar esta linea en buildozer.spec
+
+# Android packaging done!
+# APK KivyCrashTut-0.1-debug.apk available in the bin directory
+####LISTOOOOO

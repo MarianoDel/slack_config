@@ -1,0 +1,26 @@
+### OpenOCD en Slackware Linux
+
+##instalar
+
+##modificar permisos en udev, ir al directorio del openocd y copiar el archivo de reglas
+#como root
+cd /usr/local/share/openocd
+cp 99-openocd.rules /etc/udev/rules.d/
+udevadm control --reload-rules			#recargo las reglas
+
+#deja permisos para las reglas en un grupo llamado plugdev
+#los grupos del sistema los veo con cat /etc/group
+groups med
+
+
+## cuando se conecta el stlink con la placa y ejecuta openocd puede dar el siguiente error:
+libusb_open failed: LIBUSB_ERROR_ACCESS
+
+lsusb #como root debe mostrar la conexion del stlink
+
+si ejecutando como root no da el error es solo cuestion de dar los permisos al usuario
+
+con visudo permitir el comando para el usuario
+/usr/local/bin/openocd
+
+#### ver ahora el archivo openocd_use.txt ####

@@ -1,0 +1,72 @@
+PARA INSTALAR PYTHON EN SLACKWARE
+
+lo mejor es ir a www.slackbuilds.org
+
+buscar paquete setuptools o pysetuptools e instalar
+
+buscar paquete pip e instalar
+
+##PARA INSTALAR PAQUETES DE SLACKBUILD
+slackbuilds.org	    //buscar el paquete con la version del slackware correspondiente 14.1 (en este ejemplo)
+
+bajar el slackbuid y el soft original	//generalmente queda en Downloads (spyder por ejemplo)
+
+gunzip spyder.tar.gz
+tar -xvf spyder.tar
+
+cd spyder	//ir al directorio principal creado y hacer ejecutable el slackbuid
+
+chmod +x spyder.SlackBuild
+
+cp spyder-2.3.8.zip ./spyder	//copiar el soft al directorio principal del build
+
+./spyder.SlackBuild 		//ejecutar el slackbuild
+
+generalmente el paquete quede en /tmp
+
+cd /tmp
+
+installpkg spyder-2.3.8
+##FIN DE INSTALACION DE PAQUETES
+
+##USANDO PIP
+//pip busca informacion de paquetes para python asi:
+pip search "numpy"
+
+//pip muestra informacion de lo instalado
+pip show numpy
+
+//pip instala asi:
+pip install numpy
+
+pip install --upgrade numpy	//hace un upgrade del soft
+
+//pip borra o desinstala paquetes asi:
+pip uninstall numpy
+
+##PARA ARMAR LA BIBLIOTECA CIENTIFICA DE SCIPY
+slackbuilds setuptools
+slackbuilds pip
+slackbuilds blas
+slackbuilds lapack
+pip install numpy
+pip install scipy
+pip install matplotlib
+pip install ipython
+pip install pandas
+pip install sympy
+
+##PARA CAMBIAR EL PYTHON QUE SE ESTA UTILIZANDO
+#voy a dejar la posibilidad de utilizar python 2.7 actualmente instalado
+instalo el nuevo python 3.6 (de nuevo para slack 14.2)
+
+##PARA MOVERME ENTRE VERSIONES
+cd /usr/bin
+ls python*		#me muestra la lista de python instalados en la maquina
+
+ls -l python	#me muestra como esta actualmente el hardlink
+   lrwxrwxrwx 1 root root 7  5 sept. 07:04 python -> python3
+
+ln -sf python2.7 python		#creo el nuevo hardlink
+ls -l python
+	lwxrwxrwx 1 root root 7 Dec 11 19:28 python -> python2

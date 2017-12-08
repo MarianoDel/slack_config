@@ -1,0 +1,34 @@
+### COPYING ISO TO USB ###
+
+##con dd pasar a root
+##conectar el usb
+
+fdisk -l			#para listar los dispositivos
+
+Disk /dev/sdb: 7.3 GiB, 7803174912 bytes, 15240576 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xc3072e18
+
+Device     Boot Start      End  Sectors  Size Id Type
+/dev/sdb1  *     8064 15240575 15232512  7.3G  b W95 FAT32
+
+#tengo usb en /dev/sdb
+#me aseguro de desmontar (no necesario en slack)
+umount /dev/sdb1
+
+#si el .iso esta en el mismo directorio
+dd bs=4M if=ubuntu-12.04.2-server-i386.iso of=/dev/sdb
+
+#ubuntu-12.04.2-server-i386.iso is your .iso file
+#"bs=4M" is optional. Its just to make it faster
+
+### DAR FORMATO USB ###
+fdisk /dev/sdb
+o	//particion DOS
+n	//nueva particion
+w	//nueva configuracion
+
+mkfs.vfat /dev/sdb1

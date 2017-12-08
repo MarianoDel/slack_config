@@ -1,0 +1,32 @@
+Virtual Environments
+A Virtual Environment is a tool to keep the dependencies required by different projects
+in separate places, by creating virtual Python environments for them. It solves the
+“Project X depends on version 1.x but, Project Y needs 4.x” dilemma, and keeps your global
+site-packages directory clean and manageable.
+
+For example, you can work on a project which requires Django 1.10 while also maintaining
+a project which requires Django 1.8.
+
+#Install virtualenv via pip:
+pip install virtualenv
+
+#Test your installation
+virtualenv --version
+
+1.- Create a virtual environment for a project:
+cd my_project_folder
+virtualenv my_project
+
+2.- To begin using the virtual environment, it needs to be activated:
+source my_project/bin/activate
+#o el que utilizo
+. my_project/bin/activate
+
+3.- Install packages as usual, for example:
+pip install requests
+
+4.- If you are done working in the virtual environment for the moment, you can deactivate it:
+deactivate
+
+5.- To delete a virtual environment, just delete its folder. (In this case, it would be rm -rf my_project.)
+rm -rf my_project

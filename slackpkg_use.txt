@@ -1,0 +1,89 @@
+introduction
+
+Slackpkg is a tool for installing or upgrading packages through a network. You can make a minimal installation of Slackware Linux and
+ then install additional packages from a Slackware mirror
+
+You don't need to setup NFS or make dozens of CDs for all of your computers. Just type "slackpkg" and all packages in the
+ Official Slackware Linux will be in your hands.
+
+Installation
+
+First, you need to download the "slackpkg" package. After that, install slackpkg using the installpkg command.
+
+After install, you need to select ONE (and ONLY one) mirror to download packages from. Edit your /etc/slackpkg/mirrors and uncomment
+ one of those lines or include your own mirror. Only FTP and HTTP mirrors are supported at the moment.
+
+Once you have selected a mirror, type:
+
+# slackpkg update
+Slackpkg will download some important files and update all package *lists* (no actual packages will be updated during this part).
+You are now ready to use slackpkg ;-)
+
+Usage
+
+Slackpkg has many features, including search and automatic download and install or upgrade. To upgrade your packages, it is recommended
+that you run slackpkg update first so that the packages which were modified since the last "update" (such as patches) will be downloaded.
+
+search
+You can search in official Slackware packages for any *FILE* in the Slackware distribution. Do you need a strange library?
+Use search to find it.
+
+# slackpkg search filename
+All packages that contain the "filename" file will be shown with status showing whether the packages are installed or not,
+and if not, you can download and install them with other slackpkg commands.
+
+install
+The instalation of a package is very easy. You only need to type:
+
+# slackpkg install package
+and the package will be downloaded and installed. Instead of "package", you can use a pattern to download and install all packages
+ that match the pattern. Before download and install, slackpkg will show a list of the packages to you and ask if you really
+ want to install those packages.
+As an example:
+
+# slackpkg install n/dhcp
+will download and install dhcp and dhcpcd. You can't install an already installed package; for this, you need to upgrade the package.
+
+upgrade
+Upgrade works in the same way as install. The only difference is that upgrade can re-install already installed packages and/or
+upgrade installed packages with a new version of them.
+
+Upgrade can't install new packages; you need to install the package first and then do an upgrade (or you can install the upgraded
+ package to start with and save time).
+
+reinstall
+In case you mistakenly corrupt something, the reinstall option is provided.
+
+remove
+With remove, you can remove certain installed packages. As an example:
+
+# slackpkg remove kde
+will remove all packages with "kde" in their name.
+
+blacklist
+With this command, you can "blacklist" certain packages. Packages blacklisted can't be installed, upgraded, or removed using
+the slackpkg utility. If you want to remove some package from the blacklist, you will need to edit /etc/slackpkg/blacklist.
+
+download
+Tells slackpkg to download the packages, but not to install them. They will be in /var/cache/packages, and you can
+install/upgrade/reinstall them later (or burn them to CD).
+
+info
+Print information about the package(s): compressed and uncompressed size, description, etc...
+
+clean-system
+Remove all the packages that don't belong to a standard Slackware installation (packages that are not in the official package set).
+With this option, you can clean up your system, removing third-party packages as well as those packages that were removed from
+ the official Slackware package set.
+If you have some third party packages that you would like to keep, you can temporarily add them to the list of blacklisted packages
+ before you run the "clean-system" command.
+
+upgrade-all
+Keep your packages synced with the slackware tree. This is the "good" way to upgrade the whole system.
+Remember use install-new before run upgrade-all.
+
+install-new
+Install packages that were added to Slackware distribution. Run this if you are upgrading your system to another Slackware version
+ or if you are using Slackware -current.
+
+For more instructions and information (you must have slackpkg installed) type "#man slackpkg"

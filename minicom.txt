@@ -1,0 +1,31 @@
+#### USAR MINICOM ####
+#para poder guardar configuracion de defaul agrego entrada en sudoers con visudo
+#me creo el alias con sudo en .bashrc
+
+#la configuracion por default la guarda en archivo
+/etc/minicom.mtf
+
+#el puerto serie por USB en la maquina es:
+/dev/ttyACM0
+
+#CTRL-A I cambia el modo de las letras
+
+#CTRL-A Q salir de minicom
+
+#CTRL-A E toggle local echo
+
+#CTRL-A A toggle line feed
+
+#CTRL-A C borra pantalla
+
+#CTRL-A T opciones de terminal VT100-ANSI, etc
+
+### USAR SCREEN ###
+# empezar
+screen /dev/ttACM0
+#detach
+CTRL-A d
+#retach
+screen -r
+#kill the screen from inside
+CTRL-A k

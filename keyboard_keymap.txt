@@ -1,0 +1,20 @@
+#PARA MODIFICAR EL TECLADO EN LA CONSOLA:
+
+crear o editar en el archivo /etc/rc.d/rc.keymap el siguiente contenido
+
+#!/bin/sh
+#Load the keyboard map. More maps in /usr/share/kdb/keymaps
+if [ -x /usr/bin/loadkeys ]; then
+ /usr/bin/loadkeys la-latin1.map
+fi
+
+luego hacerlo ejecutable, en el booteo rc.M lo va a llamar si esta como ejecutable
+chmod 755 rc.keymap
+
+#PARA MODIFICAR EL TECLADO EN X Xfce:
+Menu->Settings->Settings Manager->Keyboard
+Layout Keyboard Model
+Dell Laptop/notebook Inspiron 6xxx/8xxx
+Layout Keyboard layout
+Spanish (Latin America) Spanish (Latin America, include dead tilde)
+

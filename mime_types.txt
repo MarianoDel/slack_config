@@ -1,0 +1,8 @@
+####modificacion de extensiones en X (MIME types)
+## para xfce
+
+#modificar
+$HOME/.local/share/applications/defaults.list		#o mimeapp.list
+
+#en X xfce
+Settings -> Mime type editor -> buscar el tipo de elemento y tocar en el programa elegido

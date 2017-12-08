@@ -1,0 +1,5 @@
+network={
+	ssid="Telecentro-22b2"
+	#psk="tele-2779330"
+	psk=1cde3a4127ad1770fca80371739ec4aa9bace3f1f79936112586c008eaafad27
+}

@@ -1,0 +1,11 @@
+##para correr el server (broker)
+mosquitto -c /etc/mosquitto/mosquitto.conf
+
+##en otra consola programa que se subscribe a las notificaciones
+##queda corriendo
+mosquitto_sub -v -t 'test/topic'
+
+##en otra consola agrego notificaciones (publishing)
+##se conecta y desconecta
+mosquitto_pub -t 'test/topic' -m 'HELLO!'
+

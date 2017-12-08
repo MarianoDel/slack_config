@@ -1,0 +1,112 @@
+##### Como utilizar Openocd desde la linea de comandos CLI #######
+### funciona como proceso acepta conexiones telnet en el puerto 4444 y conexiones gdb en 3333
+### primero asignar permisos segun archivo openocd_conf.txt
+
+#en el sistema en /usr/local/share/openocd/
+
+#conectar placa y ejecutar
+openocd -f stm32f0discovery.cfg
+
+#abrir nueva consola y conectarse a openocd por telnet
+telnet localhost 4444
+
+#para grabar binario
+> reset halt
+> flash probe 0
+> stm32f1x mass_erase 0
+> flash write_bank 0 main.bin 0
+> reset run
+
+#para revisar memoria
+> reset halt
+> flash probe 0
+> flash list
+> flash info 0
+> stm32f1x options_read 0
+> flash write_bank 0 main.bin 0
+> reset run
+
+#si quiero ver algo de la flash
+> dump_image opti2.bin 0x1FFFF800 32
+$ hexdump -x opti2.bin
+
+#para cerrar sesion
+> exit
+CTRL + } o CTRL + ]
+> quit
+
+
+
+#### Para DEBUG con DDD
+ddd --eval-command="target remote localhost:3333" --debugger arm-none-eabi-gdb Template_F030_rom.elf
+
+#### PARA SCRIPTS EN OPENOCD #####
+# OPENOCD puede recibir scripts y comandos meszclados, pero los comandos pueden generar errores en la ejecucion
+# cuando se pueda poner los comandos necesarios dentro de un script de config
+http://openocd.org/doc/html/Config-File-Guidelines.html#Config-File-Guidelines
+
+### ParaDEBUG con GDB tui
+arm-none-eabi-gdb -tui --eval-command="target remote localhost:3333" iotogglem0_wspl.elf
+#dar enter, comandos info desde https://fun-tech.se/stm32/OpenOCD/gdb.php
+mon reg
+info frame
+
+##### TUI MODE (upper window) ######
+C-x 2 dos ventanas (c + assembler)
+C-x 1 una ventana
+C-x a entrar o salir del modo TUI
+C-x o cambia el foco de la ventana activa
+
+##comandos TUI desde ventana gdb
+layout next	#Display the next layout.
+layout prev	#Display the previous layout.
+layout src	#Display the source window only.
+layout asm	#Display the assembly window only.
+layout split	#isplay the source and assembly window.
+layout regs	#Display the register window together with the source or assembly window.
+focus next | prev | src | asm | regs | split	#Set the focus to the named window.
+refresh		#Refresh the screen. This is similar to using C-L key.
+update		#Update the source window and the current execution point.
+winheight name +count
+winheight name -count	#Change the height of the window name by count lines. Positive counts 			#increase the height, while negative counts decrease it.
+
+
+
+###COMANDOS GDB
+#info desde http://openocd.org/doc/html/GDB-and-OpenOCD.html
+
+arm-none-eabi-gdb --eval-command="target remote localhost:3333" Template_F050_rom.elf
+
+monitor reset halt
+load			#carga el programa en memoria (graba flash)
+continue		#hace correr el programa
+CTRL+c		#corta el proceso
+where		#muestra la posicion pc-stack (igual a bt)
+stepi		#assembler + c code
+n		#next, high level
+s		#step, assembly level
+p variable	#print variable value
+info program	#si corre o se encuentra en break
+list 		#muestra partes del codigo alrededor del break
+mon reg	#muestra registros ARM
+info frame
+
+#breakpoints
+break function
+break +offset
+break linenum
+break filename:linenum		#example: b src/GTK_Signal.c:2274
+break filename:function
+info break
+delete [breakpoints]	#borra breakpoints por numero
+
+##error##
+##No symbol table is loaded.  Use the "file" command.
+##debo haber corrido el arm-none-eabi-gdb desde otro directorio
+(gdb) file Template_F030_rom.elf
+
+
+###SOURCES INFO
+https://fun-tech.se/stm32/OpenOCD/gdb.php
+http://openocd.org/doc/html/GDB-and-OpenOCD.html
+https://ftp.gnu.org/old-gnu/Manuals/gdb-5.1.1/html_node/gdb_192.html#SEC197

@@ -1,0 +1,7 @@
+http://www.slackware.com/~alien/slackbuilds/
+
+Slackware packages made by Alien
+================================
+
+lftp -c "open http://www.slackware.com/~alien/slackbuilds/<program>/; mirror build"
+

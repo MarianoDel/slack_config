@@ -1,0 +1,50 @@
+#PARA CONOCER LA VERSION DEL SLACKWARE y el KERNEL
+cat /etc/slackware-version
+uname -r 	#version del kernel
+
+PARA ARMAR PAQUETES Y BAJAR SOFTWARE MAS FACIL
+
+slackbuilds.org	    //buscar el paquete con la version del slackware correspondiente 14.1 (en este ejemplo)
+https://slackware.pkgs.org		//este funciona muy bien y me salvo en algunos casos
+
+bajar el slackbuid (Download SlackBuild)
+y el soft original (Source Downloads) 	//generalmente queda en Downloads (spyder por ejemplo)
+
+gunzip spyder.tar.gz		//OJO el slackbuild no el soft
+tar -xvf spyder.tar
+
+cd spyder	//ir al directorio principal creado y hacer ejecutable el slackbuid
+
+chmod +x spyder.SlackBuild
+
+##
+##modificar internamente el slackbuild si exste un version mejorada del soft
+##
+
+cd ..
+cp spyder-2.3.8.zip ./spyder	//copiar el soft al directorio principal del build
+
+cd spyder		//ejecutar dentro del directorio para evitar errores en shellscripts
+./spyder.SlackBuild 	//ejecutar el slackbuild
+
+generalmente el paquete queda en /tmp
+
+cd /tmp
+
+installpkg spyder-2.3.8
+
+## PARA REMOVER EL PAQUETE
+# generalmente el paquete queda en /tmp
+
+cd /tmp | ls
+
+#buscar el paquete *.SBo.tgz
+removepkg sublime_text-3.0.83-x86_64-2_SBo.tgz
+
+###probar tambien sbopkg.org
+
+### DONDE QUEDAN LOS SCRIPTS ###
+el soft queda distribuido en el sistema, pero los scripts quedan alojados en:
+/var/log/packages
+/var/log/scripts
+/var/log/removed_scripts	#para los paquetes borrados

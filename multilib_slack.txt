@@ -1,0 +1,36 @@
+#MULTILIB EN SLACKWARE 64BITS
+#lo necesito para correr arm-none-eabi-gcc y wine (por dar algun ejemplo)
+
+#paquete original
+http://alien.slackbook.org/dokuwiki/doku.php?id=slackware:multilib
+
+#paquete completo que teoricamente acelera el proceso (lo borre, no entendi nada)
+http://compat32pkg.sourceforge.net/documentation.html
+
+##lo que hice, porque no entendi nada
+
+# SLACKVER=14.2
+# mkdir multilib
+# cd multilib
+# lftp -c "open http://bear.alienbase.nl/mirrors/people/alien/multilib/ ; mirror -c -e ${SLACKVER}"
+# cd ${SLACKVER}
+
+# upgradepkg --reinstall --install-new *.t?z
+
+# upgradepkg --install-new slackware64-compat32/*-compat32/*.t?z
+
+
+
+##poner libs originales en el blacklist
+If you use a package manager like slackpkg you will have to add all the glibc and gcc package names to its package blacklist.
+If you do not take this precaution, you run the risk of your package manager accidentally replacing your multilib versions with
+ Slackware's original pure 64-bit versions!
+If you run Slackware 13.37 or newer, then slackpkg supports regular expressions in the blacklist file. In that case, a single
+ line in /etc/slackpkg/blacklist will be enough to blacklist all of my packages (including multilib gcc and glibc packages
+  and all compat32 packages)
+
+  [0-9]+alien
+  [0-9]+compat32
+
+On the other hand, if you are using the slackpkg extension called slackpkg+ then you should definitely not blacklist these
+ packages, because that prevents slackpkg+ from managing them!

@@ -1,0 +1,24 @@
+PARA UTILIZAR SCRIPTS PYTHON EN SLACKWARE
+
+#puedo correr scripts desde la consola con python y el nombre del script
+pyhton test.py
+
+#si corro el script dentro del interprete las variables quedan cargadas y las puede revisar despues
+#puedo correr el script dentro del interprete python con la funcion execfile
+python
+>>> execfile ('test.py')
+>>> var_value
+>>> quit()
+
+#Si lo quiero correr dentro del interprete y pasarle argumentos
+#En el script incluir sys para poder recuperar los argumentos
+import sys
+
+if len(sys.argv) != 2:
+    	print 'usage : and one more arg'
+    	sys.exit(1)
+
+#en el interprete
+>>> import sys
+>>> sys.argv = ['arg1', 'arg2']
+>>> execfile('test.py')

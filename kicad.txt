@@ -1,0 +1,9 @@
+##PARA INSTALAR KICAD SLACKWARE 14.1
+
+ir a www.Slackbuils.org
+
+#instalar dependencias
+libgnomecups
+libgnomeprint
+
+libgnomeprintui	//esta no la pude instalar

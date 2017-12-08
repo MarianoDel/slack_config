@@ -1,0 +1,27 @@
+#USO DE RSYNC PARA NAJAR PAQUETES SLACKWARE
+rsync [opciones] /origen /destino
+
+desde el mirror:
+http://mirrors.slackware.com/slackware/slackware64-14.2/
+
+#algo de info previa:
+http://mirrors.slackware.com/guidelines/
+
+If you don't want to mirror the entire tree, then you can use rsync's "--exclude" option to exclude some parts. As an example,
+ if you do not want the /slackware/slackware-3.0/ directory mirrored, you would use this as an argument to rsync:
+
+"--exclude "slackware-3.0/""
+
+rsync -aPSH --delete \
+     --exclude "slackware-iso/" \
+     rsync://your-upstream-mirror/slackware/ \
+     /your-toplevel-pub/slackware/
+
+#Este no funciona
+rsync -aPSH --delete --exclude "slackware-iso/" rsync://mirrors.slackware.com/slackware/slackware64-14.2/slackware64/ /root/slackware
+
+#Este funciona
+rsync -aPSH --delete --exclude "slackware-iso/" rsync://mirror.aarnet.edu.au/pub/slackware/slackware64-14.2/slackware64/ /root/slackware
+
+#Este funciona mejor
+rsync -aPSH --delete --exclude "slackware-iso/" rsync://mirror.its.dal.ca/slackware/slackware64-14.2/slackware64/ /root/slackware

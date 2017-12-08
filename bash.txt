@@ -1,0 +1,42 @@
+#explicaciones del bash en slackware
+
+http://docs.slackware.com/slackbook:bash?s[]=bashrc
+
+http://docs.slackware.com/howtos:cli_manual:shells?s[]=bashrc
+
+cuando se entra desde un terminal en X el bash ejecuta .bashrc
+cuando entra por consola ejecuta .bash_login
+
+entonces dentro de .bash_login coloco:
+source .bashrc
+
+entonces tanto desde consola como desde terminal, tengo los aliases y configuraciones requeridas
+
+##incluir programas dentro del PATH
+##para hacerlo permanente -> add this line to ~/.bashrc (you use PATH rather then CONFIG_PATH)
+export PATH=$PATH:/path/to_directory_containing_program
+
+##para verlo
+echo $PATH
+
+##BUSQUEDA POR TEXTO DENTRO DEL ARCHIVO
+grep -lir "main.py" * //busca una linea main.py dentro de archivos con nombre *
+
+##MEMORIA
+free -mt
+cat /proc/meminfo
+
+##MANTENIMIENTO
+who
+last
+finger
+ls -lah
+pwd
+whoami
+cd ~
+du -h
+df -h
+free -h
+history
+cat /var/log/auth
+netstat

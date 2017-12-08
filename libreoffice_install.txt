@@ -1,0 +1,20 @@
+INSTALACION DE LIBREOFFICE
+
+#desinstale calligra con slackpkg
+primero lo active (descomentando una linea de mirror) en /etc/slackpkg/mirrors
+despues ejecute los siguientes comando
+slackpkg update
+slackpkg search calligra
+slackpkg remove calligra
+
+lo puse en la blacklist para que no lo siga nstallando por defecto en futuros updates
+/etc/slackpkg/blacklist
+
+#Instalacion de libreOffice todo con slakware 14.2 (aunque tengo 14.1)
+#dependencias que instale
+1.- apache-ant
+2.- openjdk				##esto tarda muuucho
+3.- libreoffice
+
+en la instalacio encontre un probema con librerenge (o algo asi) edite el slackbuild para que no me lo pida
+tuve que hacer un upgrade a python3.6 (el proceso esta en python_install.txt)

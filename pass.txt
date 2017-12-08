@@ -1,0 +1,5 @@
+network={
+	ssid="linksys_casa"
+	#psk="gad_1945"
+	psk=167e41a3eaea428e49e934fcd50548541305e00e44099487aa2930031e1eb63e
+}

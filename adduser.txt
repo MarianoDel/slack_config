@@ -1,0 +1,14 @@
+##CUANDO SE TERMINA DE CONFIGURAR SE DEBERA ARMAR UNA CUENTA DE USUARIO CONVENCIONAL PARA UTIIZAR EL SISTEMA
+
+adduser [nombre]  //crea un nuevo usario nombre con directorio de default /home/nombre
+
+#agregarle la posibilidad de algun manejo del sistema con sudoers
+
+#para saber que interprete esta corriendo el sistema
+echo $SHELL  //deberia contestar algo como /bin/bash
+ps $$	     //lo mismo anterior
+
+#crear en el directorio base de usuario (ej /home/hugo)
+emacs .bashrc		#hay veces que el sistema quiere que .bashrc se corra desde .bash_login
+      			#agregar aliases en .bashrc
+source .bashrc		#para ejecutarlo luego de los cambios

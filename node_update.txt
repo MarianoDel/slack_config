@@ -1,0 +1,27 @@
+##para ver las versiones
+npm --version
+node --version
+
+##para actualizar npm
+npm update npm -g
+
+##para actualizar node
+#Clear NPM's cache:
+
+npm cache clean -f
+
+#Install a little helper called 'n'
+npm install -g n
+
+#Install latest stable Node.js version
+n stable
+
+###OJO tuve que reiniciar la maquina lo que es bastante raro (probar con solo cerrar consola)
+
+##utilizar otras versiones de node
+#si no tengo nvm
+curl https://raw.githubusercontent.com/creationix/nvm/v0.25.0/install.sh | bash
+
+#despues o utilizar "nvm ls-remote"
+nvm install 6.10.3
+nvm use 6.10.3	##no hace falta, en proximas corridas hay que utilizarlo sin necesidad de instalar
