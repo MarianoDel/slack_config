@@ -40,3 +40,6 @@ free -h
 history
 cat /var/log/auth
 netstat
+which [nombreprog]
+file [nombrearch]
+file $(which [nombreprog])

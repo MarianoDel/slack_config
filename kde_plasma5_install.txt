@@ -1,0 +1,18 @@
+#### INSTALLING KDE 5 (PLASMA 5)
+segui instrucciones de:
+https://alien.slackbook.org/blog/slackware-plasma5-updates-for-november/
+
+### para elegir el windows manager
+### entrar como usuario tipico y ejecutar
+$ xwmconfig
+
+elegir plasma
+
+$ startx
+
+### para elegir el mejor windows manager
+$ xwmconfig
+
+elegir xfce
+
+$ startx

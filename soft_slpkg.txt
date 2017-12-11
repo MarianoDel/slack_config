@@ -1,0 +1,136 @@
+##### LO QUE USO #####
+emacs /etc/slpkg/repositories.conf		#edito o pongo los repos que me interesan
+slpkg update		#actualizo la lista de repositorios
+slpkg repo-list
+slpkg -p <repo> <paquete>		#miro el estado del paquete; 							slpkg -p slonly qterminal
+slpkg -t <repo> <paquete>		#chequeo las dependencias VERDE=OK, ROJO=FALTA; slpkg -t slonly qterminal
+slpkg -s <repo> <paquete>		#instalo paquete resolviendo dependencias;		slpkg -s slonly qterminal
+
+
+
+
+Qué es Slpkg
+Slpkg es un potente gestor de paquetes para Slackware. Es capaz de calcular automáticamente las dependencias y puede proporcionar datos administrativos sobre los paquetes. Dice su página oficial que hace más fácil mantener grupos de máquinas sin tener que actualizar cada una de forma manual.
+Slpkg funciona en conformidad con los estándares de organización utilizados en la creación de paquetes por slackbuilds.org. También utiliza las instrucciones estándares de Slackware Linux para la instalación, actualización o eliminación de paquetes.
+¿Qué hace que Slpkg sea diferente a otros administradores? La facilidad de uso es su principal objetivo, así como la facilidad de comprensión y utilización, la utilización de colores para resaltar los nombres de paquetes y mensajes de advertencia, entre otros.
+También soporta múltiples fuentes (repositorios de terceros y Slackbuilds), y es posible instalar los paquetes oficiales directamente de los repositorios oficiales de Slackware. Puede comprobar las actualizaciones para los paquetes también, antes de instalarlos.
+Características:
+Resuelve dependencias
+Visualiza dependencias
+Varias opciones
+Varios repositorios
+Fácil configuración
+Totalmente configurable
+Adaptable
+Tiene opciones de gran alcance
+Compila paquetes
+Veloz
+Seguro
+
+### Configuración
+Después de instalarlo, necesitas configurar los repositorios. Para ello debes editar el archivo:
+# nano /etc/slpkg/repositories.conf
+Una opción válida puede ser esta:
+[REPOSITORIES]
+ sbo
+ slack
+ alien
+ # rlw
+ # studio
+ # slacky
+ # slackr
+ # slonly
+ # multi
+ # ktown{latest}
+ # slacke{18}
+ salix
+ # rested
+ # slackl
+ msb{1.10}
+Nota: el “msb{1.10}” se refiere al MATE Desktop.
+
+### Otra forma de editar los repositorios es con el comando:
+# slpkg add-repo <repository> <URL>
+Después de editar los repositorios, actualiza con:
+# slpkg update
+
+### Comandos
+Para ver la lista de repositorios, utiliza el comando:
+# slpkg repo-list
+
+### Para actualizar el propio programa, utiliza el comando:
+# slpkg update slpkg
+Para comprobar la “salud” de los paquetes, o sea, si los archivos de configuración están faltando, utiliza el siguiente comando:
+# slpkg health
+
+### Comprobar el estado de las dependencias:
+# slpkg deps-status
+Administrar los nuevos archivos de configuración:
+# slpkg new-config
+Crear el paquete con el script y el código fuente:
+# slpkg <script.tar.gz> <sources>
+Gestionar los paquetes en blacklist:
+# slpkg -b <paquete> --add (o también --remove)
+Administrar el archivo en “queue”:
+# slpkg -q <paquetes> --add (o también --remove)
+Construir o instalar paquetes en queue:
+# slpkg build (o install o build-install)
+Listar paquetes por repositorio:
+# slpkg -l <repositorio>
+Nota: utiliza “grep” para filtrar.
+Actualizar los paquetes por repositorio:
+# slpkg -c <repo> --upgrade
+Nota: puedes usar “–resolve-off” si quieres evitar resolución de dependencias. Utiliza “–checklist” para crear la lista de selección.
+Descargar e instalar los paquetes resolviendo dependencias:
+# slpkg -s <repo> <paquete>
+Ejemplo:
+# slpkg -s sbo steam
+
+Ver árbol de dependencias:
+# slpkg -t <repo> <paquete>
+Añadir al final “–check-deps” mostrará para qué paquete es la dependencia.
+
+Información sobre un paquete:
+# slpkg -p <repo> <paquete>
+Ver la página del Slackbuild en la terminal y sus opciones:
+# slpkg -n <paquete>
+Buscar paquetes en todos los repositorios habilitados:
+# slpkg -F <paquete>
+Buscar paquetes instalados:
+# slpkg -f <paquete>
+Otros comandos con la misma didáctica autoexplicativa de los comandos oficiales son:
+# slpkg --installpkg, --upgradepkg, --removepkg <paquete>
+Con estos comandos puedes instalar, actualizar y eliminar los paquetes.
+Recordando que el comando “slpkg –removepkg <paquete>”, con el parámetro “–deps” elimina también las dependencias.
+El parámetro “–check-deps” comprueba si un paquete es la dependencia de otro.
+Ver todo el contenido relacionado con el paquete:
+# slpkg -d <paquete>
+Editar la configuración del Slpkg:
+# slpkg -g edit
+Comprobar el changelog:
+# slpkg -c ALL
+ o
+# slpkg -c <repo>
+Actualizar los paquetes oficiales:
+# slpkg -c slack --upgrade
+Eliminar los paquetes por TAG:
+# slpkg -r TAG --tag
+Ejemplo:
+# slpkg -r _SBo --tag
+Eliminar paquetes con “_Sbo”
+[ delete ] –> Jinja2-2.7.3-x86_64-1_SBo
+[ delete ] –> MarkupSafe-0.23-x86_64-1_SBo
+[ delete ] –> Pulse-Glass-1.02-x86_64-1_SBo
+[ delete ] –> asciinema-1.1.1-x86_64-1_SBo
+[ delete ] –> astroid-1.3.8-x86_64-1_SBo
+[ delete ] –> autopep8-1.2-x86_64-1_SBo
+[ delete ] –> bendiciones-1.6-x86_64-1_SBo
+[ delete ] –> bpython-0.14.2-x86_64-1_SBo
+[ delete ] –> Pygments-1.6-x86_64-2_SBo
+[ delete ] –> cffi-1.1.2-x86_64-1_SBo
+[ delete ] –> criptografía-0.8.2-x86_64-1_SBo
+[ delete ] –> Pafy-0.3.72-x86_64-1_SBo
+[ delete ] –> curtsies-0.1.19-x86_64-1_SBo
+[ delete ] –> enum34-1.0.4-x86_64-1_SBo
+Si usas “–check-list” aparece el siguiente cuadro de diálogo como en este caso:
+# slpkg -r _SBo --tag --checklist

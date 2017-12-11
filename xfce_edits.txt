@@ -1,0 +1,23 @@
+#### HACKS for xfce WM #####
+
+Every application installs a .desktop file in /usr/share/applications that specifies application settings
+(name, comment, exec command, icon, menu, etc). Edit the chromium desktop file located at
+/usr/share/applications/chromium-browser.desktop and
+
+change the Exec= line to read:
+Exec=/usr/bin/chromium-browser --proxy-server=http://localhost:8008 %U
+
+
+For the applications' shortcuts to be found, the .desktop files must be located in one of default directories,
+ such as ~/.local/share/applications for current user or /usr/share/applications for all users.
+
+Example setup
+The following setup assumes that:
+
+the shortcuts (.desktop files) have been created and include at least one category, which could be existent
+(i.e. "System") or non-existent (i.e. "Custom", "Virtual");
+the shortcuts have been moved to the shared or local directory i.e. ~/.local/share/applications;
+the menu (.menu file) have been created such that the shortcuts from particular defined category is included (i.e. "Virtual");
+the menu is placed somewhere appropriate i.e. ~/.config/menus directory
+
+https://wiki.xfce.org/howto/customize-menu
