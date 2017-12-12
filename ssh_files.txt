@@ -1,0 +1,6 @@
+#### Para enviar archivos por ssh
+
+comando scp
+
+o graficacamente konqueror:
+fish://username@server_name_or_ip
