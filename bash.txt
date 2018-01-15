@@ -21,6 +21,10 @@ echo $PATH
 
 ##BUSQUEDA POR TEXTO DENTRO DEL ARCHIVO
 grep -lir "main.py" * //busca una linea main.py dentro de archivos con nombre *
+grep -i	//ignore case
+grep -r	//recursive desde el directorio
+
+
 
 ##MEMORIA
 free -mt

@@ -1,0 +1,30 @@
+Modo punto a punto
+
+//En servidor
+
+cd /etc/openvpn
+
+openvpn --genkey --secret static.key		//genera la llave
+openvpn --test-crypto --secret static.key	//prueba la llave generada
+
+cp static.key ./keys
+cp openvpn.conf.sample server.conf
+emacs server.conf 				//o poner configuración copiada
+
+//para ejecutar
+modprobe tun		//carga el tunel
+openvpn server.conf	//corre el server vpn
+
+//para probar
+ping 10.1.2.1		//debe contestar la nueva ip
+ifconfig		//debe existir la interface de tunel
+
+//en windows lado cliente (ojo recordar que en realidad es punto a punto)
+bajar ejecutable windows desde openvpn.net
+se instala en c:/Archivos de Programas/OpenVPN/		//subdirectorio config
+crear y editar el archivo cliente.ovpn	//o poner configuracion copiada
+copiar desde el servidor static.key
+
+//para ejecutar boton derecho en cliente.ovpn y Ejecutar con OpenVPN
+
+//probar con ping y agregar rutas en el lado cliente (archio cliente.ovpn)
