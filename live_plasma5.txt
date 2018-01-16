@@ -1,0 +1,49 @@
+### QUE CONFIGURE EN PLASMA5 DESDE EL ISO LIVE
+
+#primero el teclado
+Settings->Input devices->Keyborad layout
+Dell Inspiron y Latin america
+
+#red wifi es facil (con el teclado bien)
+
+#widget para ver el escritorio
+boton derecho y add widget, lo saco de la lista y lo mando directo a la barra
+
+#arme shortcut para consola
+CTRL+ALT+T consola qterminal (qterminal)
+CTRL+ALT+D consola qtermminal drop down (qterminal -d)
+
+#cambio el tiempo en el que se bloquea la pantalla
+Settings->Desktop behaivor->Screen Locking
+
+#instale desde slackbuilds.org slpkg, para poder instalar mas rapido
+#una vez instalado ver https://github.com/dslackw/slpkg
+slpkg update
+#agrego repos con
+slpkg add-repo <repository name> <URL>
+#veo repos con
+slpkg repo-list
+#bajo e instalo paquetes con
+slpkg -s <repository> <packages>
+#busco paquetes en los repos activos con
+slpkg -F <packages>
+#habilito repos de la lista con (requiere una instalacion previa)
+slpkg repo-enable
+
+#quito paquete y dependencias con
+slpkg --removepkg <packages>
+
+#### para atom no funciono, lo instalo delde el rpm
+##bajo .rpm
+#rpm2tgz atom.x86_64.rpm
+#installpkg atom.x86_64.tgz
+###listo espectacular!
+
+
+### INSTALADO ATOM
+#busco paquetes
+minimap
+highlight-selected
+
+#en autocoplete-plus
+configuro que solo complete con TAB
