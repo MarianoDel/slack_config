@@ -1,0 +1,130 @@
+#### COMO ME CONECTO REMOTO A LA RPI ####
+#primero todas las configuraciones de red (naturalmente!)
+#activo sshd en rpi segun el sistema (en slackware /etc/rc.d)
+
+[192.168.1.104] rpi
+[192.168.1.xxx] mia
+ssh 192.168.1.104 -l user	#despues me pide el password
+
+#en rpi edito sshd_config (/etc/ssh/sshd_config) ##ver bien la dDDD
+descomento la linea X11Forwarding yes
+#en /etc/rc.d
+./rc.sshd restart
+
+ssh -Y med@192.168.1.104
+#cuando conecto si esta ok no me debe dar errores como:
+#X11 forwarding request failed on channel 0
+kcalc  		#para probar ejecuto un programa X y me debe aparecer en la PC
+
+## SI QUIERO TODA UNA SESION X COMPLETA REMOTA ###
+como root en PC
+xіnіt—:1 &	#esto habilita una segunda consola virtual en CTRL-ALT-F8
+
+
+ssh -Y med@192.168.1.104
+
+#me dice X11 forwarding request failed on channel 0
+#### HASTA ACA OK PERO NO PUEDO REMOTIZAR EL ESCRITORIO COMPLETO ###
+
+### CAMBIO PARA UTILIZAR TIGERVNC ###
+
+#en raspberry
+slackpkg update
+slackpkg install tigervnc
+corro el servidor
+vncserver	#me pide un password, y es el display 1
+#ese password es la entrada remota para ese usuario (recordarlo)
+#puse med_users
+
+#en la maquina con linux dentro de X en consola
+vncviewer
+192.168.1.104:1		#por display 1
+
+#en rpi para otro usuario
+su nombre_usuario
+vncserver	#me pide otro passwd, y debe ser display 2
+
+#en la PC
+vncviewer
+192.168.1.104:2		#por display 2
+
+#### AHORA QUIERO QUE EL SERVER ARRANQUE SOLO ####
+#en /etc/rc.local
+su med -c 'vncserver :2'	#para el usuario med, tira un comando vncserver escritorio 1
+
+
+### PARA DEJAR ARCHIVOS EN LA RASPBERRY ###
+#puedo usar sftp (medio hincha pelotas)
+sft med@192.168.1.104
+> put /home/local/1.txt /home/med
+> quit
+
+#puedo hacer lo mismo con fish y dolphin
+#abro dolphin y en la barra pongo de archivos
+fish://med@192.168.1.104
+
+##########################################
+#### EN RASPBIAN ############
+ssh pi@192.168.1.104	#no funciona
+
+#en rpi
+sudo systemctl enable ssh
+sudo systemctl start ssh
+
+#reviso con
+ps ax | grep ssh
+
+ssh pi@192.168.1.103	#cambio ip para que no me putee
+
+#cambiar ip en raspbian (extranamente en la conf del dhcpd)
+/etc/dhcpcd.conf #activo los renglones de ip estatica
+
+#AHORA SI, CONECTO ENTONCES VNC
+sudo raspi-config
+Now, enable VNC Server by doing the following:
+
+    Navigate to Interfacing Options.
+    Scroll down and select VNC > Yes.
+
+corro vncserver en usuario pi, crea el nuevo escritorio
+192.168.1.103:1
+#no conecta por problemas de seguridad
+
+#para root en raspberry (no existe el root)
+sudo su
+
+
+Open the /root/.vnc/config.d/vncserver-x11 config file.
+Replace Authentication=SystemAuth with Authentication=VncAuth and save the file.
+In the command line, run sudo vncpasswd -service. This will prompt you to set a password, and will insert it for you in the right config file for VNC Server running in Service Mode.
+Restart VNC Server.
+
+puse raspian
+
+#no me puedo conectar actualizo raspberry para usar tightvncserver
+#http://www.instructables.com/id/Setting-up-a-VNC-Server-on-your-Raspberry-Pi/
+
+sudo apt-get update
+sudo apt-get install tightvncserver
+
+#desinstala realvnc, instala tightvnc
+vncserver   #me pide un password
+
+ahora desde la PC
+vncviewer
+#me pide ip y desktop
+192.168.1.103:1
+#passwd
+raspberr
+
+#listooooo
+
+#para que arranque automatico en /etc/rc.local antes de exit 0
+su pi -c 'vncserver'
+
+
+
+
+
+
+

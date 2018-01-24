@@ -47,3 +47,5 @@ highlight-selected
 
 #en autocoplete-plus
 configuro que solo complete con TAB
+
+#en el acceso directo a qt5 le quito el -qt5 (que sobra)

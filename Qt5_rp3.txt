@@ -1,0 +1,26 @@
+http://ceicer.org/sarpi2/qt.php
+
+#de aca bajo el qt5 precompilado y static, para archivos simples tuve que compilar asi...
+
+/opt/Qt5.10.0_static/bin/qmake -project         #crea el proyecto
+
+##por falta de algunas libs tuve que modificar el *.pro con estas dos lineas
+QT += gui
+CONFIG += qt
+
+/opt/Qt5.10.0_static/bin/qmake                  #crea Makefile
+
+make                                            #o make release
+
+##### ARMO GUI EN LA PC ####
+Qt-Designer me genera un archivo .ui que tiene los widgets y las conexiones entre ellos
+
+http://doc.qt.io/qt-5/qtdesigner-calculatorform-example.html
+http://doc.qt.io/qt-5/designer-using-a-ui-file.html
+
+debo incluir en el *.pro un comando para que se use uic (pasa .ui a codigo c++) en la compilacion
+
+FORMS = calculator.ui
+
+
+
