@@ -48,4 +48,14 @@ highlight-selected
 #en autocoplete-plus
 configuro que solo complete con TAB
 
-#en el acceso directo a qt5 le quito el -qt5 (que sobra)
+#en el acceso directo a qt5-designer le quito el -qt5 (que sobra)
+
+#clono repositorio de doscumentos slack
+git clone https://github.com/MarianoDel/slack_config.git
+
+#copio configuraciones que uso por default
+cp .bashrc /home/live
+cp .emacs /home/live
+#cp .bashrc_root /root/.bashrc
+#cp .emacs /root
+

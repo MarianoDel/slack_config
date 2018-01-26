@@ -1,0 +1,12 @@
+#Aliases
+alias dir='ls -alF --color'
+alias ll='dir'
+alias pic='ps ax'
+alias cde='cd /etc'
+alias emacs_c='emacs -nw'
+alias ls='ls --color'
+alias shutdown='/sbin/shutdown -h now'
+alias findf='/usr/bin/find -iname'
+
+
+export PS1='\u@\h:\w\$ '
