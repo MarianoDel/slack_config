@@ -22,6 +22,13 @@
 (require 'ido)
 (ido-mode t)
 
+;;CC Mode conf
+(setq c-default-style "linux" c-basic-offset 4
+      tab-width 4
+      indent-tabs-mode t)
+            
+(add-hook 'c-mode-hook (lambda () (setq comment-start "//"
+                                        comment-end   "")))
 ;;Funcionalidad de paquetes
 (require 'package)
 ;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
