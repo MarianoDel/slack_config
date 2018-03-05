@@ -4,6 +4,7 @@ COMMIT CHANGES
 
 git status		#muestra el estado del proyecto y sus commit
 git add –A		#agrega a la lista de files to track –A (todos) * --all
+git add .
 git commit –m “nuevos cambios”	#hace el commit de la PC local
 
 git push origin		#pasa el commit al server GITHUB (solo si lo esta siguiendo)
@@ -28,6 +29,9 @@ git branch –a		//lista todos los branches activos del proyecto
 
 #comparo branches
 git diff master..new_feature
+
+#comparo branch local con el de Github
+git diff master origin/master   (si origin/master es un brach remoto, git branch -a)
 
 #para ver si un branch contiene toda la info de los otros
 git branch --merged
@@ -144,6 +148,7 @@ git config --global push.default matching
 
 
 CLONE -- GITHUB
+FETCH-MERGE-PULL
 
 buscar el repositorio y copiar direccion https
 en la PC ir al directorio base
