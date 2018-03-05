@@ -2,7 +2,9 @@
 emacs /etc/slpkg/repositories.conf		#edito o pongo los repos que me interesan
 slpkg update		#actualizo la lista de repositorios
 slpkg repo-list
-slpkg -p <repo> <paquete>		#miro el estado del paquete; 							slpkg -p slonly qterminal
+slpkg -F <paquete>
+slpkg -p <repo> <paquete>		#miro el estado del paquete;
+slpkg -p slonly qterminal
 slpkg -t <repo> <paquete>		#chequeo las dependencias VERDE=OK, ROJO=FALTA; slpkg -t slonly qterminal
 slpkg -s <repo> <paquete>		#instalo paquete resolviendo dependencias;		slpkg -s slonly qterminal
 

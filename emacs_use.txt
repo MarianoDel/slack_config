@@ -130,7 +130,7 @@ C-x i pega una archivo dentro de este archivo, ej test1.txt
 (switch-to-buffer (test2.txt))
 (buffer-size)
 
-M-x find-file-at-point abre el archivo debajo del cursor (escrtio en el text)
+M-x find-file-at-point abre el archivo debajo del cursor (escrito en el text)
 test1.txt                       
 
 M-x goto-line   ...  2
