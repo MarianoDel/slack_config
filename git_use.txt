@@ -232,6 +232,11 @@ git diff master 8d55754d965 -- ./src/main.c
 
 COMPARAR ARCHIVOS ANTES DE UN COMMIT O UN ADD
 git diff master -- /src/main.c		#compara el dir corriente contra el ultimo master, solo main.c
+git diff master                         #compara todos los archivos corrientes contra el ultimo master
+
+git fetch origin                        #coloca el master remoto en origin/master
+git diff master origin/master           #compara el master local con el remoto(que se encuentra localmente)
+git merge origin/master                 #lleva mi master local hasta el estado de origin/master y lo deja en mi master
 
 
 USOS MAS COMUNES – MERGE DE UN ARCHIVO AGREGANDO O MANTENIENDO LINEAS
