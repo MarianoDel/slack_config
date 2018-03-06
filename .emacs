@@ -9,11 +9,11 @@
   )
 )
 
-;(global-set-key (kbd "<C-kp-divide>") 'comment-or-uncomment-line-or-region)
 (global-set-key (kbd "C-/") 'comment-or-uncomment-line-or-region)
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+;(scroll-bar-mode -1)
 
 ;;Font size
 (set-face-attribute 'default nil :height 120)
