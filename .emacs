@@ -26,9 +26,10 @@
 (setq c-default-style "linux" c-basic-offset 4
       tab-width 4
       indent-tabs-mode t)
-            
+
 (add-hook 'c-mode-hook (lambda () (setq comment-start "//"
                                         comment-end   "")))
+
 ;;Funcionalidad de paquetes
 (require 'package)
 ;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -39,17 +40,21 @@
 
 ;;activacion
 (package-initialize)
-;(load-theme 'material t)
 (require 'better-defaults)
 (load-theme 'rebecca t)
+;(load-theme 'material t)
 (elpy-enable)
 
 (require 'multiple-cursors)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this-word)    ;agrego word ver con symbol
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this-word);agrego word ver con symbol
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-}") 'mc/mark-next-like-this)    ;agrego word ver con symbolpintar letra o palabra antes de activar
+;(global-set-key (kbd "C-<") 'mc/mark-previous-like-this-word);agrego word ver con symbol
+;(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
+;;mover tamanio de ventanas de buffer
 (global-set-key (kbd "C-x <up>") 'shrink-window)
 (global-set-key (kbd "C-x <down>") 'enlarge-window)
 (global-set-key (kbd "C-x <left>") 'shrink-window-horizontally)
 (global-set-key (kbd "C-x <right>") 'enlarge-window-horizontally)
+
+;;ace-jump-mode
+(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
