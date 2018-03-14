@@ -1,0 +1,37 @@
+##### Docs
+Shift-TAB abre o colapsa el outline del documento
+TAB tambien pero solo si tiene el punto en *
+
+## TODOs
+C-c C-t corre org-todo y marca como terminado, sin todo, con todo, ciclico
+S-left/right tambien cicla
+C-c / t muestra TODOs en el documento
+M-Shift-RET org-insert-todo-heading, al final de la linea
+C-c C-v muestra solo TODOs activos
+
+## LINKS
+"[[link][description]" links a otros documentos, mismo documento o internet
+C-c C-o org-open-at-point, abre el link
+
+
+TAB / S-TAB (un)fold
+M-up/down move a headline up or down
+M-left/right promote or demote a headline
+M-RET insert a new headline
+
+#Listas 
+C-c - cycle beetwen marks
++, -, *, en el comienzo desordenadas
+1. 2. 3. en el comienzo ordenadas
+
+## Markup
+You can make words *bold*, /italic/, _underlined_, =code= and ~verbatim~, and, if you must, +strike-through+.
+
+## Movement
+C-c C-n Next heading.
+C-c C-p Previous heading.
+C-c C-f Next heading same level.
+C-c C-b Previous heading same level.
+C-c C-u Backward to higher level heading.
+M-S-up/down Move subtree up/down (swap with previous/next subtree of same level).
+C-x n s/w Narrow buffer to current subtree / widen it again
