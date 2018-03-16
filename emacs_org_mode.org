@@ -1,0 +1,136 @@
+** Docs
+Shift-TAB abre o colapsa el outline del documento
+TAB tambien pero solo si tiene el punto en *
+
+** TODOs
+C-c C-t corre org-todo y marca como terminado, sin todo, con todo, ciclico
+S-left/right tambien cicla
+C-c / t muestra TODOs en el documento
+M-Shift-RET org-insert-todo-heading, al final de la linea
+C-c C-v muestra solo TODOs activos
+
+** LINKS
+: [[link][description]] links a otros documentos, mismo documento o internet
+C-c C-o org-open-at-point, abre el link
+: [[http://google.com][Google Search Engine]]
+[[http://google.com][Google Search Engine]]  asi se ve sin los dos puntos
+
+
+
+TAB / S-TAB (un)fold
+M-up/down move a headline up or down
+M-left/right promote or demote a headline
+M-RET insert a new headline
+
+** Listas 
+C-c - cycle beetwen marks
++, -, *, en el comienzo desordenadas
+1. 2. 3. en el comienzo ordenadas
+
+** Markup
+You can make words *bold*, /italic/, _underlined_, =code= and ~verbatim~, and, if you must, +strike-through+.
+
+
+** Movement
+C-c C-n Next heading.
+C-c C-p Previous heading.
+C-c C-f Next heading same level.
+C-c C-b Previous heading same level.
+C-c C-u Backward to higher level heading.
+M-S-up/down Move subtree up/down (swap with previous/next subtree of same level).
+C-x n s/w Narrow buffer to current subtree / widen it again
+
+** Latex Symbols
+http://artofproblemsolving.com/wiki/index.php/LaTeX:Symbols
+
+2H(2)O \rightarrow 2H_2 + O_2
+
+x * x = x^2
+
+M-x org-html-export-to-html \rightarrow me genera archivo html
+
+** TABLES
+- Navigate TAB and Shift TAB
+- Insertar datos C-u M-! inserta comando shell at point
+   total 6892
+   -rw-r--r--  1  med users    1496  Mar 16 10:00 #emacs_org_mode.org#
+   drwxr-xr-x  5  med users    4096  Mar 16 09:56 ./
+
+- Pintar zona y C-c | convierte a tabla, busca TABs o espacios
+  C-u 2 C-c | busca dos espacios
+- Mover filas con M-<up> M-<down>
+- Mover columnas con M-<right> M-<left>
+- Borrar columnas M-S-<left>
+- Agregar columnas M-S-<right>
+- Agregar linea horizontal C-c RET
+  |- TAB hace lo mismo
+  C-c - tambien arma una linea horizontal
+- TAB en la ultima fila y columna agranda la tabla un renglon mas
+
+- Ordenar dentro de la columna C-c ^
+- Insertar numerados, primer numero en la columna y luego S-RET
+
+- Evaluar Constantes y Formulas de la tabla con C-c C-c
+#+CONSTANTS: bios=string("1.20.25")
+
+*** SpreadSheet
+- para referenciar C-c ? in that field, or press C-c }
+- Las filas se las drecciona con @, las columnas con $
+- @row$column
+- Rangos de referencias
+  $1..$3        first three fields in the current row
+  $P..$Q        range, using column names (see under Advanced)
+  $<<<..$>>     start in third column, continue to the last but one
+  @2$1..@4$3    6 fields between these two fields (same as A2..C4)
+  @-1$-2..@-1   3 fields in the row above, starting from 2 columns on the left
+  @I..II        between first and second hline, short for @I..@II
+
+https://orgmode.org/manual/References.html#References
+
+|--------+--------------+--------------------------+----------------------------------------------+---+---|
+| 219775 | May 12       | 2016                     | Emacs Mini Manual (PART 1) - THE BASICS.html |   |   |
+|  15246 | Jun 21       | 2017                     | Goblin's Slackware Stuff.html                |   |   |
+|   4096 | Jun 21       | 2017                     | Goblin's Slackware Stuff_files               |   |   |
+|    927 | Dec 19 11:04 | OpenVPN en Slackware.txt |                                              |   |   |
+|    777 | Jan 26 16:15 | Qt5_rp3.txt              |                                              |   |   |
+|     33 | Dec          | 8 12:47                  | README.md                                    |   |   |
+|    727 | Jun 21       | 2017                     | USB_serial_conf.txt                          |   |   |
+|    637 | Aug 15       | 2017                     | adduser.txt                                  |   |   |
+|   2453 | Sep 28 12:26 | atom.txt                 |                                              |   |   |
+|   1075 | Dec 19 12:38 | bash.txt                 |                                              |   |   |
+|   3315 | Jan 26 16:15 | conexion_remota_rpi.txt  |                                              |   |   |
+|--------+--------------+--------------------------+----------------------------------------------+---+---|
+|    432 | Dec 15 12:02 | connect.sh               |                                              |   |   |
+|    232 | Dec 18 12:07 | connect1.sh              |                                              |   |   |
+|    248 | Dec 18 12:06 | connect1.sh~             |                                              |   |   |
+|   2120 | Dec 15 14:40 | connect2.sh              |                                              |   |   |
+|    228 | Dec 17 17:04 | count.sh                 |                                              |   |   |
+|   8463 | Mar 16 08:58 | emacs_org_mode.html      |                                              |   |   |
+|   1789 | Mar 16 10:35 | emacs_org_mode.org       |                                              |   |   |
+|   1153 | Mar 16 08:32 | emacs_org_mode.txt       |                                              |   |   |
+|   9327 | Mar 15 19:05 | emacs_use.txt            |                                              |   |   |
+|   1113 | Dec 15 12:01 | femtocom.sh              |                                              |   |   |
+|  13382 |              |                          |                                              |   |   |
+|--------+--------------+--------------------------+----------------------------------------------+---+---|
+|        |              |                          |                                              |   |   |
+|        |              |                          |                                              |   |   |
+#+TBLFM: @22$1=vsum(@18..@21)
+
+*** Calc Package Formulas
+$1+$2                Sum of first and second field
+$1+$2;%.2f           Same, format result to two decimals
+exp($2)+exp($1)      Math functions can be used
+$0;%.1f              Reformat current cell to 1 decimal
+($3-32)*5/9          Degrees F -> C conversion
+$c/$1/$cm            Hz -> cm conversion, using constants.el
+tan($1);Dp3s1        Compute in degrees, precision 3, display SCI 1
+sin($1);Dp3%.1e      Same, but use printf specifier for display
+taylor($3,x=7,2)     Taylor series of $3, at x=7, second degree
+
+*** Lisp Formulas
+- If a formula starts with an apostrophe followed by an opening parenthesis, 
+   then it is evaluated as a Lisp form. The evaluation should return either a string or a number.
+   '(concat (substring $1 1 2) (substring $1 0 1) (substring $1 2))
+- Aplicar una formula a un campo especifico ':=', for example ':=vsum(@II..III)'
+
+

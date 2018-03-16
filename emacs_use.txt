@@ -1,6 +1,7 @@
 #### USO DE EMACS ######## http://www.masteringemacs.org
 
 C-g  	    //quit current command
+C-x z       //repite ultimo comando
 
 ### Funcionalidad de Archivos ##
 C-x C-f 	  //busca y abre archivo o crea uno nuevo
@@ -29,6 +30,7 @@ M-w	    //copia texto sin borrar original
 C-w	    //copia texto borra original
 C-k         //corta hasta el final de linea
 M-k	    //borra hasta el final del parrafo (queda en kill ring)
+M-d         //borra hasta el final de la palabra
 C-y 	    //pega texto copiado, incluso desde otras ventanas
 
 #Undo
@@ -239,7 +241,7 @@ C-}
 #listar paquetes desde ELPA (por defecto)
 M-x list-packages      //'i' para marcar 'u' desmarcar 'x' hacer install
 
-#mas cantidad de repositorios, colocar esto en .emcas
+#mas cantidad de repositorios, colocar esto en .emacs
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 

@@ -41,8 +41,10 @@
 ;;activacion
 (package-initialize)
 (require 'better-defaults)
-(load-theme 'rebecca t)
-;(load-theme 'material t)
+;;(load-theme 'rebecca t)
+;;(load-theme 'material t)
+(load-theme 'deeper-blue)
+;;(load-theme 'tango-dark)
 (elpy-enable)
 
 (require 'multiple-cursors)
@@ -58,3 +60,10 @@
 
 ;;ace-jump-mode
 (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+
+;;dired configuration
+(setq dired-listing-switches "-aBhl  --group-directories-first")
+
+;;para org mode close TODOs with timestamp
+(setq org-log-done 'time)
+                                        ;(setq org-log-done 'note)

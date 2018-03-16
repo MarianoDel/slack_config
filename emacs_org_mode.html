@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>emacs_org_mode</title>
+<!-- 2018-03-16 Fri 16:44 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">emacs_org_mode</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Docs</a></li>
+<li><a href="#sec-2">2. TODOs</a></li>
+<li><a href="#sec-3">3. LINKS</a></li>
+<li><a href="#sec-4">4. Listas</a></li>
+<li><a href="#sec-5">5. Markup</a></li>
+<li><a href="#sec-6">6. Movement</a></li>
+<li><a href="#sec-7">7. Latex Symbols</a></li>
+<li><a href="#sec-8">8. TABLES</a>
+<ul>
+<li><a href="#sec-8-1">8.1. SpreadSheet</a></li>
+<li><a href="#sec-8-2">8.2. Calc Package Formulas</a></li>
+<li><a href="#sec-8-3">8.3. Lisp Formulas</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Docs</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Shift-TAB abre o colapsa el outline del documento
+TAB tambien pero solo si tiene el punto en *
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> TODOs</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+C-c C-t corre org-todo y marca como terminado, sin todo, con todo, ciclico
+S-left/right tambien cicla
+C-c / t muestra TODOs en el documento
+M-Shift-RET org-insert-todo-heading, al final de la linea
+C-c C-v muestra solo TODOs activos
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> LINKS</h2>
+<div class="outline-text-2" id="text-3">
+<pre class="example">
+[[link][description]] links a otros documentos, mismo documento o internet
+</pre>
+<p>
+C-c C-o org-open-at-point, abre el link
+</p>
+<pre class="example">
+[[http://google.com][Google Search Engine]]
+</pre>
+<p>
+<a href="http://google.com">Google Search Engine</a>  asi se ve sin los dos puntos
+</p>
+
+
+
+<p>
+TAB / S-TAB (un)fold
+M-up/down move a headline up or down
+M-left/right promote or demote a headline
+M-RET insert a new headline
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Listas</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+C-c - cycle beetwen marks
++, -, *, en el comienzo desordenadas
+</p>
+<ol class="org-ol">
+<li>2. 3. en el comienzo ordenadas
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Markup</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+You can make words <b>bold</b>, <i>italic</i>, <span class="underline">underlined</span>, <code>code</code> and <code>verbatim</code>, and, if you must, <del>strike-through</del>.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Movement</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+C-c C-n Next heading.
+C-c C-p Previous heading.
+C-c C-f Next heading same level.
+C-c C-b Previous heading same level.
+C-c C-u Backward to higher level heading.
+M-S-up/down Move subtree up/down (swap with previous/next subtree of same level).
+C-x n s/w Narrow buffer to current subtree / widen it again
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Latex Symbols</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+<a href="http://artofproblemsolving.com/wiki/index.php/LaTeX:Symbols">http://artofproblemsolving.com/wiki/index.php/LaTeX:Symbols</a>
+</p>
+
+<p>
+2H(2)O &rarr; 2H<sub>2</sub> + O<sub>2</sub>
+</p>
+
+<p>
+x * x = x<sup>2</sup>
+</p>
+
+<p>
+M-x org-html-export-to-html &rarr; me genera archivo html
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> TABLES</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>Navigate TAB and Shift TAB
+</li>
+<li>Insertar datos C-u M-! inserta comando shell at point
+total 6892
+-rw-r&#x2013;r&#x2013;  1  med users    1496  Mar 16 10:00 #emacs<sub>org</sub><sub>mode</sub>.org#
+drwxr-xr-x  5  med users    4096  Mar 16 09:56 ./
+</li>
+
+<li>Pintar zona y C-c | convierte a tabla, busca TABs o espacios
+C-u 2 C-c | busca dos espacios
+</li>
+<li>Mover filas con M-&lt;up&gt; M-&lt;down&gt;
+</li>
+<li>Mover columnas con M-&lt;right&gt; M-&lt;left&gt;
+</li>
+<li>Borrar columnas M-S-&lt;left&gt;
+</li>
+<li>Agregar columnas M-S-&lt;right&gt;
+</li>
+<li>Agregar linea horizontal C-c RET
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+</table>
+<p>
+C-c - tambien arma una linea horizontal
+</p>
+</li>
+<li>TAB en la ultima fila y columna agranda la tabla un renglon mas
+</li>
+
+<li>Ordenar dentro de la columna C-c ^
+</li>
+<li>Insertar numerados, primer numero en la columna y luego S-RET
+</li>
+
+<li>Evaluar Constantes y Formulas de la tabla con C-c C-c
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> SpreadSheet</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>para referenciar C-c ? in that field, or press C-c }
+</li>
+<li>Las filas se las drecciona con @, las columnas con $
+</li>
+<li>@row$column
+</li>
+<li>Rangos de referencias
+$1..$3        first three fields in the current row
+$P..$Q        range, using column names (see under Advanced)
+$&lt;<a id=".." name=".."></a>     start in third column, continue to the last but one
+@2$1..@4\(3    6 fields between these two fields (same as A2..C4)
+  @-1\)-2..@-1   3 fields in the row above, starting from 2 columns on the left
+@I..II        between first and second hline, short for @I..@II
+</li>
+</ul>
+
+<p>
+<a href="https://orgmode.org/manual/References.html#References">https://orgmode.org/manual/References.html#References</a>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">219775</th>
+<th scope="col" class="left">May 12</th>
+<th scope="col" class="left">2016</th>
+<th scope="col" class="left">Emacs Mini Manual (PART 1) - THE BASICS.html</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+</tr>
+
+<tr>
+<th scope="col" class="right">15246</th>
+<th scope="col" class="left">Jun 21</th>
+<th scope="col" class="left">2017</th>
+<th scope="col" class="left">Goblin's Slackware Stuff.html</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+</tr>
+
+<tr>
+<th scope="col" class="right">4096</th>
+<th scope="col" class="left">Jun 21</th>
+<th scope="col" class="left">2017</th>
+<th scope="col" class="left">Goblin's Slackware Stuff<sub>files</sub></th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+</tr>
+
+<tr>
+<th scope="col" class="right">927</th>
+<th scope="col" class="left">Dec 19 11:04</th>
+<th scope="col" class="left">OpenVPN en Slackware.txt</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+</tr>
+
+<tr>
+<th scope="col" class="right">777</th>
+<th scope="col" class="left">Jan 26 16:15</th>
+<th scope="col" class="left">Qt5<sub>rp3</sub>.txt</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+</tr>
+
+<tr>
+<th scope="col" class="right">33</th>
+<th scope="col" class="left">Dec</th>
+<th scope="col" class="left">8 12:47</th>
+<th scope="col" class="left">README.md</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+</tr>
+
+<tr>
+<th scope="col" class="right">727</th>
+<th scope="col" class="left">Jun 21</th>
+<th scope="col" class="left">2017</th>
+<th scope="col" class="left">USB<sub>serial</sub><sub>conf</sub>.txt</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+</tr>
+
+<tr>
+<th scope="col" class="right">637</th>
+<th scope="col" class="left">Aug 15</th>
+<th scope="col" class="left">2017</th>
+<th scope="col" class="left">adduser.txt</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+</tr>
+
+<tr>
+<th scope="col" class="right">2453</th>
+<th scope="col" class="left">Sep 28 12:26</th>
+<th scope="col" class="left">atom.txt</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+</tr>
+
+<tr>
+<th scope="col" class="right">1075</th>
+<th scope="col" class="left">Dec 19 12:38</th>
+<th scope="col" class="left">bash.txt</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+</tr>
+
+<tr>
+<th scope="col" class="right">3315</th>
+<th scope="col" class="left">Jan 26 16:15</th>
+<th scope="col" class="left">conexion<sub>remota</sub><sub>rpi</sub>.txt</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">432</td>
+<td class="left">Dec 15 12:02</td>
+<td class="left">connect.sh</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="right">232</td>
+<td class="left">Dec 18 12:07</td>
+<td class="left">connect1.sh</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="right">248</td>
+<td class="left">Dec 18 12:06</td>
+<td class="left">connect1.sh~</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="right">2120</td>
+<td class="left">Dec 15 14:40</td>
+<td class="left">connect2.sh</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="right">228</td>
+<td class="left">Dec 17 17:04</td>
+<td class="left">count.sh</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="right">8463</td>
+<td class="left">Mar 16 08:58</td>
+<td class="left">emacs<sub>org</sub><sub>mode</sub>.html</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="right">1789</td>
+<td class="left">Mar 16 10:35</td>
+<td class="left">emacs<sub>org</sub><sub>mode</sub>.org</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="right">1153</td>
+<td class="left">Mar 16 08:32</td>
+<td class="left">emacs<sub>org</sub><sub>mode</sub>.txt</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="right">9327</td>
+<td class="left">Mar 15 19:05</td>
+<td class="left">emacs<sub>use</sub>.txt</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="right">1113</td>
+<td class="left">Dec 15 12:01</td>
+<td class="left">femtocom.sh</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="right">13382</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="right">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> Calc Package Formulas</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+$1+$2                Sum of first and second field
+$1+$2;%.2f           Same, format result to two decimals
+exp($2)+exp($1)      Math functions can be used
+$0;%.1f              Reformat current cell to 1 decimal
+($3-32)*5/9          Degrees F -&gt; C conversion
+$c/$1/$cm            Hz -&gt; cm conversion, using constants.el
+tan($1);Dp3s1        Compute in degrees, precision 3, display SCI 1
+sin($1);Dp3%.1e      Same, but use printf specifier for display
+taylor($3,x=7,2)     Taylor series of $3, at x=7, second degree
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-3" class="outline-3">
+<h3 id="sec-8-3"><span class="section-number-3">8.3</span> Lisp Formulas</h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li>If a formula starts with an apostrophe followed by an opening parenthesis, 
+then it is evaluated as a Lisp form. The evaluation should return either a string or a number.
+'(concat (substring $1 1 2) (substring $1 0 1) (substring $1 2))
+</li>
+<li>Aplicar una formula a un campo especifico ':=', for example ':=vsum(@II..III)'
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2018-03-16 Fri 16:44</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
