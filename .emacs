@@ -15,11 +15,20 @@
 (tool-bar-mode -1)
 ;(scroll-bar-mode -1)
 
-;;Font size
+;;Font size en Linux este
 (add-to-list 'default-frame-alist
              '(font . "Nimbus Mono L"))
 
 (set-face-attribute 'default nil :height 130)
+
+;;Fint size en Windows este
+(set-face-attribute 'default nil :height 120)
+
+;;que aparezca en numero de columna
+(column-number-mode)
+
+;;que pueda recuperar el formato de los buffers anteriores C-c <left> C-c <right>
+(winner-mode t)
 
 
 
@@ -43,7 +52,20 @@
 ;(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
 ;(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.com/packages/"))
 
-;;activacion
+;;mover tamanio de ventanas de buffer
+(global-set-key (kbd "C-x <up>") 'shrink-window)
+(global-set-key (kbd "C-x <down>") 'enlarge-window)
+(global-set-key (kbd "C-x <left>") 'shrink-window-horizontally)
+(global-set-key (kbd "C-x <right>") 'enlarge-window-horizontally)
+
+;;dired configuration
+(setq dired-listing-switches "-aBhl  --group-directories-first")
+
+;;para org mode close TODOs with timestamp
+(setq org-log-done 'time)
+;;(setq org-log-done 'note)
+
+;;activacion de paquetes
 (package-initialize)
 (require 'better-defaults)
 ;;(load-theme 'rebecca t)
@@ -57,18 +79,23 @@
 ;(global-set-key (kbd "C-<") 'mc/mark-previous-like-this-word);agrego word ver con symbol
 ;(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-;;mover tamanio de ventanas de buffer
-(global-set-key (kbd "C-x <up>") 'shrink-window)
-(global-set-key (kbd "C-x <down>") 'enlarge-window)
-(global-set-key (kbd "C-x <left>") 'shrink-window-horizontally)
-(global-set-key (kbd "C-x <right>") 'enlarge-window-horizontally)
-
-;;ace-jump-mode
+;;ace-jump-mode keys
 (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
-;;dired configuration
-(setq dired-listing-switches "-aBhl  --group-directories-first")
+;;auto-complete
+(ac-config-default)
 
-;;para org mode close TODOs with timestamp
-(setq org-log-done 'time)
-;;(setq org-log-done 'note)
+;;switch windows
+(global-set-key (kbd "C-M-z") 'switch-window)
+
+;;alpha view
+;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
+;;(set-frame-parameter (selected-frame) 'alpha <both>)
+(set-frame-parameter (selected-frame) 'alpha '(95 . 85))
+;;(add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+
+(require 'sublimity)  ;;M-x sublimity-mode
+;(require 'sublimity-scroll)
+(require 'sublimity-map) ;; experimental
+;(require 'sublimity-attractive)
+
