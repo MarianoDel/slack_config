@@ -16,7 +16,12 @@
 ;(scroll-bar-mode -1)
 
 ;;Font size
-(set-face-attribute 'default nil :height 120)
+(add-to-list 'default-frame-alist
+             '(font . "Nimbus Mono L"))
+
+(set-face-attribute 'default nil :height 130)
+
+
 
 ;;IDO Mode
 (require 'ido)
@@ -66,4 +71,4 @@
 
 ;;para org mode close TODOs with timestamp
 (setq org-log-done 'time)
-                                        ;(setq org-log-done 'note)
+;;(setq org-log-done 'note)
