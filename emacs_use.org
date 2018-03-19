@@ -97,6 +97,14 @@
    M-g g
 
 
+** Conocer KeyBindings
+   - C-h b bindings in the buffer
+   - C-h m bindings in the modes
+   - C-h w command-name  //bindings for a command
+   - C-h k key-sequence  //commands for this sequence
+   - C-h f function-name //info of a command
+   - C-h f variable-name
+
 ** Running SHELL Comands
    M-x eshell  //ejecuta shell de emacs permite movimientos entre comandos
    M-x shell   //ejecuta un shell muy chico, envia linea completa NO permite movimeintos entre comandos
