@@ -46,9 +46,9 @@
 ;;activacion
 (package-initialize)
 (require 'better-defaults)
-;;(load-theme 'rebecca t)
+(load-theme 'rebecca t)
 ;;(load-theme 'material t)
-(load-theme 'deeper-blue)
+;;(load-theme 'deeper-blue)
 ;;(load-theme 'tango-dark)
 (elpy-enable)
 
