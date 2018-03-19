@@ -134,3 +134,16 @@ taylor($3,x=7,2)     Taylor series of $3, at x=7, second degree
 - Aplicar una formula a un campo especifico ':=', for example ':=vsum(@II..III)'
 
 
+** Display in Emacs
+*** Font Faces, etc.
+    - Para listar font actual
+      M-x describe-fontset
+       Fontset: -outline-Courier New-normal-normal-normal-mono-16-*-*-*-c-*-fontset-auto1
+       *Courier New*
+    - Para Cambiarlo
+     M-x menu-set-font
+    - Para incorporarlo a .emacs
+
+*** Themes
+    - Para listar o cambiar los themes que se pueden utilizar
+      M-x load-theme RET TAB
