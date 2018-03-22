@@ -200,7 +200,7 @@
                 Turn off highlighting strings that match
                 regexp.
 
-*** M-% find and replace
+   M-% find and replace
 
 ** #### FILE MANAGER WITH DIRED ####
    //3 formas de arrancarlo
@@ -224,6 +224,15 @@
    u desmarca archivos
    x ejecuta el borrado
    #### END DIRED ####
+
+** #### FILE MANAGER WITH IBUFFER ####
+   - Con C-x C-b aparece el ibuffer con todos los buffers que se estan usando
+      incluso los que utiliza dired (mas arriba)
+   - En la lista puedo buscar, ENT para elegir alguno
+      d para marcar los buffers para kill, x ejecuta
+   - k marca los buffers pero no hace kill, solo los saca de la lista
+   - g igual que con dired actualiza la lista
+
 
 ** #### IDO-MODE ####
    en .emacs
