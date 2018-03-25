@@ -51,6 +51,11 @@
    M-a	      //retrocede una sentencia entera
    C-up/down  //avanza o retrocede un parrafo entero
 
+   con M-x superword-mode M-f o M-b no frenan en el modo snake
+    snakeMode
+    snake-mode
+    snake_mode    //M-f frena cursor al final en todos estos casos
+
 ** Movimientos de pagina
    C-v	          //avanza una pagina
    M-v	          //retrocede una pagina
@@ -58,6 +63,7 @@
    M-<	          //principio del documento
    C-u C-space    //SALTO ATRAS (ultimo salto)
     overrided no se por quien ahora agrega un TAB (4 espacios)
+
 
 ** Movimientos por expresiones
    C-M-f          //proximo cierre de expresion { [ "
