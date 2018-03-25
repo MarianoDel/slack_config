@@ -242,7 +242,6 @@
    - k marca los buffers pero no hace kill, solo los saca de la lista
    - g igual que con dired actualiza la lista
 
-
 ** #### IDO-MODE ####
    en .emacs
       (require 'ido)
@@ -264,7 +263,6 @@
    C-}
    #### END MULTIPLE CURSORS ####
    
-
 ** ### Funcionalidad de paquetes
    #listar paquetes desde ELPA (por defecto)
    M-x list-packages      //'i' para marcar 'u' desmarcar 'x' hacer install
@@ -279,7 +277,6 @@
    #list of installed .emacs.d/elpa/*
    better-defaults
    material-theme
-
 
 ** #### FUNCIONALIDADES CC-MODE (major mode) ####
 *** Indentation
@@ -327,7 +324,6 @@
     C-c @ s         show-ifdefs
     C-c @ u         hide-ifdef-undef
 
-
 ** #### USO GNU Global, funciona muy bien en linea de comandos!!! ####
    M-x ggtags-mode activa el modo o lo desactiva
    M-x ggtags-create-tags si el directorio-proyecto no tiene GTAGS
@@ -339,13 +335,11 @@
    M-* vuelve atras los saltos
 
 ** DOCS
-
 *** docs gnu-global
     https://www.gnu.org/software/global/globaldoc_toc.html
     https://github.com/leoliu/ggtags
     #ver despues para python con pygments
     #bajo paquete ggtags de melpa-stable
-
 
 *** docs generales
     http://ergoemacs.org/emacs/effective_emacs.html
