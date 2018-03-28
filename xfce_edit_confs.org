@@ -1,0 +1,97 @@
+* #### HACKS for xfce WM #####
+
+** Para activar transparencias en programas
+   - Settings Manager -> Window Manager Tweaks -> Compositor -> Enable display composing
+
+** Para descativar en pad de la laptop (funcionaba medio mal)
+   - Primero quite gpm chmod -x /etc/rc.d/rc.gpm
+   - Settings Manager -> Mouse and Touchpad -> PS/2 ALPS disabled
+
+** De movida siempre le modifico el Panel
+   - quito el panel 2 y el panel 1 lo mando abajo horizontal
+   - dentro de los items debo tener Application Menu (para poder lanzar las aplicaciones)
+   - Actualmente tengo en el Panel -> Items
+     1. Application Menu
+     2. Window Buttons
+     3. Separator
+     4. Workspace Switcher
+     5. Clock
+     6. Notification Area
+     7. Action Buttons
+     8. Show Desktop
+
+
+** El equivalente a Menu Inicio es el Appliaction Menu
+   Debo tenerlo en el panel
+
+*** Add items to Xfce Applications Menu
+    To add an application launcher to Xfce Applications Menu is simple; all you have to do is place 
+    the *.desktop file that launches the application in the right folder.
+    
+    Create the *.desktop file
+    Create a text file whose extension is 'desktop', with the following content:
+    [Desktop Entry]
+    Version=1.0
+    Type=Application
+    Name=ItemName
+    Exec=Command
+    Icon=IconFile
+    Categories=Category; 
+
+    On ItemName write the name that should be displayed on the menu. Command is the command that should
+    be run. IconFile is the path to some *.png file. The Category dictates the sub-menu where the item 
+    will be placed. See the table bellow to see what Category value you should use.
+
+    | Sub-Menu    | Categories  |
+    | Accessories | Utility     |
+    | Development | Development |
+    | Games       | Game        |
+    | Graphics    | Graphics    |
+    | Internet    | Network     |
+    | Multimedia  | AudioVideo  |
+    | Office      | Office      |
+    | System      | System      | 
+  
+    A new item can be placed on a sub-menu by selecting the right 'Categories' value
+    To learn more about *.desktop files see the reference at the end of this post.
+    
+    Add an item for you user only
+    Copy the *.desktop file to: $HOME/.local/share/applications
+    
+    Add an item for all users
+    You'll need root privileges to do this.
+    Copy the *.desktop file to: /usr/share/applications
+    
+    After you copy the *.desktop file the new item will be automatically added to the Applications Menu.
+
+** Instale el whiskermenu (desde SlackBuilds.org)
+https://www.lifewire.com/customize-xfce-desktop-enviroment-2202080
+
+   - vamos a ver que sale y si es mas facil de editar que el application menu por default
+   - la ventaja es el cuadro de busqueda
+
+*** Para configurar whiskermenu
+    - en el launcher boton derecho -> propiedades
+
+** Para editar programas en el menu inicio?
+Every application installs a .desktop file in /usr/share/applications that specifies application settings
+(name, comment, exec command, icon, menu, etc). Edit the chromium desktop file located at
+/usr/share/applications/chromium-browser.desktop and
+
+change the Exec= line to read:
+Exec=/usr/bin/chromium-browser --proxy-server=http://localhost:8008 %U
+
+
+For the applications' shortcuts to be found, the .desktop files must be located in one of default directories,
+ such as ~/.local/share/applications for current user or /usr/share/applications for all users.
+
+Example setup
+The following setup assumes that:
+
+the shortcuts (.desktop files) have been created and include at least one category, which could be existent
+(i.e. "System") or non-existent (i.e. "Custom", "Virtual");
+the shortcuts have been moved to the shared or local directory i.e. ~/.local/share/applications;
+the menu (.menu file) have been created such that the shortcuts from particular defined category is included (i.e. "Virtual");
+the menu is placed somewhere appropriate i.e. ~/.config/menus directory
+
+https://wiki.xfce.org/howto/customize-menu
