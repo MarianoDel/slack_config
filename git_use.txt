@@ -272,7 +272,9 @@ en el .gitconfig (del usuario) agregar
 [credential]
         helper = cache
 
-
+#para setear un tiempo mas largo
+git config --global credential.helper 'cache --timeout=7200'
+cat .gitconfig
 
 
 
