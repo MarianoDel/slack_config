@@ -276,6 +276,17 @@ en el .gitconfig (del usuario) agregar
 git config --global credential.helper 'cache --timeout=7200'
 cat .gitconfig
 
+#esto es un cat del gitconfig
+[user]
+        name = MED
+        email = marianodeleu@yahoo.com.ar
+[push]
+        default = simple
+[credential]
+        helper = cache --timeout=7200
+[core]
+        pager = less -R
+
 
 
 
