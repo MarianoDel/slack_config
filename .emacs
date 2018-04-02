@@ -22,7 +22,7 @@
 (set-face-attribute 'default nil :height 130)
 
 ;;Fint size en Windows este
-(set-face-attribute 'default nil :height 120)
+;;(set-face-attribute 'default nil :height 120)
 
 ;;que aparezca en numero de columna
 (column-number-mode)
@@ -72,7 +72,7 @@
 ;;(load-theme 'material t)
 ;;(load-theme 'deeper-blue)
 ;;(load-theme 'tango-dark)
-(elpy-enable)
+;;(elpy-enable)
 
 (require 'multiple-cursors)
 (global-set-key (kbd "C-}") 'mc/mark-next-like-this)    ;agrego word ver con symbolpintar letra o palabra antes de activar
@@ -84,6 +84,13 @@
 
 ;;auto-complete
 (ac-config-default)
+(setq ac-auto-start 3)    ;espero 3 caracteres antes de autocompletar
+(define-key ac-completing-map "\t" 'ac-complete)    ;completo con TAB
+(define-key ac-completing-map "\r" nil)    ;RET no autocompleta
+(setq ac-use-menu-map t)    ;lo que viene son configuraciones del menu de autocompletar
+(define-key ac-menu-map "\C-n" 'ac-next)
+(define-key ac-menu-map "\C-p" 'ac-previous)
+
 
 ;;switch windows
 (global-set-key (kbd "C-M-z") 'switch-window)
@@ -92,10 +99,17 @@
 ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
 ;;(set-frame-parameter (selected-frame) 'alpha <both>)
 (set-frame-parameter (selected-frame) 'alpha '(95 . 85))
-;;(add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+;;(add-to-list 'default-frame-alist '(alpha . (95 . 50)))
 
 (require 'sublimity)  ;;M-x sublimity-mode
-;(require 'sublimity-scroll)
+;;(require 'sublimity-scroll)
 (require 'sublimity-map) ;; experimental
-;(require 'sublimity-attractive)
+(setq sublimity-map-size 20)
+(setq sublimity-map-fraction 0.3)
+(setq sublimity-map-text-scale -7)
+(sublimity-map-set-delay 5)
+;;(require 'sublimity-attractive)
 
+;;para emacs 25 o mas
+(require 'xref)
+;;(add-to-list 'xref-backend-function 'gxref-xref-backend)
