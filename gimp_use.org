@@ -14,4 +14,47 @@
 ** Layers
    - Creo una copia de layer de imagen completa, como para no trabajar en el original
      Layer Manager -> duplicate layer (televisores?)
-   - 
+   - Para crear canal alpha
+     New Layer -> transparency 100%
+
+** Cortar
+   - Trazar la ruta primero
+     Image -> Crop to Selection (desaparecen los nodos de la ruta)
+     Edit -> Cut
+     Select -> None (para terminar seleccion)
+
+** Rotar
+   - 180° Primero seleccionar
+     Image -> Transform -> 180°
+
+** Para copiar un color
+   - si la imagen tiene un color que quiero copiar uso la herramienta
+     color picker (la que tiene una gota)
+
+** Dibujar Linea recta
+   - elegir paintbrush
+     hacer el primer punto en la imagen
+     presionar S y llevar al segundo punto
+
+** Fondo Transparente (si es blanco)
+   - Crear Layer canal alpha
+     En el layer original
+     Edit -> Copy
+     En el layer alpha
+     Edit -> Paste (crea un flowting layer)
+     En layer Manager elegir *anclar* para el flowting layer
+     Elimino layer original y listo
+
+** Para Cambiar formato (.png por ejemplo)
+   - Export As...
+     File -> Export As -> elegir formato deseado
+
+
+
+
+
+
+
+** Links
+http://www.todogimp.com/?q=tutoriales&tid=11&tid_1=14&tid_2=All
+
