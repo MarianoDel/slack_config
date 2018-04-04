@@ -1,0 +1,17 @@
+* GIMP
+** Primero
+   - lo pongo en modo de una sola ventana
+     Windows -> Single-Window Mode
+   - Agrego guias
+     Image -> Guides -> New Guides by percent (Horizontal & Vertical)
+
+** Seleccion Circulo
+   - click en el medio de la guia con herramienta de elipse
+     si mantengo S y C se centra un circulo automaticamente
+   - si voy a cortar el interior ya esta listo, si es el exterior
+     Select -> Invert
+
+** Layers
+   - Creo una copia de layer de imagen completa, como para no trabajar en el original
+     Layer Manager -> duplicate layer (televisores?)
+   - 

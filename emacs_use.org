@@ -181,6 +181,10 @@
    -Register as a Bookmark
    C-x r <SPC> r  Record the position of point and the current buffer in register r (point-to-register). 
    C-x r j r  Jump to the position and buffer saved in register r (jump-to-register).
+
+   - Guardar configuracion de windows y buffers
+   C-x r w <num>    guardar confgiuracion
+   C-x r j <num>    saltar a configuracion guardada
    
 ** COMMENTS
    M-; comenta al final de una linea o si es hay bloque marcado multiples lineas
