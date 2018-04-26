@@ -1,0 +1,132 @@
+* ALGO DE EMACS LISP (ELISP)
+** Intro
+   - para correr el REPL M-x ielm
+   - para evaluar funciones completas (..)C-x C-e
+
+   #(function param1 param2)
+   (+ 1 2)
+
+   #anidado (eval2 (eval1 (eval0)))
+   (func1 param1 (func2 parama paramb))
+
+   #el parametro de retorno es lo ultimo que evalua la funcion
+
+** Variables
+*** Globales
+   - seteo
+     (setq my-var nil)        //setea my-var a NULL (nil)
+     (setq my-var 90)     //my-var = 90
+
+   - booleans
+     t      //true
+     nil    //false o NULL
+     '()    //lista vacia, false o NULL
+
+*** Locales
+    - seteo con let, valor a nil
+      (let (some-var)
+          (when (null some-var)
+          (message "some-var is null")))
+    - seteo distinto de null
+    (let ((some-var 1))
+
+    - multiples variables
+    (let ((some-var 1)
+            (some-other 20))
+
+** Listas
+   -seteo
+   '(1 2 3 4)
+   -seteo de lista en variable
+   (setq my-list '(1 2 3))
+
+*** Agregar a la lista
+    - con modificacion de la original (agrega en el primer elemento)
+      (add-to-list 'my-list 4)
+
+    - sin modificar el original
+      (cons 5 my-list)
+
+*** Seleccionar elementos de la lista
+    - primer elemento
+      (car my-list)
+    - resto de la lista
+      (cdr my-list)
+    - indice intermedio
+      (nth 3 my-list)    //cuarto elemento (indice 3) de la lista
+
+*** Revisar elemento de la lista
+    - funcion member
+      (member 4 my-list)    //devuelve la lista o nil segun 4 sea o no miembro
+
+*** Looping
+    (dolist (x my-list)
+        (when (= (mod x 2) 0)
+            (print x)))
+
+** Functions
+   (defun add-num (a b) (+ a b)))
+
+*** Interactive
+    (interactive)    //lista el nombre de la funcion en el minibuffer con M-x
+
+
+** Lisp Functions
+   - when     //similar al if pero sin bloque else
+   - if
+   - while
+   - defun
+   - save-excursion    //guarda la posicion del punto y me devuleve a ese lugar luego de salir de la funcion
+
+
+** Lib Functions
+   - null     //toma un parametro y revisa si es NULL
+   - equal    //toma dos parametros 
+     (equal nil '())    //contesta t
+
+   - mod      //devuelve el resto de la division
+   - when     //similar al if pero sin bloque else
+   - number-to-string  //pasa numero a str para imprimir por ejemplo
+   - message    //muestra el parametro en el minibuffer
+   - let     //me permite crear variables locales
+   - progn   //me permite ingresar varias lineas en un bloque if
+   - point-min    //lugar minimo deonde puede estar el punto
+   - goto-char    //mover el cursor a la posicion del parametro
+   - forward-word    //me adelanta una palabra
+   - copy-region-as-kill   //copia uan region al kill-ring
+   - last-command-event    //devuelve la ultima entrada en el buffer (teclado por ejemplo)
+   - backward-sexp    //atrasa una expresion completa
+
+
+** Bifurcaciones
+*** when
+    - when     //similar al if pero sin bloque else
+
+*** if else
+    (if (null some-var)
+        (message "not happend")
+      (message "YESsss"))        //este es el bloque else y puede tener multiples lineas
+
+*** if else multiples lineas en bloque if
+    (if (null some-var)
+        (progn
+            (message "not happend"))
+      (message "YESsss"))        //este es el bloque else
+
+** Ayuda
+   - C-h f (sobre la funcion busca la ayuda)
+   - C-h v (sobre la variable busca la ayuda)
+
+
+
+
+** tutoriales y links a documentacion
+Daniel Gopar
+https://www.youtube.com/channel/UCCRdRbI93UGW0AZttVH3SbA/videos
+
+Sacha Chua
+sachachua.com/blog/series/read-lisp-tweak-emacs/
+
+GNU Emacs
+https://www.gnu.org/software/emacs/manual/html_mono/eintr.html
+

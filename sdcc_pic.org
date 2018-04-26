@@ -1,0 +1,25 @@
+* Programacion Microcontrolador PIC con SDCC
+
+** Instalacion
+   - primero baje y descomprimi sdcc y gputils
+   http://sdcc.sourceforge.net/index.php#Download
+   https://sourceforge.net/projects/sdcc/files/sdcc/3.7.0/
+
+   https://gputils.sourceforge.io
+   https://sourceforge.net/projects/gputils/files/gputils/1.5.0/
+   o este mas nuevo
+   https://sourceforge.net/projects/gputils/files/snapshot_builds/src/
+
+   - descomprimi con tar -xvfi (para bzip2) en ~/tmp, cree sdcc y gnputils
+   - ./configure; make; make install (este ultimo como root)
+   - primero gputils y luego sdcc
+   - realice los testeos que figuran en el manual
+   - luego de lnks utiles git clone de ejemplos, compile y todo OK
+
+   
+
+** Links utiles
+   https://github.com/diegoherranz/sdcc-examples
+   http://curuxa.org/en/Write_programs_for_PICs_in_C_using_SDCC,_a_simple_text_editor_and_the_command_line_on_Linux
+   http://burningsmell.org/pic16f628/
+

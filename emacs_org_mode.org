@@ -40,6 +40,11 @@ C-c C-u Backward to higher level heading.
 M-S-up/down Move subtree up/down (swap with previous/next subtree of same level).
 C-x n s/w Narrow buffer to current subtree / widen it again
 
+M-<right> mueve el bloque a lower level
+M-<left> mueve el bloque upper level
+M-<up> desplaza el bloque up
+M-<down> desplaza el bloque down
+
 ** Latex Symbols
 http://artofproblemsolving.com/wiki/index.php/LaTeX:Symbols
 
@@ -128,10 +133,33 @@ sin($1);Dp3%.1e      Same, but use printf specifier for display
 taylor($3,x=7,2)     Taylor series of $3, at x=7, second degree
 
 *** Lisp Formulas
+    SCHEDULED: <2018-04-24 Tue>
 - If a formula starts with an apostrophe followed by an opening parenthesis, 
    then it is evaluated as a Lisp form. The evaluation should return either a string or a number.
    '(concat (substring $1 1 2) (substring $1 0 1) (substring $1 2))
 - Aplicar una formula a un campo especifico ':=', for example ':=vsum(@II..III)'
+
+
+** TODO Calendar y Scheduling
+   SCHEDULED: <2018-04-30 Mon>
+   - C-c C-s abre el calendario para scheduling (solo en lineas highline)
+   - C-c C-d abre el calendario para deadline (solo en lineas highline)
+   - C-c a abre el modo agenda (ojo necesita keybinding en .emacs)
+     M-x org-agenda
+     g cierra agenda
+   - S-f activa el modo follow y va recorriendo el docuemnto a partir de la agenda
+
+** Checklists
+   - [ ] muestra1 separar los corchetes con un espacio
+   - [ ] M-S-ENT crea un nuevo checklist
+   - [ ] nuevo checklist
+
+** Configuracion dentro del documento
+*** Cambiar secuencias TODO
+    colocar esto arriba en el mismo documento
+    C-c C-c ejecuta 
+    #+SEQ_TODO: NEXT(n) TODO(t) WAITING(w) SOMEDAY(s) | DONE(d) CANCELLED(c)
+    C-c C-t muestra la lista con opcion para insertar
 
 
 ** Display in Emacs

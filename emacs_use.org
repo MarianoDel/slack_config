@@ -95,12 +95,15 @@
    M-g g
 
 
-** Conocer KeyBindings
+** Conocer KeyBindings y Ayudas varias
+   - M-x describe-bindings (muestra todas las combinaciones activas en el buffer)
+   - M-x describe-key (poner la combinacion a averiguar)
    - C-h b bindings in the buffer
    - C-h m bindings in the modes
    - C-h w command-name  //bindings for a command
    - C-h k key-sequence  //commands for this sequence
-   - C-h f function-name //info of a command
+   - C-h f function-name //si lo hago sobre el nombre lo busca por defecto
+   - C-h v variable-name //si lo hago sobre el nombre lo busca por defecto
    - C-h f variable-name
 
 ** Running SHELL Comands
@@ -155,13 +158,14 @@
   C-M-k kill balanced expression
   C-M-SPC mark-sexp
 
-  C-x C-+ agranda el tamaño de la letra
-  C-x C-- achica el tamaño de la letra
+  C-x C-+ agranda el tamanio de la letra
+  C-x C-- achica el tamanioo de la letra
   
   C-space selecciona un area
   C-x C-x cambia el punto por la marca
   C-w borra lo seleccionado
   C-y pega lo seleccionado
+  C-u 1 C-y pega uno anterior del kill-ring
   M-y pego anteriores del kill ring
 
 ** Ver el kill-ring
@@ -220,6 +224,8 @@
    M-x imenu	//saltar entre funciones del buffer
        TAB muestra en otro buffer las posibles opciones
        si elijo una por ejemplo m salta directo a main
+       
+       en python primero debo elegir la clase y luego va a la funcion
 
 ** #### FILE MANAGER WITH DIRED ####
    //3 formas de arrancarlo
@@ -314,6 +320,9 @@
     C-c C-n (c-forward-conditional)
         M-x c-backward-into-nomenclature
         M-x c-forward-into-nomenclature
+    C-a overrided comienzo de linea o texto
+    C-backspace hungry delete backwards (borra word anteriro y todos los espacios)
+    C-delete hungry delete forwards (borra word posterior y todos los espacios)
 
 *** Styles
     C-c . style-name <RET>
@@ -334,6 +343,31 @@
     C-c @ s         show-ifdefs
     C-c @ u         hide-ifdef-undef
 
+** #### FUNCIONALIDAD EN PYTHON-MODE ####
+*** Movimientos
+    C-M-a me adelanta una funcion
+    C-M-e atrasa una funcion
+    C-M-n adelanta una expresion balanceada ([{
+    C-M-p me atrasa una expresion balanceada }])
+    //C-M-f me adelanta un condicional if: elif: else:
+    //C-M-b me atrasa un condicional 
+    M-a me adelanta un condicional if: elif: else:
+    M-e me atrasa un condicional if: elif: else:
+
+    con M-x superword-mode M-f o M-b no frenan en el modo snake
+     snakeMode
+     snake-mode
+     snake_mode    //M-f frena cursor al final en todos estos casos
+
+*** Seleccion
+    C-M-SPC selecciona todo el bloque de la expresion (el punto en la primera letra de la exp)
+    C-M-k borra toda la expresion (el punto en la primera letra de la exp)
+
+*** Imenu
+    M-x imenu
+    con TAB me da las opciones, si la funcioesta dentro de la clase primero debo
+    elegir la clase, despues lista las funciones
+
 ** #### USO GNU Global, funciona muy bien en linea de comandos!!! ####
    M-x ggtags-mode activa el modo o lo desactiva
    M-x ggtags-create-tags si el directorio-proyecto no tiene GTAGS
@@ -343,6 +377,10 @@
    
    M-. salta entre definiciones y declaraciones
    M-* vuelve atras los saltos
+
+** #### SUBLIMITY MODE ####
+   M-x sublimity-mode
+    agrega minimap
 
 ** DOCS
 *** docs gnu-global

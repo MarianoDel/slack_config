@@ -11,6 +11,17 @@
 
 (global-set-key (kbd "C-/") 'comment-or-uncomment-line-or-region)
 
+;;mover al principio de lineo o indentation
+(defun beginning-of-line-or-indentation ()
+  "move to beginning of line, or indentation"
+  (interactive)
+  (if (bolp)
+      (back-to-indentation)
+    (beginning-of-line)))
+
+(eval-after-load "cc-mode" 
+     '(define-key c-mode-base-map (kbd "C-a") 'beginning-of-line-or-indentation))
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 ;(scroll-bar-mode -1)
@@ -43,6 +54,24 @@
 
 (add-hook 'c-mode-hook (lambda () (setq comment-start "//"
                                         comment-end   "")))
+;;end CC Mode Conf
+
+;;imenu conf
+;; (defun my-merge-imenu ()
+;;   (interactive)
+;;   (let ((mode-imenu (imenu-default-create-index-function))
+;;         (custom-imenu (imenu--generic-function imenu-generic-expression)))
+;;     (append mode-imenu custom-imenu)))
+
+;; (add-hook 'python-mode-hook
+;;           (lambda ()
+;;             (add-to-list
+;;              'imenu-generic-expression
+;;              '("Sections" "^#### \\[ \\(.*\\) \\]$" 1))
+;;             (imenu-add-to-menubar "Position")
+;;             (setq imenu-create-index-function 'my-merge-imenu)))
+;;end imenu conf
+
 
 ;;Funcionalidad de paquetes
 (require 'package)
