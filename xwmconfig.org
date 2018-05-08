@@ -1,0 +1,19 @@
+* Cambiar el windows manager en slackware
+  - ya probe con xfce (el que uso siempre)
+  - kde plasma 5, muy bueno pero pesado
+  - i3 vamos a ver que pasa
+    
+### para elegir el windows manager
+### entrar como usuario tipico y ejecutar
+$ xwmconfig
+
+elegir plasma
+
+$ startx
+
+### para elegir el mejor windows manager
+$ xwmconfig
+
+elegir xfce
+
+$ startx

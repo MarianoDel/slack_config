@@ -1,0 +1,85 @@
+* Configuraciones para i3wm en Slackware
+** Algo de info de dotfiles
+   - algo de setup en dotfiles de alexbooker
+     https://github.com/bookercodes/setupi3
+
+** Cambiar el teclado a mapa en espaniol
+   - exec "setxkbmap -layout es"
+
+** Setup para emacs lanzado al comienzo en Desktop 2
+   - en  terminal que lo lance xprop -name emacs
+   WM_CLASS(STRING) = "emacs", "Emacs"
+
+   - poner esto en el config de i3
+   assign [class="Emacs"] $workspace1    ## ojo cambio a $ws2
+
+** i3status Configuracion
+*** Como hacer que lea la configuracion
+   - Este es un programa que corre en la barra de i3 (i3bar)
+   - copiar el archivo de configuracion por defecto /etc/i3status.conf
+   - en ~/.config/i3status/i3status.conf 
+
+   - en la configuracion de i3, la zona de la barra
+     status_command i3status -c ~/.config/i3status/i3status.conf
+
+*** Que cosas le puedo agregar
+    https://i3wm.org/i3status/manpage.html#_cpu_temperature
+    cpu_temperature 0 {
+        format = "T: %degreesºC"
+        path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input
+    }
+
+** Rofi - Lanzador de programas
+   - tiene themes nuevos en
+   /usr/share/rofi/themes
+
+   - se usa como:
+   rofi -show run -theme solarized_alternate
+
+   - rofi tambien busca la configuracion en la carpeta local
+   - para que lo use desde el directorio local lo uso con otro nombre (cambio respecto del nombre del original)
+   ~/.confi/rofi/solarized_alternate1.rasi
+
+** Deshabilito el touchpad
+   - por errores en el touchpad
+   xinput --disable "AlpsPS/2 ALPS DualPoint TouchPad"
+   
+   - para ver o listar los dispositivos
+   xinput list
+
+** Suspender cuando se baja la tapa (lid close)
+   - en el archivo acpi_hanlder.sh es un shellscript que tiene que ver con cuestiones de energia
+   /etc/acpi/acpi_hanlder.sh
+
+   - #debe quedar algo asi:
+    #!/bin/sh
+    # Default acpi script that takes an entry for all actions
+    
+    IFS=${IFS}/
+    set $@
+    
+    case "$1" in
+      button)
+        case "$2" in
+          power) /sbin/init 0
+                 ;;
+          lid) grep -q closed /proc/acpi/button/lid/LID0/state && /usr/sbin/pm-suspend
+             ;;
+          *) logger "ACPI action $2 is not defined"
+             ;;
+        esac
+        ;;
+      *)
+        logger "ACPI group $1 / action $2 is not defined"
+        ;;
+    esac
+
+** Wallpapers con feh
+   - primero pase mis wallpapers a ~/Pictures/wallpapers
+   exec --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
+
+
+
+
+
+

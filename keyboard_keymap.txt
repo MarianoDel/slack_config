@@ -2,10 +2,15 @@
 
 crear o editar en el archivo /etc/rc.d/rc.keymap el siguiente contenido
 
+### ahora uso es.map que le pega mejor a ciertas teclas y simbolos en este teclado
+###
+### los mapas estan en /usr/share/kbd/keymaps/i386/qwerty
+###
 #!/bin/sh
 #Load the keyboard map. More maps in /usr/share/kdb/keymaps
 if [ -x /usr/bin/loadkeys ]; then
- /usr/bin/loadkeys la-latin1.map
+ #/usr/bin/loadkeys la-latin1.map
+ /usr/bin/loadkeys es.map
 fi
 
 luego hacerlo ejecutable, en el booteo rc.M lo va a llamar si esta como ejecutable

@@ -227,6 +227,12 @@
        
        en python primero debo elegir la clase y luego va a la funcion
 
+** Shell ansi-term y term
+   M-x ansi-term o M-x term
+   son muy parecidos, ambos tienen funcionalidad bash completa (o casi)
+   C-c C-j para pasar del modo comandos (char) al modo edicion (line)
+   C-c C-x para pasar del modo edicion (line) al modo comandos (char)
+
 ** #### FILE MANAGER WITH DIRED ####
    //3 formas de arrancarlo
    M-x dired

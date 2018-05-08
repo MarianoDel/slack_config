@@ -30,7 +30,11 @@
 (add-to-list 'default-frame-alist
              '(font . "Nimbus Mono L"))
 
-(set-face-attribute 'default nil :height 130)
+;;Font en linux i3wm
+(set-face-attribute 'default nil :height 135)
+
+;;Font en linux xfce
+;;(set-face-attribute 'default nil :height 130)
 
 ;;Fint size en Windows este
 ;;(set-face-attribute 'default nil :height 120)
@@ -40,7 +44,6 @@
 
 ;;que pueda recuperar el formato de los buffers anteriores C-c <left> C-c <right>
 (winner-mode t)
-
 
 
 ;;IDO Mode
@@ -127,7 +130,7 @@
 ;;alpha view
 ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
 ;;(set-frame-parameter (selected-frame) 'alpha <both>)
-(set-frame-parameter (selected-frame) 'alpha '(95 . 85))
+(set-frame-parameter (selected-frame) 'alpha '(85 . 65))
 ;;(add-to-list 'default-frame-alist '(alpha . (95 . 50)))
 
 (require 'sublimity)  ;;M-x sublimity-mode
