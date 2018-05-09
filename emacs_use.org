@@ -140,6 +140,11 @@
     (define-key global-map (kbd "RET") 'newline-and-indent)	//global en .emacs
 
 
+** Line endings and escape characters
+   http://ergoemacs.org/emacs/emacs_line_ending_char.html
+   C-q C-j pone ^J (line feed '\n')
+   C-q C-m pone ^M (carriage return '\r')
+   C-q C-i pone ^I (tab '\t')
 
 * #### USO DE EMACS # OTRO MAS ####### 
   http://tuhdo.github.io/emacs-tutor.html

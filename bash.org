@@ -32,22 +32,21 @@
    cat /proc/meminfo
 
 ** Comandos para MANTENIMIENTO
-who
-last
-finger
-ls -lah
-pwd
-whoami
-cd ~
-du -h
-df -h
-free -h
-history
-cat /var/log/auth
-netstat
-which [nombreprog]
-file [nombrearch]
-file $(which [nombreprog])
+   who
+   last
+   finger
+   ls -lah
+   pwd
+   whoami
+   du -h
+   df -h
+   free -h
+   history
+   cat /var/log/auth
+   netstat
+   which [nombreprog]
+   file [nombrearch]
+   file $(which [nombreprog])
 
 ** BashScript
 http://mywiki.wooledge.org/BashGuide/CommandsAndArguments

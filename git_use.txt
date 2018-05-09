@@ -278,8 +278,8 @@ cat .gitconfig
 
 #esto es un cat del gitconfig
 [user]
-        name = MED
-        email = marianodeleu@yahoo.com.ar
+        name = mm
+        email = mm@mm.com
 [push]
         default = simple
 [credential]
