@@ -140,14 +140,17 @@ taylor($3,x=7,2)     Taylor series of $3, at x=7, second degree
 - Aplicar una formula a un campo especifico ':=', for example ':=vsum(@II..III)'
 
 
-** TODO Calendar y Scheduling
+** Code Snippets
+   
+** TODO Calendar / Scheduling / Agenda
    SCHEDULED: <2018-04-30 Mon>
    - C-c C-s abre el calendario para scheduling (solo en lineas highline)
    - C-c C-d abre el calendario para deadline (solo en lineas highline)
+   - C-c ] manda el archivo al modo agenda    
    - C-c a abre el modo agenda (ojo necesita keybinding en .emacs)
      M-x org-agenda
      g cierra agenda
-   - S-f activa el modo follow y va recorriendo el docuemnto a partir de la agenda
+   - S-f activa el modo follow y va recorriendo el documento a partir de la agenda
 
 ** Checklists
    - [ ] muestra1 separar los corchetes con un espacio

@@ -48,6 +48,16 @@
    file [nombrearch]
    file $(which [nombreprog])
 
+** Symbolic Links
+   
+   To create a new symlink (will fail if symlink exists already):
+   ln -s /path/to/file /path/to/symlink
+   
+   To create or update a symlink:
+   ln -sf /path/to/file /path/to/symlink
+
+   crear link ejemplo
+   ln -s ~/tmp/sdcc/device/include/pic14/pic16regs.h pic16regs.h
 ** BashScript
 http://mywiki.wooledge.org/BashGuide/CommandsAndArguments
 

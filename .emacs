@@ -45,6 +45,10 @@
 ;;que pueda recuperar el formato de los buffers anteriores C-c <left> C-c <right>
 (winner-mode t)
 
+;;TRAMP Mode, acceso remoto a archivos
+;;   C-x C-f /pi@192.168.1.34: RET
+(setq tramp-default-method "ssh")
+
 
 ;;IDO Mode
 (require 'ido)

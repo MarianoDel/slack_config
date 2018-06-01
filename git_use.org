@@ -1,6 +1,6 @@
-### Comandos más comunes de Git y GitHub ###
+* Comandos más comunes de Git y GitHub
 
-COMMIT CHANGES
+** COMMIT CHANGES
 
 git status		#muestra el estado del proyecto y sus commit
 git add –A		#agrega a la lista de files to track –A (todos) * --all
@@ -14,14 +14,14 @@ git push –u origin master	#nombre del branch a subir (con seguimiento)
 				#despues me va a permitir usar git push origin solo
 
 
-#para borrar archivos adjuntados (git add) antes de un commit
-git rm –r *.lst –f		#borra recursivamente todos los archives .lst
+** para borrar archivos adjuntados (git add) antes de un commit
+   git rm –r *.lst –f		#borra recursivamente todos los archives .lst
 
-#para borrar archivos después del commit
-#si están en el server GITHUB voy a tener que hacer git pull y luego git commit
-#o sino git push origin –-delete  y borrar el branch
+   #para borrar archivos después del commit
+   #si están en el server GITHUB voy a tener que hacer git pull y luego git commit
+   #o sino git push origin –-delete  y borrar el branch
 
-BRANCHES
+** BRANCHES
 
 git branch		//lista los branches del proyecto
 git branch –r		//lista branches remotos del proyecto (GITHUB)
@@ -43,23 +43,22 @@ git branch --move new_feature feature2
 git branch --delete branch_to_delete
 git branch -D branch_to_delete		#otra forma
 
-
 #borrar branch del server (GITHUB)
 git push origin --delete branch_to_delete
 
-Crear Branches
+*** Crear Branches
 
 git checkout master		#voy al branch principal
 git branch new_feature1	#creo el nuevo branch llamado new_feature1
 git branch			#muestro los branches del proyeto
 
-Cambiar entre Branches
+*** Cambiar entre Branches
 
 git checkout new_feature1	#cambio context a branch new_feature1
 git checkout master		#vuelvo al context del master
 git branch			#muestro los branches del proyeto
 
-Si pierdo el master o queda dañado y puedo recuperar versiones anteriores
+** Si pierdo el master o queda dañado y puedo recuperar versiones anteriores
 
 git log –-oneline		#busco las claves SHA que me sirven (los commit anteriores)
 git checkout 0f345be	#voy al commit del branch que me interesa revisar
@@ -73,13 +72,13 @@ git checkout master		#reviso que tenga lo que quiero
 
 
 
-Mandar Branch local a GitHub
+** Mandar Branch local a GitHub
 
 git push -u origin master			#el nombre del branch que quiera subir
 git push -–set-upstream origin new_feature1	#otra forma
 git branch –r				#muestro los branches remotos del proyeto
 
-LOG
+** LOG
 
 git help log		#muestra ayuda del comando
 git log –n 3		#muestra últimos 3 logs
@@ -90,7 +89,7 @@ git log --graph --oneline --decorate –-all	#lista todos los commit y quién lo
 git log –-oneline -3	#muestra en modo oneline solo los últimos 3
 
 
-MERGE
+** MERGE
 
 git checkout master		#generalmente hago merge contra el master
 git diff master..new_feature1	#puedo ver diferencias antes del merge
@@ -101,7 +100,7 @@ git merge –-ff-only new_feature1	#hago el merge solo si es fast forward
 
 
 
-Conflictos con el merge
+*** Conflictos con el merge
 
 #si tengo conflictos, cambios en el mismo archivo y no los puede resolver va a mostrar
 (master | MERGE) y tengo que resolver a mano o cancelar merge
@@ -119,20 +118,20 @@ git status
 git add .
 git commit
 
-Cambiar o revisar versiones anteriores
+** Cambiar o revisar versiones anteriores
 
 git log		#muestra commit anteriores con clave SHA
 git log –-oneline	#muestra commit en una linea
 git checkout ab101234ff	#cambio al branch anterior con la clave SHA (con 10 chars alcanza)
 git diff master..ab101234ff	#comparo con versión anterior
 
-HICE CAMBIOS Y AHORA YA NO LOS QUIERO
+** HICE CAMBIOS Y AHORA YA NO LOS QUIERO
 git status									#me muestra los archivos que cambie
 git diff master -- /src/main.c		#compara el dir corriente contra el ultimo master, solo main.c
 git checkout -- src/main.c				#me devuelve al main.c anterior
 git status									#ahora muestra que no hay cambios
 
-USOS CON GITHUB
+** USOS CON GITHUB
 
 ##en la PC
 git remote			//me dice si conoce el server remoto
@@ -153,8 +152,7 @@ git push -u origin master	//o el nombre del branch que quiera subir
 git config --global push.default matching
 
 
-CLONE -- GITHUB
-FETCH-MERGE-PULL
+** CLONE -- GITHUB .. FETCH-MERGE-PULL
 
 buscar el repositorio y copiar direccion https
 en la PC ir al directorio base
@@ -176,13 +174,13 @@ git branch –r						#me muestra los repo remotos
 git push origin --delete new_feature1	#borro el brach new_feature1 remoto
 git branch -r
 
-Borrar archivos del repositorio remoto
+** Borrar archivos del repositorio remoto
 git pull origin			#primero sicronizar si no esta todavia
 git rm –r *.bak –f			#borro archivos .bak locales
 git commit –m “borre todos los .bak”	#hago el commit con los borrados
 git push origin			#en el server van a desaparecer los .bak
 
-USOS MAS COMUNES – Nuevo Proyecto
+** USOS MAS COMUNES – Nuevo Proyecto
 #cuando armo un nuevo proyecto (en eclipse por ejemplo) generalmente copio uno existente
 #CUIDADO con no salir desde un branch en vez de un master
 #borrar el .git en caso de que exista porque va a estar apuntado a otro proyecto
@@ -206,7 +204,29 @@ git remote add eclipse_p4 https://github.com/xxxxx/eclipse_p4.git
 
 #ahora hago el primer backup remote
 git push –u eclipse_p4 master
-USOS MAS COMUNES – PATCH (MERGE DE SOLO UN ARCHIVO)
+
+** USOS MAS COMUNES - Nuevo Nombre de Proyecto con repositorio/archivos/historia anteriores
+
+   quiero pasar de un proyecto atom_stretcher a emacs_stretcher, teng git y github en atom_stretcher
+   no me importa perder github pero si el git
+   
+   git remote -v           #muestra los repositorios remotos del branch
+   git remote rm origin    #borro acceso al directorio remoto
+   
+   mv atom_stretcher emacs_stretcher
+   #ahora puedo crear un nuevo repositorio github
+   #lo activo y verifico que suba bien todo
+   #como no borre .git local debo tener la historia del proyecto completa
+
+   #ahora puedo borrar el repositorio viejo del github, para que no me sume problemas
+   #ya que en realidad no le apunto mas
+   1. On GitHub, navigate to the main page of the repository.
+   2. Under repository name click Settings
+   3. Under Danger Zone click Delete this repository
+   4. verificar el nombre del repositorio pide clave y borra
+
+   
+** USOS MAS COMUNES – PATCH (MERGE DE SOLO UN ARCHIVO)
 #cuando tengo 2 branches A y B, resuelven cosas distintas pero el archivo f es común a los #dos, en B se cambia f, pero sería útil tenerlo en A también. Entonces debo hacer un merge de #solo f en A desde B.
 git checkout A
 git checkout –-patch B f
@@ -223,7 +243,7 @@ git log			#copio la clave SHA1 del merge
 git checkout A
 git checkout 7e65enjfk file.txt
 
-USOS MAS COMUNES – COMPARAR ARCHIVOS DE DIFERENTES BRANCHES
+** USOS MAS COMUNES – COMPARAR ARCHIVOS DE DIFERENTES BRANCHES
 #comparo archivo main.c en branches master y pre_cert
 git diff master pre_cert -- ./src/main.c
 
@@ -238,8 +258,7 @@ git fetch origin                        #coloca el master remoto en origin/maste
 git diff master origin/master           #compara el master local con el remoto(que se encuentra localmente)
 git merge origin/master                 #lleva mi master local hasta el estado de origin/master y lo deja en mi master
 
-
-USOS MAS COMUNES – MERGE DE UN ARCHIVO AGREGANDO O MANTENIENDO LINEAS
+** USOS MAS COMUNES – MERGE DE UN ARCHIVO AGREGANDO O MANTENIENDO LINEAS
 #solo f en A desde B.
 git checkout A
 git checkout –-patch B f		#el flag –patch habilita las siguientes opciones del merge
@@ -261,7 +280,7 @@ e - manually edit the current hunk
 
 #con ‘s’ Split, ‘n’ no, y ‘y’ yes voy eligiendo como quiero aplicar el merge
 
-USOS MAS COMUNES – GUARDAR DATOS DE UN ARCHIVO ANTES DE NUEVO BRANCH Y MERGE
+** USOS MAS COMUNES – GUARDAR DATOS DE UN ARCHIVO ANTES DE NUEVO BRANCH Y MERGE
 #cuando voy a cambiar de branch y hago merge con el master, pierdo todo el soft del original, si quiero
 respetar parte de ese código, puedo realizar el merge con Split del punto anterior o armar un archivo
 main_bkp.c por ejemplo que no va a pisar el merge.
@@ -290,13 +309,72 @@ cat .gitconfig
 
 
 
+* Adicionales y Help, problemas particulares
+
+** Lo normal
+git init
+git status
+git log --summary
+
+git add file.txt
+git add '*.txt'     : add all files, also in subfolders
+git rm file.txt     : remove file
+git rm -r foldername: remove file and folders recursively
+
+git commit -m "Descriptive text of the change"
+
+git remote add origin https://github.com/try-git/try_git.git
+git push -u origin master
+git pull origin master
+git diff --staged
+
+git add folder/file.txt         : Add file to staged area
+git reset folder/file.txt       : Remove file from staged area
+git checkout -- folder/file.txt : checkout the last know version, restore.
+git branch feature      : create branch
+git checkout feature    : use branch (and do the work)
+git checkout master     : go back to master before merge
+git merge feature       : merge branch into master
+git branch -d feature   : delete that branch that is not used any more
+
+** ##### ACTUALIZAR GIT ###########
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+bajar el tar.gz cambiar a root, ejecutar
+$ tar -zxf git-2.0.0.tar.gz
+$ cd git-2.0.0
+$ make configure
+$ ./configure --prefix=/usr
+$ make all doc info
+$ sudo make install install-doc install-html install-info
+
+** ##### Garbage en git log #######
+parece ser un problema con el comando less
+probar con...
+git config --global core.pager "less -R"
+probar con...
+export LESS=-R
+
+** ##### GITIGNORE NOT WORKING ####
+It is because the .gitignore file should be added to your repo first before any commits
+The solution!
+Long story short you have to remove all tracked files and add them back in using the below commands
+
+git rm -r --cached .
+git add .
+git commit -m ".gitignore is now working"
 
 
-MANUAL ONLINE
-https://git-scm.com/book/en/v2/Git-Commands-Email
-LISTA RAPIDA DE COMANDOS
-https://gist.github.com/hofmannsven/6814451
 
-VIDEOS EN GENERAL QUE SEGUI PARA EL USO DE ESTAS HERRAMIENTAS
+* Info y tutoriales
 
-https://www.youtube.com/playlist?list=PLb5HO8RZjX-kZnThtY4f4yKgb2CQWwh8c
+** MANUAL ONLINE
+   https://git-scm.com/book/en/v2/Git-Commands-Email
+
+** LISTA RAPIDA DE COMANDOS
+   https://gist.github.com/hofmannsven/6814451
+
+** VIDEOS EN GENERAL QUE SEGUI PARA EL USO DE ESTAS HERRAMIENTAS
+   https://www.youtube.com/playlist?list=PLb5HO8RZjX-kZnThtY4f4yKgb2CQWwh8c
+
+
+

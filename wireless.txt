@@ -30,3 +30,7 @@ wpa_passphrase [ssid] [password]
 
 #para liberarlo (release)
 /sbin/dhcpcd -k wlan0
+
+#revisar /etc/resolv.conf
+
+
