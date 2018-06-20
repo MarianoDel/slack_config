@@ -31,11 +31,15 @@
              '(font . "Nimbus Mono L"))
 
 ;;Font en linux i3wm
-(set-face-attribute 'default nil :height 135)
+(cond
+ ((string-equal system-name "laptop")
+  (set-face-attribute 'default nil :height 135))
+ ((string-equal system-name "med")
+  (set-face-attribute 'default nil :height 120)))
+
 
 ;;Font en linux xfce
 ;;(set-face-attribute 'default nil :height 130)
-
 ;;Fint size en Windows este
 ;;(set-face-attribute 'default nil :height 120)
 

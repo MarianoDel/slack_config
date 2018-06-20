@@ -388,6 +388,7 @@
    
    M-. salta entre definiciones y declaraciones
    M-* vuelve atras los saltos
+   M-, vuelve atras los saltos para emacs 25
 
 ** #### SUBLIMITY MODE ####
    M-x sublimity-mode

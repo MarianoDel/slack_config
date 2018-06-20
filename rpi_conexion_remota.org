@@ -6,8 +6,11 @@
    sftp> put -r /home/med/lipo1
    manda todo el directorio local recursivo a /home/pi, o al directorio del usuario de la conexion
 
+   sftp> ls              #lista archivos remotos
+   sftp> get dpkg.out    #trae archivo al directorio local
+
 ** SCP (envio o recepcion de archivos - sin loggeo)
-   scp -options <origen> <detino>
+   scp -options <origen> <destino>
    scp -r Pictures pi@192.168.1.103
 
 
