@@ -27,15 +27,20 @@
 ;(scroll-bar-mode -1)
 
 ;;Font size en Linux este
-(add-to-list 'default-frame-alist
-             '(font . "Nimbus Mono L"))
+;;(add-to-list 'default-frame-alist
+;;             '(font . "Nimbus Mono L"))
 
 ;;Font en linux i3wm
 (cond
  ((string-equal system-name "laptop")
-  (set-face-attribute 'default nil :height 135))
- ((string-equal system-name "med")
-  (set-face-attribute 'default nil :height 120)))
+  (set-face-attribute 'default nil :height 135)
+  (add-to-list 'default-frame-alist
+               '(font . "Nimbus Mono L"))
+  (require 'xref)
+  (set-frame-parameter (selected-frame) 'alpha '(85 . 65)))
+ ((string-equal system-name "MARIANO-PC")
+  (set-face-attribute 'default nil :height 120)
+  (set-frame-parameter (selected-frame) 'alpha '(95 . 65))))
 
 
 ;;Font en linux xfce
@@ -138,7 +143,7 @@
 ;;alpha view
 ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
 ;;(set-frame-parameter (selected-frame) 'alpha <both>)
-(set-frame-parameter (selected-frame) 'alpha '(85 . 65))
+;; (set-frame-parameter (selected-frame) 'alpha '(85 . 65))
 ;;(add-to-list 'default-frame-alist '(alpha . (95 . 50)))
 
 (require 'sublimity)  ;;M-x sublimity-mode
@@ -151,5 +156,5 @@
 ;;(require 'sublimity-attractive)
 
 ;;para emacs 25 o mas
-(require 'xref)
+;; (require 'xref)
 ;;(add-to-list 'xref-backend-function 'gxref-xref-backend)
