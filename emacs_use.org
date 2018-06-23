@@ -265,9 +265,14 @@
    - Con C-x C-b aparece el ibuffer con todos los buffers que se estan usando
       incluso los que utiliza dired (mas arriba)
    - En la lista puedo buscar, ENT para elegir alguno
-      d para marcar los buffers para kill, x ejecuta
+   - d para marcar los buffers para kill, x ejecuta
    - k marca los buffers pero no hace kill, solo los saca de la lista
    - g igual que con dired actualiza la lista
+   - m mark buffers
+   - u unmark buffers
+   - S save marked buffers
+   - D deleted marked buffers
+   - M-x describe-mode me muestra todas las opciones que tengo en el modo
 
 ** #### IDO-MODE ####
    en .emacs
