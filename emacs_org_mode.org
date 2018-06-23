@@ -178,3 +178,8 @@ taylor($3,x=7,2)     Taylor series of $3, at x=7, second degree
 *** Themes
     - Para listar o cambiar los themes que se pueden utilizar
       M-x load-theme RET TAB
+
+** Link a Org tutorial
+   http://pragmaticemacs.com/emacs/org-mode-basics-v-exporting-your-notes/
+
+   
