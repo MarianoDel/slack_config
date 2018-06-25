@@ -138,7 +138,7 @@
 
 
 ;;switch windows
-(global-set-key (kbd "C-M-z") 'switch-window)
+(global-set-key (kbd "C-x o") 'switch-window)
 
 ;;alpha view
 ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))

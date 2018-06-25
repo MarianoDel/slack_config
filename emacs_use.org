@@ -34,7 +34,13 @@
    C-k             //corta hasta el final de linea
    M-k	           //borra hasta el final del parrafo (queda en kill ring)
    M-d             //borra hasta el final de la palabra
+   M-DEL           //borra hasta el principio de la palabra
    C-y 	           //pega texto copiado, incluso desde otras ventanas
+    M-y            justo despues cicla entre los posibles yanks
+   M-\             //borra todos los espacios
+   M-SPC           //borra todos los espacios menos uno
+                   ;; cycle through amounts of spacing
+                   (global-set-key (kbd "M-SPC") 'cycle-spacing)
    
 *** Undo
    C-x u	    //deshacer (undo)
@@ -172,6 +178,8 @@
   C-y pega lo seleccionado
   C-u 1 C-y pega uno anterior del kill-ring
   M-y pego anteriores del kill ring
+  C-l reposiciona el cursor en la pantalla
+
 
 ** Ver el kill-ring
    C-h v kill-ring
@@ -320,6 +328,8 @@
 
 *** Comments (overrided)
     C-/  linea o region seleccionada comenta en c++ "//"
+    M-x comment-box
+
 
 *** Movements Command
     C-M-a (c-beginning-of-defun)
