@@ -240,6 +240,8 @@
        
        en python primero debo elegir la clase y luego va a la funcion
 
+       Cuando agrego una funcion necesita hacer un rescan elegir *Rescan*
+
 ** Shell ansi-term y term
    M-x ansi-term o M-x term
    son muy parecidos, ambos tienen funcionalidad bash completa (o casi)
