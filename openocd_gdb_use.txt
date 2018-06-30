@@ -30,6 +30,11 @@ telnet localhost 4444
 > dump_image opti2.bin 0x1FFFF800 32
 $ hexdump -x opti2.bin
 
+#para ver algo en el binario
+$ hexdump -x Template_F030_rom.bin -s 0xf400    //para ver esa posicion si existe en el bin
+$ hexdump -x Template_F030_rom.bin              //para ver todo la estructura del bin
+$ hexdump -x Template_F030_rom.bin -s 0xf400 -n 64   //para ver esa posicion 64 bytes
+
 #para cerrar sesion
 > exit
 CTRL + } o CTRL + ]
@@ -76,6 +81,7 @@ winheight name -count	#Change the height of the window name by count lines. Posi
 #info desde http://openocd.org/doc/html/GDB-and-OpenOCD.html
 
 arm-none-eabi-gdb --eval-command="target remote localhost:3333" Template_F050_rom.elf
+arm-none-eabi-gdb --eval-command="target remote localhost:3333" Template_F030_rom.elf
 
 monitor reset halt
 load			#carga el programa en memoria (graba flash)
