@@ -32,11 +32,14 @@
    M-w	           //copia texto sin borrar original
    C-w	           //copia texto borra original
    C-k             //corta hasta el final de linea
+   M-0 C-k         //corta hasta el principio de la linea
+   C-u -5 C-k      //corta 5 lineas previas
    M-k	           //borra hasta el final del parrafo (queda en kill ring)
    M-d             //borra hasta el final de la palabra
    M-DEL           //borra hasta el principio de la palabra
    C-y 	           //pega texto copiado, incluso desde otras ventanas
     M-y            justo despues cicla entre los posibles yanks
+   C-u C-y         //pega el kill-ring pero deja el punto al comienzo
    M-\             //borra todos los espacios
    M-SPC           //borra todos los espacios menos uno
                    ;; cycle through amounts of spacing
@@ -165,35 +168,46 @@
   M-g g    //saltar a linea particular
 
   C-M-f forward-sexp adelanta en una expresion balanceada
+  C-M-<left>
   C-M-b backward-sexp
+  C-M-<right>
   C-M-k kill balanced expression
   C-M-SPC mark-sexp
 
   C-x C-+ agranda el tamanio de la letra
-  C-x C-- achica el tamanioo de la letra
+  C-x C-- achica el tamanio de la letra
   
   C-space selecciona un area
   C-x C-x cambia el punto por la marca
   C-w borra lo seleccionado
   C-y pega lo seleccionado
   C-u 1 C-y pega uno anterior del kill-ring
-  M-y pego anteriores del kill ring
+      M-y cicla y pega anteriores del kill ring 
   C-l reposiciona el cursor en la pantalla
+  C-u C-SPC salta a una marca anterior
+            si estoy editando y salto al principio M-< luego vuelvo al punto anterior con C-u C-SPC
+
+*** Repeticiones
+    C-x z repite el ultimo comando
+        z luego multiples z siguen repitiendo el comando
+
+    C-u C-n adelanta 4 lineas C-u por default repite 4
+    C-u 10 C-n adelanta 10 lineas
 
 
 ** Ver el kill-ring
    C-h v kill-ring
 
-** BOOKMARKS & Registers
-   - Bookmarks
+** BOOKMARKS, Registers & Rectangles
+*** Bookmarks
    C-x r m marca el bookmark
    C-x r b salta al bookmark TAB muestra la lista
    C-x r l lista bookmarks
 
-   -Registers
+*** Registers
    M-x view-register RET r  muestra el contenidode el registro r
-   C-x r s r  Copy region into register r (copy-to-register) 
-   C-x r i r  Insert text from register r (insert-register)
+   C-x r s name  Copy region into register name (copy-to-register) 
+   C-x r i name  Insert text from register name (insert-register)
 
    -Register as a Bookmark
    C-x r <SPC> r  Record the position of point and the current buffer in register r (point-to-register). 
@@ -202,6 +216,14 @@
    - Guardar configuracion de windows y buffers
    C-x r w <num>    guardar confgiuracion
    C-x r j <num>    saltar a configuracion guardada
+
+*** Rectangles
+    El rectangulo se selecciona con el punto y la marca, todos los comandos de rectangulo empiezan C-x r
+    C-x r k kill-rectangle, lo guarda para usar despues
+    C-x r d delete-rectangle, lo borra no lo guarda
+    C-x r c clear-rectangle, borra lo interior y deja los espacios libres
+    C-x r o open-rectangle, corre todo el texto a la derecha del rectangulo agregando espacios
+    C-x r y yank-rectangle, agrega un rectangulo del kill-ring desplazando todo a la derecha
    
 ** COMMENTS
    M-; comenta al final de una linea o si es hay bloque marcado multiples lineas
@@ -330,7 +352,7 @@
 
 *** Comments (overrided)
     C-/  linea o region seleccionada comenta en c++ "//"
-    M-x comment-box
+    M-x comment-box, seleccionar un region y ejecutar el comando
 
 
 *** Movements Command
@@ -429,5 +451,6 @@
     https://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
     http://pragmaticemacs.com/emacs/multiple-cursors/
     https://sites.google.com/site/steveyegge2/effective-emacs
+    http://irreal.org/blog/
 
 
