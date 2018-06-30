@@ -428,5 +428,6 @@
     https://www.gnu.org/software/emacs/manual/
     https://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
     http://pragmaticemacs.com/emacs/multiple-cursors/
+    https://sites.google.com/site/steveyegge2/effective-emacs
 
 
