@@ -115,11 +115,17 @@
    - C-h v variable-name //si lo hago sobre el nombre lo busca por defecto
    - C-h f variable-name
 
-** Running SHELL Comands
+** Running SHELL Commands & bash-commands
    M-x eshell  //ejecuta shell de emacs permite movimientos entre comandos
    M-x shell   //ejecuta un shell muy chico, envia linea completa NO permite movimeintos entre comandos
    M-x term    //ejecuta shell /bin/bash completo (no funciona en windows)
    C-c C-c     //para terminar el programa del shell o eshell
+   
+   M-! //ejecuta un comando bash desde el minibuffer; si termina en & lo hace asincronico
+        (setq shell-file-name "bash")
+        (setq shell-command-switch "-ic")
+        tuve que agregar estos switches para que lea lista de aliases, me tira un error pero ejecuta
+
    
 ** Modos de edicion - Major Modes
    C-h m	     	 //lista todos los modos
@@ -214,7 +220,7 @@
    C-x r j r  Jump to the position and buffer saved in register r (jump-to-register).
 
    - Guardar configuracion de windows y buffers
-   C-x r w <num>    guardar confgiuracion
+   C-x r w <num>    guardar configuracion
    C-x r j <num>    saltar a configuracion guardada
 
 *** Rectangles
@@ -417,6 +423,9 @@
     M-x imenu
     con TAB me da las opciones, si la funcioesta dentro de la clase primero debo
     elegir la clase, despues lista las funciones
+
+** #### ACE Jump MODE ####
+   C-c SPC elijo la letra del comienzo de una palabra
 
 ** #### USO GNU Global, funciona muy bien en linea de comandos!!! ####
    M-x ggtags-mode activa el modo o lo desactiva

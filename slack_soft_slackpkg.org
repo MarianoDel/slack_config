@@ -10,6 +10,8 @@ https://gnustav.org/operating-system/gestion-de-paquetes-en-slackware-linux.html
 
 ** Update
    - # slackpkg update gpg
+   - # slackpkg update
+    
 
 ** Blacklist
    - editar /etc/slackpkg/blacklist

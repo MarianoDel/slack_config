@@ -1,22 +1,32 @@
-##### LO QUE USO #####
-emacs /etc/slpkg/repositories.conf		#edito o pongo los repos que me interesan
-slpkg update		#actualizo la lista de repositorios
-slpkg repo-list
-slpkg -F <paquete>
-slpkg -p <repo> <paquete>		#miro el estado del paquete;
-slpkg -p slonly qterminal
-slpkg -t <repo> <paquete>		#chequeo las dependencias VERDE=OK, ROJO=FALTA; slpkg -t slonly qterminal
-slpkg -s <repo> <paquete>		#instalo paquete resolviendo dependencias;		slpkg -s slonly qterminal
+* ##### LO QUE USO #####
+** Editar el archivo de repositorios
+   #edito o pongo los repos que me interesan
+   emacs /etc/slpkg/repositories.conf
+
+** Actualizar la lista de paquetes en repositorios
+   slpkg update		#actualizo la lista de repositorios
+   slpkg repo-list    miro la lista de repositorios activos
+
+** Buscar paquete y revisar info
+   slpkg -F <paquete>
+   slpkg -p <repo> <paquete>    #miro el estado del paquete;
+   slpkg -p slonly qterminal
+
+** Cheque de dependencias antes de instalar
+   slpkg -t <repo> <paquete>    #chequeo las dependencias VERDE=OK, ROJO=FALTA;
+   slpkg -t slonly qterminal
+   
+** Instalopaquete y dependencias
+   slpkg -s <repo> <paquete>    #instalo paquete resolviendo dependencias;
+   slpkg -s slonly qterminal
 
 
-
-
-Qué es Slpkg
+* Qué es Slpkg
 Slpkg es un potente gestor de paquetes para Slackware. Es capaz de calcular automáticamente las dependencias y puede proporcionar datos administrativos sobre los paquetes. Dice su página oficial que hace más fácil mantener grupos de máquinas sin tener que actualizar cada una de forma manual.
 Slpkg funciona en conformidad con los estándares de organización utilizados en la creación de paquetes por slackbuilds.org. También utiliza las instrucciones estándares de Slackware Linux para la instalación, actualización o eliminación de paquetes.
 ¿Qué hace que Slpkg sea diferente a otros administradores? La facilidad de uso es su principal objetivo, así como la facilidad de comprensión y utilización, la utilización de colores para resaltar los nombres de paquetes y mensajes de advertencia, entre otros.
 También soporta múltiples fuentes (repositorios de terceros y Slackbuilds), y es posible instalar los paquetes oficiales directamente de los repositorios oficiales de Slackware. Puede comprobar las actualizaciones para los paquetes también, antes de instalarlos.
-Características:
+** Características:
 Resuelve dependencias
 Visualiza dependencias
 Varias opciones
@@ -29,7 +39,7 @@ Compila paquetes
 Veloz
 Seguro
 
-### Configuración
+** Configuración
 Después de instalarlo, necesitas configurar los repositorios. Para ello debes editar el archivo:
 # nano /etc/slpkg/repositories.conf
 Una opción válida puede ser esta:
@@ -51,21 +61,21 @@ Una opción válida puede ser esta:
  msb{1.10}
 Nota: el “msb{1.10}” se refiere al MATE Desktop.
 
-### Otra forma de editar los repositorios es con el comando:
+** Otra forma de editar los repositorios es con el comando:
 # slpkg add-repo <repository> <URL>
 Después de editar los repositorios, actualiza con:
 # slpkg update
 
-### Comandos
+** Comandos
 Para ver la lista de repositorios, utiliza el comando:
 # slpkg repo-list
 
-### Para actualizar el propio programa, utiliza el comando:
+*** Para actualizar el propio programa, utiliza el comando:
 # slpkg update slpkg
 Para comprobar la “salud” de los paquetes, o sea, si los archivos de configuración están faltando, utiliza el siguiente comando:
 # slpkg health
 
-### Comprobar el estado de las dependencias:
+*** Comprobar el estado de las dependencias:
 # slpkg deps-status
 Administrar los nuevos archivos de configuración:
 # slpkg new-config
@@ -88,7 +98,7 @@ Descargar e instalar los paquetes resolviendo dependencias:
 Ejemplo:
 # slpkg -s sbo steam
 
-Ver árbol de dependencias:
+*** Ver árbol de dependencias:
 # slpkg -t <repo> <paquete>
 Añadir al final “–check-deps” mostrará para qué paquete es la dependencia.
 
