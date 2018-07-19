@@ -1,0 +1,4 @@
+* ARCHIVOS ZIP PARA LEER EN WINDOWS
+
+** Crear Archivo ZIP
+    $ zip nombre.zip lista archivos

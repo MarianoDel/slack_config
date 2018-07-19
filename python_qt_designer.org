@@ -1,28 +1,76 @@
-##### PROGRAMACION GUI CON QT5 y Python (PyQt5) #####
-#links:
-http://pyqt.sourceforge.net/Docs/PyQt5/designer.html
+* PROGRAMACION Qt for Python (PySide2) - Qt
 
-http://pythonthusiast.pythonblogs.com/230_pythonthusiast/archive/1348_developing_cross_platform_application_using_qt_pyqt_and_pyside__introduction-part_1_of_5.html
+  Qt tiene ahora una version para python -pyside2-, se puede bajar desde PyPi con pip3
+  # pip3 install pyside2
 
-https://www.python-course.eu/python3_course.php
+** Usar Qt Designer para la parte grafica
+*** Convertir archivo xml a python .py
+   $ pyside2-uic mainWindow.ui > ui_mainWindow.py
+   $ pyside2-rcc //para archivo resources
 
-http://zetcode.com/gui/pyqt5/eventssignals/
+*** Levantar interface grafica desde la aplicacion
+    en el archivo de aplicacion incluir código de ejemplo
 
-http://projects.skylogic.ca/blog/how-to-install-pyqt5-and-build-your-first-gui-in-python-3-4/
+import sys
+from PySide.QtGui import *
+from PySide.QtCore import *
+from ui_mainWindow import Ui_mainWindow
 
-#Manual original y eventos de riverbank
+class MainWindow(QMainWindow, Ui_mainWindow):
+   def __init__(self):
+       super(MainWindow, self).__init__()
+       self.setupUi(self)
+       self.assignWidgets()
+       self.show()
+
+   def assignWidgets(self):
+       self.goButton.clicked.connect(self.goPushed)
+
+   def goPushed(self):
+       self.goText.append("Go, Go, Go!")
+
+if __name__ == '__main__':
+   app = QApplication(sys.argv)
+   mainWin = MainWindow()
+   ret = app.exec_()
+   sys.exit( ret )
+
+*** Levantar directamente el xml desde el script
+ 1 # main.py
+ 2 import sys
+ 3 from PySide2.QtUiTools import QUiLoader
+ 4 from PySide2.QtWidgets import QApplication
+ 5 from PySide2.QtCore import QFile
+ 6 
+ 7 if __name__ == "__main__":
+ 8     app = QApplication(sys.argv)
+ 9 
+10     file = QFile("mainwindow.ui")
+11     file.open(QFile.ReadOnly)
+12 
+13     loader = QUiLoader()
+14     window = loader.load(file)
+15     window.show()
+16 
+17     sys.exit(app.exec_())
+
+** Signals and Slots
+    https://wiki.qt.io/Qt_for_Python_Signals_and_Slots
+
+* PROGRAMACION GUI CON QT5 y Python (PyQt5) - Riverbank
+
+** Manual original y eventos de riverbank
 http://pyqt.sourceforge.net/Docs/PyQt5/index.html
 http://pyqt.sourceforge.net/Docs/PyQt4/qevent.html
 
+** Con el archivo del Qt Designer archivo.ui lo paso a python
+   pyuic5 archivo.ui > archivo.py
 
-#con el archivo del Qt Designer archivo.ui lo paso a python
-pyuic5 archivo.ui > archivo.py
-
-#ahora tengo que armar el main.py y vincularlo a la parte grafica
-#Qt5 utiliza 3 clases bases de toda la interface GUI
-QWidgets
-QDialog
-QMainWindow
+   #ahora tengo que armar el main.py y vincularlo a la parte grafica
+   #Qt5 utiliza 3 clases bases de toda la interface GUI
+   QWidgets
+   QDialog
+   QMainWindow
 
 #segun el tipo de interface GUI que haya creado tengo una de esas tres clases bases
 
@@ -31,7 +79,7 @@ direct approach
 single inheritance
 multiple inheritance
 
-### DIRECT APPROACH ###
+*** ### DIRECT APPROACH ###
 si el dialogo que arme se llama ImageDialog y la clase es QDialog
    puedo hacer cat o head image.ui...
    <class>ImageDialog</class>
@@ -55,7 +103,7 @@ puedo revisarla con cat ui_imagedialog.py
    class Ui_ImageDialog(object):
       def setupUi(self, ImageDialog):
 
-### SINGLE INHERITANCE ### Este es el que usan casi todos
+*** ### SINGLE INHERITANCE ### Este es el que usan casi todos
 #con este metodo puedo tomar control de los widgets
 import sys
 from PyQt5.QtWidgets import QApplication, QDialog
@@ -81,7 +129,7 @@ w = ImageDialog()
 w.show()
 sys.exit(app.exec_())
 
-### MULTIPLE INHERITANCE ###
+*** ### MULTIPLE INHERITANCE ###
 from PyQt5.QtGui import QDialog
 from ui_imagedialog import Ui_ImageDialog
 
@@ -99,7 +147,7 @@ class ImageDialog(QDialog, Ui_ImageDialog):
         self.okButton.clicked.connect(self.accept)
         self.cancelButton.clicked.connect(self.reject)
 
-### OTRO METODO ES UTILIZAR UIC DENTRO DEL CODIGO PYTHON ###
+*** ### OTRO METODO ES UTILIZAR UIC DENTRO DEL CODIGO PYTHON ###
 #https://www.youtube.com/watch?v=OpUeZzKcA7Q
 
 import sys
@@ -125,5 +173,17 @@ vent.show()
 #ejecutar aplicacion
 app.exec_()
 
-#### A FUTURO, VER pyqtdeploy #####
+** A FUTURO, VER pyqtdeploy
 http://pyqt.sourceforge.net/Docs/pyqtdeploy/
+
+
+** links:
+http://pyqt.sourceforge.net/Docs/PyQt5/designer.html
+
+http://pythonthusiast.pythonblogs.com/230_pythonthusiast/archive/1348_developing_cross_platform_application_using_qt_pyqt_and_pyside__introduction-part_1_of_5.html
+
+https://www.python-course.eu/python3_course.php
+
+http://zetcode.com/gui/pyqt5/eventssignals/
+
+http://projects.skylogic.ca/blog/how-to-install-pyqt5-and-build-your-first-gui-in-python-3-4/

@@ -1,5 +1,5 @@
-#USO DE RSYNC PARA NAJAR PAQUETES SLACKWARE
-rsync [opciones] /origen /destino
+* USO DE RSYNC PARA BAJAR PAQUETES SLACKWARE
+  rsync [opciones] /origen /destino
 
 desde el mirror:
 http://mirrors.slackware.com/slackware/slackware64-14.2/

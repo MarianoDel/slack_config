@@ -1,5 +1,7 @@
+* BIBLIOTECA QT5 para Rapberry corriendo Slackware
 http://ceicer.org/sarpi2/qt.php
 
+** Qt5 precompilado
 #de aca bajo el qt5 precompilado y static, para archivos simples tuve que compilar asi...
 
 /opt/Qt5.10.0_static/bin/qmake -project         #crea el proyecto
@@ -12,6 +14,7 @@ CONFIG += qt
 
 make                                            #o make release
 
+** Armado de la interface GUI
 ##### ARMO GUI EN LA PC ####
 Qt-Designer me genera un archivo .ui que tiene los widgets y las conexiones entre ellos
 

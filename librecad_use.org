@@ -1,0 +1,143 @@
+* ### LibreCAD use
+
+** Modificacion del Tamanio de lineas del dibujo
+   #para modificar el tamanio de las lineas voy al cuadro de los layer y edito con el ultimo boton
+   agrando el parametro with
+
+** Linea con punto y coordenada
+   linea desde un punto de largo 10 y vertical
+   l; @10<90
+
+** Modificacion de Propiedades
+   para modificar propiedades de los elementos (o el texto de un cuadro)
+   Tools -> Modify -> Properties
+
+*** Comando Rapido
+   properties; prop;
+
+#para cambiar la hoja o la posicion
+
+** Copiar o mover seleccion
+*** Comando Rapido
+   mv; move;
+
+** Mover Dibujo o Bloque entre archivos
+#para llevar dibujos de un archivo a otro utilizar BLOCKS
+If you have the other drawing open, you can use:
+ctrl+c
+select reference point
+switch drawing
+ctrl+v
+place
+
+** Links
+   https://github.com/LibreCAD/LibreCAD/blob/master/librecad/src/cmd/rs_commands.cpp
+
+   http://wiki.librecad.org/index.php/LibreCAD_users_Manual
+
+
+** Listado de Comandos
+*** Draw
+
+Action            Tool            Commands
+DrawPoint            Points            po, point
+DrawLine            Line - 2 Points            l, li, line
+DrawPolyline            Polyline - Polyline            pl, polyline
+DrawLineParallel            Line - Parallel            o, pa, offset, parallel
+DrawArc3P            Arc - 3 Points            a, ar, arc
+DrawCircle            Circle - Center, Point            ci, circle
+DrawLineRectangle            Line - Rectangle            rec, rect, rectangle
+DrawMText            Tools - MText            mtxt, mtext
+DrawText            Tools - Text            txt, text
+DrawHatch            Tools - Hatch            ha, hatch
+DrawLineFree            Freehand Line            fhl, free
+DrawSpline            Spline            spl, spline
+DrawSplinePoints            Spline Through points            stp, spline2
+DrawLineOrthogonal            Line - Orthogonal            ortho, perp
+DrawLineVertical            Vertical Line            ver, vertical
+DrawLineHorizontal            Horizontal Line            hor, horizontal
+DrawEllipseInscribed            Inscribed Ellipse            ei, ie
+DrawLineBisector            Bisector            bi, bisect
+DrawLineTangent1            Tangent (P,C)            tanpc, tangentpc
+DrawLinePolygonCorCor            Polygon (Cor, Cor)            poly2, polygon2v
+DrawLineParallelThrough            Parallel Through Point            pp, ptp
+DrawCircle2P            Circle - 2 Points            c2, circle2
+DrawCircle3P            Circle - 3 Points            c3, circle3
+DrawCircleTan3            Tangential 3 Circles            ct3, tan3
+
+*** View
+
+Action            Tool            Commands
+ZoomRedraw            Redraw            zr, rg, regen, redraw
+ZoomWindow            Window Zoom            zw
+ZoomAuto            Auto Zoom            za
+ZoomPan            Zoom Panning            zp
+ZoomPrevious            Previous View            zv
+
+*** Edit
+
+Action            Tool            Commands
+EditUndo            Undo            u, undo, oo
+EditRedo            Redo            r, redo, uu
+EditKillAllActions             ???            k, kill
+
+*** Dimension
+
+Action            Tool            Commands
+DimAligned            Aligned            da
+DimLinear            Linear            dr
+DimLinearHor            Horizontal            dh
+DimLinearVer            Vertical            dv
+DimLeader            Leader            ld
+
+*** Modify
+
+Action            Tool            Commands
+ModifyTrim            Trim            tm, trim
+ModifyTrim2            Trim Two            t2, tm2
+ModifyMove            Move / Copy            mv
+ModifyBevel            Bevel            ch, fillet (bug)
+ModifyMirror            Mirror            mi
+ModifyRotate            Rotate            ro
+ModifyScale            Scale            sz
+ModifyStretch            Stretch            ss
+ModifyDelete            Deleted Selected            er
+BlocksExplode            Explode            xp
+ModifyCut            Divide            di, div, cut
+ModifyEntity            Properties            mp, prop
+ModifyRound            Fillet            fi, fillet
+ModifyAttributes            Attributes            ma, attr
+
+*** Snap
+
+Action            Tool            Commands
+SnapFree            Free Snap            os, sf
+SnapGrid            Snap on Grid            sg
+SnapEndpoint            Snap on Endpoints            se
+SnapIntersection            Snap Intersection            si
+SnapCenter            Snap Center            sc
+SnapMiddle            Snap Middle            sm
+SnapOnEntity            Snap on Entity            np, sn
+SnapDist            Snap Distance            sd
+RestrictNothing            Restrict Nothing            rn
+RestrictOrthogonal            Restrict Orthogonal            rr
+RestrictHorizontal            Restrict Horizontal            rh
+RestrictVertical            Restrict Vertical            rv
+SetRelativeZero            Set Relative Zero Position            rz
+
+*** Selection
+
+Action            Tool            Commands
+DeselectAll            Deselect All            tn
+SelectAll            Select All            sa
+
+*** Info
+
+Action            Tool            Commands
+InfoDist            Distance Point to Point            dpp, dist
+InfoAngle            Angle Between Two Lines            ang, angle
+InfoArea            Polygonal Area            ar, area
+
+*** Tool
+
+ToolRegenerateDimensions            dimregen            

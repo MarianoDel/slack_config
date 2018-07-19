@@ -1,3 +1,0 @@
-### ARCHIVOS ZIP PARA LEER EN WINDOWS
-#crear el zip con
-zip nombre.zip lista archivos

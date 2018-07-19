@@ -1,4 +1,4 @@
-PARA UTILIZAR SCRIPTS PYTHON EN SLACKWARE
+* PARA UTILIZAR SCRIPTS PYTHON EN SLACKWARE
 
 #puedo correr scripts desde la consola con python y el nombre del script
 pyhton test.py
@@ -22,3 +22,10 @@ if len(sys.argv) != 2:
 >>> import sys
 >>> sys.argv = ['arg1', 'arg2']
 >>> execfile('test.py')
+
+* USOS de PIP (pip3)
+** Buscar programa o libreria en PyPi
+   # pip3 search pyside2
+
+** Upgrade de PiP
+   # pip3 install --upgrade pip
