@@ -273,8 +273,19 @@
 ** Shell ansi-term y term
    M-x ansi-term o M-x term
    son muy parecidos, ambos tienen funcionalidad bash completa (o casi)
+   C-c funciona como C-x localmente
    C-c C-j para pasar del modo comandos (char) al modo edicion (line)
    C-c C-x para pasar del modo edicion (line) al modo comandos (char)
+   C-c C-c envia un final de trabajo a la terminal -> C-c
+   C-c k para salir
+
+** Modo Terminal enlaces serie
+   M-x serial-term 
+   C-c C-j modo edicion de linea
+   C-c C-k modo edicion char
+   C-c C-c envia un final de trabajo a la terminal -> C-c
+   C-x k para salir
+
 
 ** #### FILE MANAGER WITH DIRED ####
    //3 formas de arrancarlo
@@ -398,6 +409,7 @@
     C-c @ h         hide-ifdefs
     C-c @ s         show-ifdefs
     C-c @ u         hide-ifdef-undef
+**** Me funciona solo en el archivo actual y si las definiciones estan en .h las oculta igual
 
 ** #### FUNCIONALIDAD EN PYTHON-MODE ####
 *** Movimientos
@@ -446,6 +458,62 @@
    (setq tramp-default-method "ssh")
    C-x C-f /pi@192.168.1.34: RET
 
+** #### WEB Browsing con eww
+*** Para navegar dentro de emacs
+    - M-x eww
+    - Abrir otra ventana M-x eww (de nuevo)
+    - M-x eww-open-file     para abrir archivo local HTML
+    - q cierra el browser
+    - l back-url
+    - TAB next link
+
+    - n next-url
+
+    key             binding
+    ---             -------
+    
+    TAB             shr-next-link
+    ESC             Prefix Command
+    SPC             scroll-up-command
+    &               eww-browse-with-external-browser
+    -               negative-argument
+    0 .. 9          digit-argument
+    <               beginning-of-buffer
+    >               end-of-buffer
+    ?               describe-mode
+    B               eww-list-bookmarks
+    C               url-cookie-list
+    D               eww-toggle-paragraph-direction
+    E               eww-set-character-encoding
+    F               eww-toggle-fonts
+    G               eww
+    H               eww-list-histories
+    R               eww-readable
+    S               eww-list-buffers
+    b               eww-add-bookmark
+    d               eww-download
+    g               eww-reload
+    h               describe-mode
+    l               eww-back-url
+    n               eww-next-url
+    p               eww-previous-url
+    q               quit-window
+    r               eww-forward-url
+    t               eww-top-url
+    u               eww-up-url
+    v               eww-view-source
+    w               eww-copy-page-url
+    DEL             scroll-down-command
+    S-SPC           scroll-down-command
+    <backtab>       shr-previous-link
+    <delete>        scroll-down-command
+    <remap>         Prefix Command
+    
+    C-M-i           shr-previous-link
+    M-n             eww-next-bookmark
+    M-p             eww-previous-bookmark
+
+
 ** DOCS
 *** docs gnu-global
     https://www.gnu.org/software/global/globaldoc_toc.html
@@ -453,13 +521,19 @@
     #ver despues para python con pygments
     #bajo paquete ggtags de melpa-stable
 
+*** Herramientas C/C++ CEDET - Irony - Rtags
+    https://tuhdo.github.io/c-ide.html
+    http://www.seas.upenn.edu/~chaoliu/2017/09/01/c-cpp-programming-in-emacs/
+    http://alexott.net/en/writings/emacs-devenv/EmacsCedet.html
+
 *** docs generales
     http://ergoemacs.org/emacs/effective_emacs.html
     https://www.emacswiki.org/emacs/IndentingC
-    https://www.gnu.org/software/emacs/manual/
-    https://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
     http://pragmaticemacs.com/emacs/multiple-cursors/
     https://sites.google.com/site/steveyegge2/effective-emacs
     http://irreal.org/blog/
+    https://emacs-fu.blogspot.com/
+    https://www.gnu.org/software/emacs/manual/
+    https://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
 
 
