@@ -50,6 +50,14 @@
 
 ;;que aparezca en numero de columna
 (column-number-mode)
+;;que ilumine la linea de edicion
+;; (global-hl-line-mode 1)
+;;que coloque el numero de linea en el lateral
+;; (linum-mode 1)
+
+;;para que lea la lista de aliases cuando ejecuto comandos desde minibuffer M-!
+(setq shell-file-name "bash")
+(setq shell-command-switch "-ic")
 
 ;;que pueda recuperar el formato de los buffers anteriores C-c <left> C-c <right>
 (winner-mode t)
