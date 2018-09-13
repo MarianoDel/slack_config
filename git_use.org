@@ -27,23 +27,23 @@ git branch		//lista los branches del proyecto
 git branch –r		//lista branches remotos del proyecto (GITHUB)
 git branch –a		//lista todos los branches activos del proyecto
 
-#comparo branches
+*** comparo branches
 git diff master..new_feature
 
-#comparo branch local con el de Github
+*** comparo branch local con el de Github
 git diff master origin/master   (si origin/master es un brach remoto, git branch -a)
 
-#para ver si un branch contiene toda la info de los otros
+*** para ver si un branch contiene toda la info de los otros
 git branch --merged
 
-#cambio el nombre de un branch
+*** cambio el nombre de un branch
 git branch --move new_feature feature2
 
-#borrar branch de la PC local
+*** borrar branch de la PC local
 git branch --delete branch_to_delete
 git branch -D branch_to_delete		#otra forma
 
-#borrar branch del server (GITHUB)
+*** borrar branch del server (GITHUB)
 git push origin --delete branch_to_delete
 
 *** Crear Branches
@@ -207,7 +207,7 @@ git push –u eclipse_p4 master
 
 ** USOS MAS COMUNES - Nuevo Nombre de Proyecto con repositorio/archivos/historia anteriores
 
-   quiero pasar de un proyecto atom_stretcher a emacs_stretcher, teng git y github en atom_stretcher
+   quiero pasar de un proyecto atom_stretcher a emacs_stretcher, tengo git y github en atom_stretcher
    no me importa perder github pero si el git
    
    git remote -v           #muestra los repositorios remotos del branch
@@ -225,7 +225,15 @@ git push –u eclipse_p4 master
    3. Under Danger Zone click Delete this repository
    4. verificar el nombre del repositorio pide clave y borra
 
-   
+** USOS MAS COMUNES - 2 Nuevo Nombre de Proyecto con repositorio/archivos/historia anteriores
+   tengo eclipse_vapore en git y github y quiero emacs_vapore
+
+   1. sincronizo todo antes de empezar
+   2. una vez que tengo git status nothing to commit
+   3. cambio el nombre del repositorio en github en el repositorio settings
+   4. hago un nuevo clone del nuevo reositorio github que contiene toda la historia
+   5. ahora puedo remover los directorios viejos del disco
+
 ** USOS MAS COMUNES – PATCH (MERGE DE SOLO UN ARCHIVO)
 #cuando tengo 2 branches A y B, resuelven cosas distintas pero el archivo f es común a los #dos, en B se cambia f, pero sería útil tenerlo en A también. Entonces debo hacer un merge de #solo f en A desde B.
 git checkout A

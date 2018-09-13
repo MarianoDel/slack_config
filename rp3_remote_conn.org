@@ -9,6 +9,15 @@
    sftp> ls              #lista archivos remotos
    sftp> get dpkg.out    #trae archivo al directorio local
 
+*** Know bug   
+   Note: There is currently a bug in the versions of OpenSSH shipped with current Ubuntu releases 
+   (at least 14.04 to 15.10) that prevents the above command from operating correctly. Upon issuing the 
+   command above to transfer content to a server using the buggy version of OpenSSH, the following error 
+   will be given: Couldn't canonicalise: No such file or directory.
+
+   To work around this issue, create the destination directory on the remote end first by typing mkdir
+   localDirectory. Afterwards, the above command should complete without error.
+
 ** SCP (envio o recepcion de archivos - sin loggeo)
    scp -options <origen> <destino>
    scp -r Pictures pi@192.168.1.103

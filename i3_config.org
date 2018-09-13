@@ -79,11 +79,6 @@
    - primero pase mis wallpapers a ~/Pictures/wallpapers
    exec --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
 
-
-
-
-
-
 ** Si esconde el menu de Herramientas (Okular)
    Generalmente todas la herraminetas de KDE entran al menu con C-m
 
@@ -94,7 +89,6 @@
    - xrandr --output HDMI1 --mode 1280x720 --sam LVDS1    #copia al hdmi1 lo visto en la pantalla del lcd laptop
    - xrandr --output HDMI1 --mode 1280x720 --right-of LVDS1    #habilita el segundo monitor 
      ahora tengo el otro monitor con screens nuevos, cuando ejecuto nuevo screen va al segundo monitor
-
 
 ** Reload Conf
 *** $mod+Shift+c
@@ -107,3 +101,8 @@ $mod+shift+r restart i3 inplace
 $mod+shift+c reload config file
 $mod+shift+q kill window (does normal close if application supports it)
 $mod+space toggle focus
+
+* Uso de i3wm
+** Para cambiar posicion de ventanas
+*** Mod ENT abre la nueva ventana
+    - Mod + Shift + <arrow> mueve la ventana respecto de la posicion de las otras

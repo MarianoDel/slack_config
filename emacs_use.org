@@ -1,15 +1,16 @@
 * #### USO DE EMACS #### 
-   http://www.masteringemacs.org
-
 ** Basico
    C-g      //quit current command
    C-x z    //repite ultimo comando
 
 ** Funcionalidad de Archivos
    C-x C-f 	  //busca y abre archivo o crea uno nuevo
-   C-x s	  //guarda el archivo actual del buffer
-   C-x C-s	  //guarda todos los buffers
+   C-x C-s	  //guarda el archivo actual del buffer
+   C-x s	  //guarda todos los buffers
    C-x k	  //Close file or buffer
+
+   C-x i pega una archivo dentro del buffer, ej test1.txt
+   M-x find-file-at-point abre el archivo debajo del cursor (escrito en el text)
 
 ** Buffers
    C-x b	  //Switch Buffers
@@ -19,16 +20,17 @@
    C-x 2	  //Split the Screen Horizontally
    C-x 3          //Split vertical
    C-x 0          //quita la vision actual
+   C-x +          #balance windows
    
-   *** Customizacion
+*** Customizacion
    C-x <up>        //shrink-window
    C-x <down>      //enlarge-window
    C-x <left>      //shrink-window-horizontally
    C-x <right>     //enlarge-window-horizontally
 
-
 ** Edicion de Texto
    C-space	   //hace la primera marca para seleccionar texto
+   C-x C-x cambia el punto por la marca
    M-w	           //copia texto sin borrar original
    C-w	           //copia texto borra original
    C-k             //corta hasta el final de linea
@@ -39,12 +41,24 @@
    M-DEL           //borra hasta el principio de la palabra
    C-y 	           //pega texto copiado, incluso desde otras ventanas
     M-y            justo despues cicla entre los posibles yanks
+   C-u 1 C-y pega uno anterior del kill-ring
    C-u C-y         //pega el kill-ring pero deja el punto al comienzo
    M-\             //borra todos los espacios
    M-SPC           //borra todos los espacios menos uno
                    ;; cycle through amounts of spacing
                    (global-set-key (kbd "M-SPC") 'cycle-spacing)
-   
+
+   C-l reposiciona el cursor en la pantalla
+   C-u C-SPC salta a una marca anterior
+       si estoy editando y salto al principio M-< luego vuelvo al punto anterior con C-u C-SPC
+
+*** Repeticiones
+    C-x z repite el ultimo comando
+        z luego multiples z siguen repitiendo el comando
+
+    C-u C-n adelanta 4 lineas C-u por default repite 4
+    C-u 10 C-n adelanta 10 lineas
+
 *** Undo
    C-x u	    //deshacer (undo)
    C-_ 	            //(redo)
@@ -73,13 +87,19 @@
    C-u C-space    //SALTO ATRAS (ultimo salto)
     overrided no se por quien ahora agrega un TAB (4 espacios)
 
-
 ** Movimientos por expresiones
    C-M-f          //proximo cierre de expresion { [ "
    C-M-b          //cierre anterior de expresion } ] "
    C-M-d          //se mueve al proximo grupo de expresiones
    C-M-u          //se mueve al grupo anterior de expresiones
-   
+
+   C-M-f forward-sexp adelanta en una expresion balanceada
+   C-M-<left>
+   C-M-b backward-sexp
+   C-M-<right>
+   C-M-k kill balanced expression
+   C-M-SPC mark-sexp
+
 ** Indentation
    C-a M-f
    M-m
@@ -93,7 +113,6 @@
    C-x r b	//saltar al nombre de bookmark
    C-x r l	//listar bookmarks
 
-
 ** TAGS
    M-,
    M-.
@@ -101,8 +120,13 @@
    M-x tags-apropos    	//wildcard search
 
 ** GOTO Line
-   M-g g
+   M-g g    //saltar a linea particular
+   M-x goto-line   ...  2
+   M-x linum-mode       muestra numero de lineas a la izq
 
+** Tamanios de Letras
+   C-x C-+ agranda el tamanio de la letra
+   C-x C-- achica el tamanio de la letra
 
 ** Conocer KeyBindings y Ayudas varias
    - M-x describe-bindings (muestra todas las combinaciones activas en el buffer)
@@ -161,48 +185,15 @@
    C-q C-m pone ^M (carriage return '\r')
    C-q C-i pone ^I (tab '\t')
 
-* #### USO DE EMACS # OTRO MAS ####### 
-  http://tuhdo.github.io/emacs-tutor.html
-
-  C-x i pega una archivo dentro del buffer, ej test1.txt
-
-  M-x find-file-at-point abre el archivo debajo del cursor (escrito en el text)
-
-  M-x goto-line   ...  2
-  M-x linum-mode       muestra el numero de lineas
-  
-  M-g g    //saltar a linea particular
-
-  C-M-f forward-sexp adelanta en una expresion balanceada
-  C-M-<left>
-  C-M-b backward-sexp
-  C-M-<right>
-  C-M-k kill balanced expression
-  C-M-SPC mark-sexp
-
-  C-x C-+ agranda el tamanio de la letra
-  C-x C-- achica el tamanio de la letra
-  
-  C-space selecciona un area
-  C-x C-x cambia el punto por la marca
-  C-w borra lo seleccionado
-  C-y pega lo seleccionado
-  C-u 1 C-y pega uno anterior del kill-ring
-      M-y cicla y pega anteriores del kill ring 
-  C-l reposiciona el cursor en la pantalla
-  C-u C-SPC salta a una marca anterior
-            si estoy editando y salto al principio M-< luego vuelvo al punto anterior con C-u C-SPC
-
-*** Repeticiones
-    C-x z repite el ultimo comando
-        z luego multiples z siguen repitiendo el comando
-
-    C-u C-n adelanta 4 lineas C-u por default repite 4
-    C-u 10 C-n adelanta 10 lineas
-
+** DOS buffers
+   - para convertir un buffer en modo DOS a unix utf-8-unix
+     M-x set-buffer-file-coding-system
+   - para ver los finales de linea DOS sin convertirlos
+     M-x revert-buffer-coding-system
 
 ** Ver el kill-ring
    C-h v kill-ring
+
 
 ** BOOKMARKS, Registers & Rectangles
 *** Bookmarks
@@ -258,6 +249,8 @@
 
    M-% find and replace
 
+
+* #### USO DE EMACS # OTRO MAS ####### 
 ** SEARCH occur
    M-x occur RET exp RET lists in a new buffer all the occurrences of the exp in the current buffer
 
@@ -288,26 +281,36 @@
 
 
 ** #### FILE MANAGER WITH DIRED ####
-   //3 formas de arrancarlo
+*** formas de arrancarlo
    M-x dired
+
+   g renueva lista
+
+   o abrir en otra ventana
+   C-o abrir en otra ventana pero no ir a la ventana
+   ( listar menos informacion en el directorio
+
+   f, e, RET open file at pointer
+
+   C copiar archivo
+   D borrar archivo
+   + crear nuevo directorio 'mkdir'
+
+   d marca el archivo para borrarlo
+   u desmarca archivos
+   x ejecuta el borrado
+
+*** Otras formas de arrancarlo
    C-x d arranca Dired en el directorio seleccionado
    C-x 4 d arranca Dired en el directorio seleccionado en otra ventana
    C-x C-f selecciona directorio para entrar con Dired
+
    q termina Dired
    
    n move below
    p move above
    C-s buscar con I-search
    
-   f, e, RET open file at pointer
-   o abrir en otra ventana
-   C-o abrir en otra ventana pero no ir a la ventana
-   ( listar menos informacion en el directorio
-   g renueva lista
-   
-   d marca el archivo para borrarlo
-   u desmarca archivos
-   x ejecuta el borrado
    #### END DIRED ####
 
 ** #### FILE MANAGER WITH IBUFFER ####
@@ -458,7 +461,18 @@
    (setq tramp-default-method "ssh")
    C-x C-f /pi@192.168.1.34: RET
 
+*** Multiple Hops
+    With the new syntax, each 'hop' is separated by |. The example in the manual is:
+    C-x C-f /ssh:bird@bastion|ssh:you@remotehost:/path RET
+    Which connects firstly as bird@bastion, and from there to you@remotehost:/path
+
+*** /su: or /sudo: on remote HOSTS
+    You can also use this syntax to sudo/su to root (or of course any other user) on a remote host:
+    C-x C-f /ssh:you@remotehost|sudo:remotehost:/path/to/file RET
+
+
 ** #### WEB Browsing con eww
+*** Para abrir un archivo local M-x eww-open-file
 *** Para navegar dentro de emacs
     - M-x eww
     - Abrir otra ventana M-x eww (de nuevo)
@@ -527,6 +541,7 @@
     http://alexott.net/en/writings/emacs-devenv/EmacsCedet.html
 
 *** docs generales
+    http://www.masteringemacs.org
     http://ergoemacs.org/emacs/effective_emacs.html
     https://www.emacswiki.org/emacs/IndentingC
     http://pragmaticemacs.com/emacs/multiple-cursors/

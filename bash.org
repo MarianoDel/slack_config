@@ -42,14 +42,17 @@
    df -h
    free -h
    history
-   cat /var/log/auth
+   cat /var/log/#archivos_log
    netstat
    which [nombreprog]
    file [nombrearch]
    file $(which [nombreprog])
 
-** Symbolic Links
-   
+*** Archivos Log
+   tail -n 200 /var/log/messages
+   tail -n 200 /var/log/syslog
+
+** Symbolic Links   
    To create a new symlink (will fail if symlink exists already):
    ln -s /path/to/file /path/to/symlink
    
@@ -58,8 +61,15 @@
 
    crear link ejemplo
    ln -s ~/tmp/sdcc/device/include/pic14/pic16regs.h pic16regs.h
+
 ** BashScript
-http://mywiki.wooledge.org/BashGuide/CommandsAndArguments
+    http://mywiki.wooledge.org/BashGuide/CommandsAndArguments
 
-
-
+** Comandos: pushd popd
+   - para cambiar de directorio al que despues quiero volver
+     pushp /home/med    #me lleva al directorio /home/med guardando el actual
+     popd               #me lleva al directorio guardado
+** Comando: env export
+   - env     # me muestra todos los valores de las variables que conoce
+   - export CFLAGS='-g -Wall'    # setea el valor de la variable
+   - echo $USER    # me muestra el valor de una variable especial
