@@ -333,8 +333,20 @@
 
    //cuando trae problemas, como para crear archivo nuevo,
    C-j crea archivo con el nombre elegido (no el recomendado)
-   C-f vuelve al modo find-file (without-ido-mode)
+   C-f toggle del modo find-file (without-ido-mode)
    #### END IDO-MODE ####
+
+** #### EDIFF ####
+   muestra diff visual entre dos archivos, luego hay que utilizar winner-mode
+   - | los acomoda uno al lado del otro 
+   - n y p next -previous difference
+   - a completa con el bloque del archivo a
+   - b completa con el bloque del archivo b
+   - wa graba archivo a
+   - wb graba archivo b
+   - q sale
+   - ? help toggle
+
 
 ** #### MULTIPLE CURSORS ####
    https://github.com/magnars/multiple-cursors.el
