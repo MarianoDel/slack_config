@@ -27,6 +27,18 @@ git branch		//lista los branches del proyecto
 git branch –r		//lista branches remotos del proyecto (GITHUB)
 git branch –a		//lista todos los branches activos del proyecto
 
+*** Crear Branches
+
+git checkout master		#voy al branch principal
+git branch new_feature1	#creo el nuevo branch llamado new_feature1
+git branch			#muestro los branches del proyeto
+
+*** Cambiar entre Branches
+
+git checkout new_feature1	#cambio context a branch new_feature1
+git checkout master		#vuelvo al context del master
+git branch			#muestro los branches del proyeto
+
 *** comparo branches
 git diff master..new_feature
 
@@ -45,18 +57,6 @@ git branch -D branch_to_delete		#otra forma
 
 *** borrar branch del server (GITHUB)
 git push origin --delete branch_to_delete
-
-*** Crear Branches
-
-git checkout master		#voy al branch principal
-git branch new_feature1	#creo el nuevo branch llamado new_feature1
-git branch			#muestro los branches del proyeto
-
-*** Cambiar entre Branches
-
-git checkout new_feature1	#cambio context a branch new_feature1
-git checkout master		#vuelvo al context del master
-git branch			#muestro los branches del proyeto
 
 ** Si pierdo el master o queda dañado y puedo recuperar versiones anteriores
 

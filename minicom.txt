@@ -8,6 +8,8 @@
 #el puerto serie por USB en la maquina es:
 /dev/ttyACM0
 
+#CTRL+J envia CR/LF
+
 #CTRL-A I cambia el modo de las letras
 
 #CTRL-A Q salir de minicom

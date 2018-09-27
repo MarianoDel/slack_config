@@ -2,6 +2,11 @@
 Shift-TAB abre o colapsa el outline del documento
 TAB tambien pero solo si tiene el punto en *
 
+TAB / S-TAB (un)fold
+M-up/down move a headline up or down
+M-left/right promote or demote a headline
+M-RET insert a new headline
+
 ** TODOs
 C-c C-t corre org-todo y marca como terminado, sin todo, con todo, ciclico
 S-left/right tambien cicla
@@ -15,17 +20,18 @@ C-c C-o org-open-at-point, abre el link
 : [[http://google.com][Google Search Engine]]
 [[http://google.com][Google Search Engine]]  asi se ve sin los dos puntos
 
-
-
-TAB / S-TAB (un)fold
-M-up/down move a headline up or down
-M-left/right promote or demote a headline
-M-RET insert a new headline
+*** Links a imagenes a insetar en el documento
+    C-u C-c C-l con el nombre del archivo imagen
 
 ** Listas 
-C-c - cycle beetwen marks
-+, -, *, en el comienzo desordenadas
-1. 2. 3. en el comienzo ordenadas
+    C-c - cycle beetwen marks
+    +, -, *, en el comienzo desordenadas
+    1. 2. 3. en el comienzo ordenadas
+
+** Checklists
+   - [ ] muestra1 separar los corchetes con un espacio
+   - [ ] M-S-ENT crea un nuevo checklist
+   - [ ] nuevo checklist
 
 ** Markup
 You can make words *bold*, /italic/, _underlined_, =code= and ~verbatim~, and, if you must, +strike-through+.
@@ -138,10 +144,7 @@ taylor($3,x=7,2)     Taylor series of $3, at x=7, second degree
    then it is evaluated as a Lisp form. The evaluation should return either a string or a number.
    '(concat (substring $1 1 2) (substring $1 0 1) (substring $1 2))
 - Aplicar una formula a un campo especifico ':=', for example ':=vsum(@II..III)'
-
-
 ** Code Snippets
-   
 ** TODO Calendar / Scheduling / Agenda
    SCHEDULED: <2018-04-30 Mon>
    - C-c C-s abre el calendario para scheduling (solo en lineas highline)
@@ -151,11 +154,6 @@ taylor($3,x=7,2)     Taylor series of $3, at x=7, second degree
      M-x org-agenda
      g cierra agenda
    - S-f activa el modo follow y va recorriendo el documento a partir de la agenda
-
-** Checklists
-   - [ ] muestra1 separar los corchetes con un espacio
-   - [ ] M-S-ENT crea un nuevo checklist
-   - [ ] nuevo checklist
 
 ** Configuracion dentro del documento
 *** Cambiar secuencias TODO
