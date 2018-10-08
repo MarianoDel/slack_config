@@ -564,3 +564,17 @@
     https://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
 
 
+
+* EMACS on console
+** alias emacsc 'emacs -nw'
+** mas colores
+   - echo $TERM
+     export TERM=xterm-256color
+
+   - o lanzar emacs sin modificar default de la consola
+     TERM=xterm-256color emacs -nw
+
+** color-theme
+   - M-x customize-theme
+   - M-x load-theme    #muestra lista de posibilidades
+

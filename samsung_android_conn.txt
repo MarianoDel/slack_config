@@ -16,6 +16,8 @@ dmesg | tail
 [49758.173413] usb 2-1.2: Manufacturer: SAMSUNG
 [49758.173417] usb 2-1.2: SerialNumber: 7f03e4a3
 
-3.- En el 
+3.- debo usar aplicacion mtpfs
+mkdir ~/android
+mtpfs ~/android
 
 #### El sistema lo monta solo (en realidad no monta pero no importa) y lo deja con un acceso de escritorio

@@ -2,12 +2,14 @@
 ** Primero
    - lo pongo en modo de una sola ventana
      Windows -> Single-Window Mode
+   - Nuevo archivo
+     300 x 300 por ejemplo
    - Agrego guias
      Image -> Guides -> New Guides by percent (Horizontal & Vertical)
 
 ** Seleccion Circulo
    - click en el medio de la guia con herramienta de elipse
-     si mantengo S y C se centra un circulo automaticamente
+     si mantengo Shift y Ctrl se centra un circulo automaticamente
    - si voy a cortar el interior ya esta listo, si es el exterior
      Select -> Invert
 
@@ -34,7 +36,18 @@
 ** Dibujar Linea recta
    - elegir paintbrush
      hacer el primer punto en la imagen
-     presionar S y llevar al segundo punto
+     presionar Shift y llevar al segundo punto
+
+** Dibujar cuadrado rectangulo elipse
+   - elegir la forma con selection tool
+   - Una vez dibujada Edit->Stroke Selection y elegir el tipo de trazo que se busca
+
+*** Tambien se puede usar la herramiento de seleccion y pintar el lado de adentro
+    - pongo la seleccion (cuadrado por ejemplo)
+    - cambio a pencil y dibujo, solo dibuja dentro de la seleccion
+    - si quiero pintar por afuera Invert Selection
+    - si quiero cambiar tamanio edito el cuadro moviendo los laterales
+
 
 ** Fondo Transparente (si es blanco)
    - Crear Layer canal alpha
@@ -49,11 +62,8 @@
    - Export As...
      File -> Export As -> elegir formato deseado
 
-
-
-
-
-
+** Redondear bordes con filtro
+   - Filters -> Decor -> Round Borders
 
 ** Links
 http://www.todogimp.com/?q=tutoriales&tid=11&tid_1=14&tid_2=All
