@@ -1,0 +1,76 @@
+* Groff - groff_ms
+
+** Archivos y comandos
+   groff1.ms
+
+*** Compilacion
+    groff -ms groff1.ms -T pdf > groff1.pdf
+
+** Titulo
+   .TL
+
+** Autor
+   .AU
+
+** Author Institution - Institucion del Autor
+   .AI
+
+** Parrafos
+   .PP
+   doble enter para separar renglones
+   .PP por segunda vez hace un indent del parrafo
+
+** New Heading
+   .NH
+   .NH 2
+   subseccion de sengundo nivel
+   .NH 1
+   subseccion de primer nivel
+
+** Unnumber Heading
+   .SH
+
+** Bold
+   .B bold
+   .B "bold"
+   .B \"bold\"
+   si quiero algo pegado a la palabra como exclamación o punto, lo pongo como segundo argumento de B
+   .B "ultima palabra bold" .
+
+   si quiero algo antes y algo después, despues es arg2 y antes es arg3
+   .B "bold" ) (
+   .B "bold" ). (
+
+** Italic
+   .I
+   .BI bold and Italic
+
+** Underline text
+   .UL "underlining text"
+   .UL "underlining text" .
+
+** Boxed Text
+   .BX "text to be boxed"
+ 
+** Indented
+   .RS
+   start indented
+   .RE
+   end indented
+
+** Abstarct
+   .AB
+   empezar abstract
+   .AE
+   end abstract
+
+** Listas
+   .IP
+   primero de la lista
+   .IP
+   segundo de la lista
+
+*** Lista con bullet
+    .IP \(bu
+    sin separar tanto el bullet
+    .IP \(bu 2

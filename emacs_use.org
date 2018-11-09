@@ -374,6 +374,10 @@
    better-defaults
    material-theme
 
+   - ahora uso melpa-stable, si quiero buscar en otro descomento melpa por ejemplo
+     C-x C-e para evaluar y M-x list-packages, si no aparece el repositorio
+     M-x packages-refresh-content y debiera ver lo nuevo
+
 ** #### FUNCIONALIDADES CC-MODE (major mode) ####
 *** Indentation
     TAB en un renglon o region
