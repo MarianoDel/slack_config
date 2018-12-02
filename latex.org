@@ -1,0 +1,309 @@
+* Uso de Latex
+** Comandos
+   - para salida en la linea de comandos
+     pdflatex latex.tex
+     okular latex.pdf &
+
+   - para buscar archivos de paquetes
+     kpsewhich graphicx
+
+
+** Download a Package
+   - usa generalmente dos archivos .dtx .ins
+     el primero tiene el programa y la documentacion
+     el segundo la rutina para instalar
+
+   - bajo el paquete de https://www.ctan.org/
+
+   - descomprimo y cat README
+   - ejecuto latex titling.ins, que me genera titling.sty
+   - ejecuto latex titling.dtx, varias veces para generar documentacion, titling.dvi   
+
+   - reviso donde busca el compilador los paquetes
+     kpsewhich --show-path bst
+   - creo el directorio local, si aun no lo tengo
+     mkdir ~/texmf/tex/latex
+
+   - copio el directorio temporal a donde latex pueda encontrarlo
+     ~/texmf/tex/latex
+
+   - ejecuto el filename database update, como usuario normal
+     /usr/share/texmf/bin/mktexlsr
+
+** Comandos Latex
+   - empiezan con barra invertida \
+     \begin
+
+** Paquetes Latex
+   - buscar en:
+   /usr/share/texmf/tex/latex
+
+** Comentar linea
+   - uso % o %%
+
+** Empezar documento
+   - empezar con documentclass
+     article para el formateo general del documento
+     \documentclass{article}
+
+   \begin{document}
+
+   texto
+
+   \end{document}
+
+** Autor y titulo del documento
+   - antes de begin document
+     \author{MED}
+     \title{Resumen Latex}
+
+   - dentro del documento, donde quiera el titulo
+     \maketitle
+
+   - sale con la fecha actual, si la quiero cambiar fuera del documento
+     \date{Hoy mismo!}
+
+   - maketitle borra el uso de author y date, para mantener y llamarlo despues
+     \makeatletter
+     \author{MED}    \let\Author\@author
+     \makeatother
+
+   - lo llamo con \Author
+
+   The titling package provides various user-friendly ways to modify title pages.
+   It provides the macros \thetitle, \theauthor and \thedate which can be reused anywhere in your document.
+
+** Latex
+   {\LaTeX}
+
+** Secciones y subsecciones
+   \section{Introduccion}
+   \subsection{intro 2}
+
+** Bold Italic Enfasis Underline
+   \textbf{texto en negrita}
+   \textit{texto italic}
+   \emph{otro texto en italic}
+   \underline{texto subrayado}
+
+** Comillas
+   " son siempre comillas de cierre
+   `` son comillas de apertura
+   '' son comillas de cierre
+
+** Listas
+*** Lista numerada
+   - empiezo y termino la lista
+     \begin{enumerate}
+     \end{enumerate}
+
+*** Lista sin numeros
+    \begin{itemize}
+    \end{ítemize}
+
+   - items de la lista
+     \item pan
+     \item manteca
+     \item leche
+     \item huevos
+
+** Nombres y referencias
+   - para agregar un nombre a una seccion lo hago con el comando label
+     \setion{Lista\label{lista1}}
+
+   - para llamar a la referencia desde el texto lo hago con ref
+     que me va a remplazar la referecnia con el indice que tenga Lista
+     \ref{lista1}
+
+   - generalmente hay que compilar 2 veces para que reemplaze correctamente
+
+** Archivo de bibliografia
+   - usa biber, no esta por default en slackware
+   
+   - antes del documento llamar al paquete
+     \usepackage{biblatex}
+
+     \usepackage[backend=biber]{biblatex}
+     \addbibresource{uni.bib}
+
+     \usepackage[backend=biber, style=authoryear-icomp]{biblatex}
+
+     #uni.bib es el documento con toda la bibliografia
+
+   - poner documentos, articulos, libros, etc
+     @book{sist_cont,
+     author = "Smith, Luke",
+     title = "First bokk!",
+     year = "2018",
+     publisher = "algun loquito"
+     }
+
+     lo llamo con el primer label sist_cont
+     
+   - donde quiera las referencias de bibliografia
+     \printbibliography
+
+   - en alguna linea dentro del documento
+     as \textcite{sist_cont} el numero debe ser...
+     as \parencite{sist_cont} el numero debe ser...
+
+*** Comandos
+    compilo con pdflatex sin el tipo de archivo??
+    llamo a biber sin el tipo de archivo
+    compilo nuevamente
+
+    pdflatex latex1
+    biber latex1
+    pdflatex latex
+
+** Cambiar el formato fuera del documento
+*** Titulo
+    \usepackage{titlesec}
+
+    \titleformat{\section}
+    {\huge}    #formatting \huge \bfseries \lowercase
+    {}        #numbering \thesection $\bullet$
+    {0em}    #distancia entre el numero y el texto es obligatorio
+    {}        #entre el numer y el texto, lo que sea va aca
+
+    {}[\titlerule]        #en el ultimo argumento le agrego una barra al final
+
+*** Subtitulo
+    - llamar al mismo comando pero en las subsecciones
+    \titleformat{\subsection}      
+      
+*** Sin indentar
+    \titleformat{\subsection}[runin]
+
+*** Cambiar titulo con funcion \renewcommand y paquete titling
+    \renewcommand{maketitle}{}
+
+    \usepackage{titling}
+
+**** Ejemplo
+    \renewcommand{maketitle}
+    {
+    \begin{center}
+    {\huge\bfseries
+    \theauthor}
+
+
+    \end{center}
+    }
+
+*** Espaciado de las secciones
+    \titlespacing{subsubsection}
+    {0em}    #left margin
+    {0em}    #espaciado vertical
+    {0em}    #espaciado luego de la subsection antes del parrafo, horizontal si uso runin o vertical
+
+** Espaciado vertical
+   \vspace{.25em}
+
+** Completado de espacios
+   - para empujar todo a la derecha
+     \hfill
+
+** Linea vertical
+   - con \vline
+   \hfill\vline\hfill
+
+** Mayusculas grandes y chicas Small Caps
+   \textsc{deleu}    #va a salir todo en mayusculas de diferente altura
+
+** Margenes y tamanio de hoja
+   - uso el paquete geometry
+
+   \usepackage{geometry}
+
+   \usepackage[margin=1in]{geometry}
+
+** Imagenes
+   con el paquete graphicx
+   \usepackage{graphicx}
+
+   en el documento
+   \includegraphics{archivo.png}
+
+   \begin{center}
+   \includegraphics[width=2in]{archivo.png}
+   \end{center}
+
+   \includegraphics[scale=0.5]{archivo.png}
+
+   \includegraphics[width=\textwidth]{archivo.png}
+
+   \includegraphics[width=0.7\textwidth]{archivo.png}
+
+** Figuras
+   - mismo paquete anterior, le agrega nombre y ajusta en el texto
+     ademas la acomoda en la hoja independiente de donde se llame, donde le parezca que queda mejor
+
+   \begin{figure}
+   \begin{center}
+   \includegraphics[width=0.7\textwidth]{fig1.png}
+   \end{center}
+   \caption{Esta es la maldita figura}
+   \end{figure}
+
+** Figuras mezcladas con texto - o texto y texto - label y ref
+   - usa lel paquete wrapfig
+     \usepackage{wrapfig}
+
+   \begin{wrapfigure}{r}{3in}        #en la derecha y el tamanio
+   \centering
+   \includegraphics[width=2.5in]{fig2.png}
+   \caption{Esta es la maldita figura}
+   \end{wrapfigure}
+
+*** Label y ref
+    - en la figura
+
+   \begin{wrapfigure}{r}{3in}        #en la derecha y el tamanio
+   \centering
+   \includegraphics[width=2.5in]{fig2.png}
+   \caption{Esta es la maldita figura\label{prueba_fig}}
+   \end{wrapfigure}
+
+   - en el documento
+     please refer to \ref{prueba_fig}
+
+** Texto en Columnas
+   \begin{columns}
+   \column{.5\textwidth}
+   texto
+   \column{.5\textwidth}
+   otro texto
+   \end{columns}
+
+** Funciones NEWCOMMAND
+   - toma dos argumentos 
+     \newcommand{\nombre_cmd}{lo que hace}
+
+   - mas argumentos para pasar al comando, n el numero de comandos
+     \newcommand{\nombre_cmd}[n]{lo que hace}
+
+   - recupero los argumentos con #n, #1, #2
+
+** Minipages
+   - para definir el formato de una parte de la pagina
+     \begin{minipage}[t]{.15\textwidth}
+     \end{minipage}
+     
+** Presentaciones con Beamer
+   https://www.youtube.com/watch?v=zEjBCQhND2c&index=8&list=PL-p5XmQHB_JSQvW8_mhBdcwEyxdVX0c1T
+
+   \documentclass{beamer}
+
+   \usethem{Frankfurt}
+
+*** Slides
+    \begin{frame}
+    \end{frame}
+     
+*** Sections
+    las sections forman links a cada slide
+    \section{explicacion}
+
+
+
