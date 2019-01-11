@@ -378,6 +378,10 @@
      C-x C-e para evaluar y M-x list-packages, si no aparece el repositorio
      M-x packages-refresh-content y debiera ver lo nuevo
 
+** Editar buffer en otro modo
+   - por ejemplo editar en modo c archivos de arduino que son .ino
+     M-x c-mode
+
 ** #### FUNCIONALIDADES CC-MODE (major mode) ####
 *** Indentation
     TAB en un renglon o region
@@ -486,6 +490,8 @@
     You can also use this syntax to sudo/su to root (or of course any other user) on a remote host:
     C-x C-f /ssh:you@remotehost|sudo:remotehost:/path/to/file RET
 
+*** root on multiple hops
+    C-x C-f /ssh:smith16|sudo:root@smith16:/etc/
 
 ** #### WEB Browsing con eww
 *** Para abrir un archivo local M-x eww-open-file

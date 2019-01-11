@@ -33,6 +33,9 @@ C-c C-o org-open-at-point, abre el link
    - [ ] M-S-ENT crea un nuevo checklist
    - [ ] nuevo checklist
 
+   En el nivel del titulo de la lista ** [/] me va completando con las casillas llenas
+   C-c C-c completa el item con X o lo limpia
+
 ** Markup
 You can make words *bold*, /italic/, _underlined_, =code= and ~verbatim~, and, if you must, +strike-through+.
 

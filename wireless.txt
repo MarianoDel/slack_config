@@ -33,4 +33,6 @@ wpa_passphrase [ssid] [password]
 
 #revisar /etc/resolv.conf
 
+#para correr nuevamente wpa
+./rc.inet1 reboot
 

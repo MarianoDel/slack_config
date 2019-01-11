@@ -7,7 +7,6 @@
    - para buscar archivos de paquetes
      kpsewhich graphicx
 
-
 ** Download a Package
    - usa generalmente dos archivos .dtx .ins
      el primero tiene el programa y la documentacion
@@ -79,6 +78,7 @@
 ** Secciones y subsecciones
    \section{Introduccion}
    \subsection{intro 2}
+   \section*{Intro}    #para evitar el numero del indice
 
 ** Bold Italic Enfasis Underline
    \textbf{texto en negrita}
@@ -90,6 +90,38 @@
    " son siempre comillas de cierre
    `` son comillas de apertura
    '' son comillas de cierre
+
+** Acentos
+   - los acentos se pueden incluir como \'a
+   - o directamente en el texto incluyendo el paquete
+     \usepackage[utf8]{inputenc}
+
+     \usepackage[latin1]{inputenc}
+
+   Cuando no hay más remedio, los caracteres extendidos se escriben así:
+   
+   á  ==>  \'a        Á  ==>  \'A     ñ  ==>  \~n   ¿  ==>  ?`
+   é  ==>  \'e        É  ==>  \'E     Ñ  ==>  \~N   ¡  ==>  !`
+   í  ==>  \'\i{}     Í  ==>  \'I     ü  ==>  \"u
+   ó  ==>  \'o        Ó  ==>  \'O     Ü  ==>  \"U
+   ú  ==>  \'u        Ú  ==>  \'U   
+
+** Indentar - Sangria
+   - Indentar esta activo por default en los parrafos, excepto luego de una \section
+     porque en ingles no se indenta la primer linea.
+   - al final del parrafo dos enters o \par
+
+   - En un parrafo puedo empezar con \indent
+
+*** Tamanio del Indent
+    - el tamanio del indent lo puedo modificar con
+    \setlength\parindent{24pt}
+
+*** Si no quiero indentar un parrafo
+    \noindent
+
+*** Indentar luego de una Section
+    \usepackage{indentfirst}
 
 ** Listas
 *** Lista numerada
@@ -289,7 +321,30 @@
    - para definir el formato de una parte de la pagina
      \begin{minipage}[t]{.15\textwidth}
      \end{minipage}
-     
+
+** HyperLinks
+   - uso el paquete hyperref que me permite manipular los links
+     \usepackage{hyperref}
+
+     \hyperref[label_name]{''link text''}
+
+     \href{<my_url>}{<description>}
+
+     \url{<my_url>}
+
+
+** Código dentro del archivo
+   - con el paquete \usepackage{listings}
+
+   \begin{lstlisting}    
+   #include "utils.h"
+   
+   int al_cubo (int a)
+   {
+   return (int) (a*a*a);
+   }
+   \end{lstlisting}
+
 ** Presentaciones con Beamer
    https://www.youtube.com/watch?v=zEjBCQhND2c&index=8&list=PL-p5XmQHB_JSQvW8_mhBdcwEyxdVX0c1T
 
