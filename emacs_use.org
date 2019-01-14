@@ -313,7 +313,7 @@
    
    #### END DIRED ####
 
-** #### FILE MANAGER WITH IBUFFER ####
+** #### FILE MANAGER WITH LIST-BUFFER IBUFFER ####
    - Con C-x C-b aparece el ibuffer con todos los buffers que se estan usando
       incluso los que utiliza dired (mas arriba)
    - En la lista puedo buscar, ENT para elegir alguno
@@ -325,6 +325,7 @@
    - S save marked buffers
    - D deleted marked buffers
    - M-x describe-mode me muestra todas las opciones que tengo en el modo
+   - (defalias 'list-buffers ibuffer)    ;make ibuffer default
 
 ** #### IDO-MODE ####
    en .emacs
@@ -338,14 +339,34 @@
 
 ** #### EDIFF ####
    muestra diff visual entre dos archivos, luego hay que utilizar winner-mode
+*** Comandos de arranque
+    - M-x ediff
+      M-x ediff-files
+      compara dos archivos, el primero por default el actual
+
+    - M-x ediff-buffer
+      compare two open buffers
+
+    - M-x ediff-current-file
+      compara el buffer actual con la info del disco, se puede usar con M-x revert-buffer
+
+    - M-x ediff-directories
+      compara la estructura de dos directorios
+
+    - M-x ediff-backup
+      compara el buffer actual con el algun backup
+
+*** Comandos de sesion
    - | los acomoda uno al lado del otro 
-   - n y p next -previous difference
+   - n y p next - previous difference
    - a completa con el bloque del archivo a
    - b completa con el bloque del archivo b
    - wa graba archivo a
    - wb graba archivo b
    - q sale
    - ? help toggle
+
+
 
 
 ** #### MULTIPLE CURSORS ####
