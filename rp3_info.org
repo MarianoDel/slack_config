@@ -1,4 +1,20 @@
-* Distintas maneras de Conexion
+* FLASH SD
+** Caracteristicas de la memoria
+   - Generalmente se crea la memoria con una imagen .img desde internet
+   - con slackware o arch, por ejemplo, se crea con mucho mas detalle
+
+** Particiones
+   - generalmente tiene dos particiones
+     /boot que es FAT32
+     /root que es ext4 y tiene al SO
+
+   - Las puedo montar en cualquier linux
+     $ su
+     # fdisk -l ;;muestra las particiones de la flash generalmente sdb1 y sdb2
+     # mount /dev/sdb1 /mnt/boot    ;;si no existen estos directorios, crearlos
+     # mount /dev/sdb2 /mnt/root
+
+* DISTINTAS MANERAS DE CONEXION
   
 ** SFTP (envio o recepcion de archivos - con loggeo)
    sftp pi@192.168.1.103
@@ -152,3 +168,21 @@ su pi -c 'vncserver'
 ** TRAMP en Emacs
    (setq tramp-default-method "ssh")
    - C-x C-f /pi@192.168.1.34: RET
+
+* PUERTO SERIE EN RASPBERRY PI3
+** parece que por default ya viene activo el puerto serie
+   ls -l /dev/ttyAMA0
+   crw-rw---- 1 root dialout 204, 64 ..... /dev/ttyAMA0
+
+** pero en rpi3 esta conectada al bluetooth
+   #se debe utilizar /dev/ttyS0 (no existe)
+
+   sudo raspi-config
+   intefaces -> no shell -> hardware yes
+
+   ls -l /dev/ttyS0
+   crw-rw---- 1 root dialout 4, .... /dev/ttyS0
+
+#ahora va ok
+
+
