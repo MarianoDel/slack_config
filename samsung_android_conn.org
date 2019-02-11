@@ -1,5 +1,5 @@
-###ANDROID EN LINUX###
-#Samsung Galaxy
+* ANDROID EN LINUX
+** Samsung Galaxy
 
 1.- Conecto por USB
 lsusb		#me lo lista como un dispositivo de Media
@@ -20,4 +20,9 @@ dmesg | tail
 mkdir ~/android
 mtpfs ~/android
 
-#### El sistema lo monta solo (en realidad no monta pero no importa) y lo deja con un acceso de escritorio
+** El sistema lo monta solo (en realidad no monta pero no importa) y lo deja con un acceso de escritorio
+*** XFCE
+   Funciona en el escritorio
+
+*** i3
+   Funciona dentro de thunar

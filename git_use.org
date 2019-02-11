@@ -252,13 +252,13 @@ git checkout A
 git checkout 7e65enjfk file.txt
 
 ** USOS MAS COMUNES – COMPARAR ARCHIVOS DE DIFERENTES BRANCHES
-#comparo archivo main.c en branches master y pre_cert
+*** comparo archivo main.c en branches master y pre_cert
 git diff master pre_cert -- ./src/main.c
 
-#comparo archivo main.c en branches master y log antiguo (uso los primeros num hash)
+*** comparo archivo main.c en branches master y log antiguo (uso los primeros num hash)
 git diff master 8d55754d965 -- ./src/main.c
 
-COMPARAR ARCHIVOS ANTES DE UN COMMIT O UN ADD
+*** COMPARAR ARCHIVOS ANTES DE UN COMMIT O UN ADD
 git diff master -- /src/main.c		#compara el dir corriente contra el ultimo master, solo main.c
 git diff master                         #compara todos los archivos corrientes contra el ultimo master
 

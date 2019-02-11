@@ -12,6 +12,12 @@
    C-x i pega una archivo dentro del buffer, ej test1.txt
    M-x find-file-at-point abre el archivo debajo del cursor (escrito en el text)
 
+   C-x C-w    //guarda el archivo con otro nombre
+   C-x C-v    //me permite recargar el archivo, por si fue modificado por el sistema
+              //u otro usuario
+
+              Ver DOS Buffers para conversion de formato de archivos
+
 ** Buffers
    C-x b	  //Switch Buffers
    C-x C-b	  //Get a List of Buffers
@@ -149,10 +155,10 @@
         (setq shell-file-name "bash")
         (setq shell-command-switch "-ic")
         tuve que agregar estos switches para que lea lista de aliases, me tira un error pero ejecuta
-
    
 ** Modos de edicion - Major Modes
    C-h m	     	 //lista todos los modos
+   M-x c-mode        //si quisiera editar un archivo con formato C, ej .txt .ino
 
 ** Customizaciones
 ~/.emacs	    //lee el la lista de customizaciones antes de arrancar
