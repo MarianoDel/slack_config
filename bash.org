@@ -22,6 +22,8 @@
    ##para verlo
    echo $PATH
 
+** Buscar Archivo recursivo con los detalles de cada archivo
+   find -name hard.h |xargs ls -alF
 ** BUSQUEDA POR TEXTO DENTRO DEL ARCHIVO
    grep -lir "main.py" * //busca una linea main.py dentro de archivos con nombre *
    grep -i	//ignore case

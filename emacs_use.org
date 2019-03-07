@@ -615,3 +615,4 @@
    - M-x customize-theme
    - M-x load-theme    #muestra lista de posibilidades
 
+     

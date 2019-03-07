@@ -332,6 +332,83 @@
 
      \url{<my_url>}
 
+** Matematica y Formulas
+   To print your equations in display mode use one of these delimiters:
+   \[ \], $$ $$, \begin{displaymath} \end{displaymath} or 
+   \begin{equation} \end{equation}
+
+*** Letras griegas, operadores y otros
+    Greek letters	\alpha \beta \gamma \rho \sigma \delta \epsilon
+
+    Binary operators	\times \otimes \oplus \cup \cap
+
+    Relation operators	< > \subset \supset \subseteq \supseteq
+
+    Others	\int \oint \sum \prod
+
+*** Inline
+    This formula $f(x) = x^2$ is an example.
+
+*** En el centro de la hoja
+    $$E=mc^2$$
+
+*** Ecuaciones y entornos alineados
+    \usepackage{amsmath}
+
+    \begin{document}
+
+    \begin{equation*}
+    1 + 2 = 3 
+    \end{equation*}
+
+    \begin{equation*}
+    1 = 3 - 2
+    \end{equation*}
+
+    - la alineacion la consigo con el &
+    \begin{align*}
+    1 + 2 &= 3\\
+    1 &= 3 - 2
+    \end{align*}
+
+*** Fracciones
+    \usepackage{amsmath}
+
+    \begin{document}
+
+    \begin{align*}
+    f(x) &= x^2\\
+    g(x) &= \frac{1}{x}\\
+    F(x) &= \int^a_b \frac{1}{3}x^3
+    \end{align*}
+
+    \frac{1}{\sqrt{x}}
+
+*** Matrices
+    - usar paquetes anteriores
+    \begin{matrix}
+    1 & 0\\
+    0 & 1
+    \end{matrix}
+
+    - con corchetes
+      [
+    \begin{matrix}
+    1 & 0\\
+    0 & 1
+    \end{matrix}
+    ]
+
+    - con corchetes escalados
+      \left[
+    \begin{matrix}
+    1 & 0\\
+    0 & 1
+    \end{matrix}
+    \right]
+
+*** Paretesis escalados
+    \left(\frac{1}{\sqrt{x}}\right)
 
 ** Código dentro del archivo
    - con el paquete \usepackage{listings}

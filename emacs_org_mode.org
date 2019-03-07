@@ -180,6 +180,21 @@ taylor($3,x=7,2)     Taylor series of $3, at x=7, second degree
     - Para listar o cambiar los themes que se pueden utilizar
       M-x load-theme RET TAB
 
+
+** Exportar a Latex + pdf
+   M-x org-export-dispacher 
+   l 
+   o
+
+*** Opciones dentro del documento org
+    - Para forzar nueva linea
+      \\
+    - Para no permitir que _ se tome como subindice (underscore-to-subscript)
+      #+OPTIONS: ^:nil
+    - Por default se exporta una table de contenidos
+      para que tenga una profundidad de 2 #+OPTIONS: toc:2
+      para deshabilitar #+OPTIONS: toc:nil
+
 ** Link a Org tutorial
    http://pragmaticemacs.com/emacs/org-mode-basics-v-exporting-your-notes/
 
