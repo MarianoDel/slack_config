@@ -9,7 +9,7 @@
    $ pyside2-rcc //para archivo resources
 
 *** Levantar interface grafica desde la aplicacion
-    en el archivo de aplicacion incluir código de ejemplo
+    en el archivo de aplicacion incluir c�digo de ejemplo
 
 import sys
 from PySide.QtGui import *
@@ -386,10 +386,7 @@ https://stackoverflow.com/questions/35532459/smooth-drawing-with-qpainter
 
 https://stackoverflow.com/questions/9465047/make-an-animated-wave-with-drawpolyline-in-pyside-pyqt
 
-* Algo general de Python que aplica - The Zen of Python
-** Lo que no este en este documento
-   https://www.pythoncheatsheet.org
-
+* Algo general de Python que aplica
 ** Callbacks en python
 
    https://stackoverflow.com/questions/443885/python-callbacks-delegates-what-is-common
@@ -444,98 +441,12 @@ https://stackoverflow.com/questions/9465047/make-an-animated-wave-with-drawpolyl
 ** para escribir texto
    - qlabel.setText(str1)
 
-* Pasar de str a int, float
+* Pasar de str a int
 ** pasar a int
    - new_int = int(str1)
-   - new_float = float(str2)
 
 * Eventos y Handlers
-** Eventos
-  Los eventos pueden ser generados por el propio programa, otra instancia u otro programa.
-  Son recibidos por el main loop y despachados a los objetos.
-  - event source    #es el objeto donde cambia el estado
-  - event object    #es la instancia que encapsula el cambio del source "event"
-  - event target    #es el objeto que desea ser notificado
-
-*** pyQt5 Signals and Slots
-    Una signal es emitida con el evento, un slot es llamado cuando esta conectado al evento.
-
-    sld.valueChanged.connect(lcd.display)
-    
-    sld.valueChanged es el evento y la signal
-    .connect conecta el evento con el slot (lcd.display)
-
-*** Reimplementing event handler
-    - Events in PyQt5 are processed often by reimplementing event handlers.
-    - reimplemento el evento keyPressEvent() para cerrar aplicacion con tecla ESC
-
-    def keyPressEvent(self, e):       
-        if e.key() == Qt.Key_Escape:
-            self.close()
-
-    - reimplemento evento del mouse, con lo valores (x,y) los escribo en un textLabel
-      def mouseMoveEvent(self, e):        
-        x = e.x()
-        y = e.y()
-        
-        text = "x: {0},  y: {1}".format(x, y)
-        self.label.setText(text)
-
-*** Event sender
-    Sometimes it is convenient to know which widget is the sender of a signal. 
-    For this, PyQt5 has the sender() method.
-
-    #conecto event -> signal -> slot (buttonClicked)
-    btn1.clicked.connect(self.buttonClicked)            
-    btn2.clicked.connect(self.buttonClicked)
-
-    #con el metodo sender conozco quien me llamo, y en particular me quedo con el texto
-    def buttonClicked(self):      
-        sender = self.sender()
-        self.statusBar().showMessage(sender.text() + ' was pressed')
-
-** Signals
-   - creo una clase que tieneun objeto signal
-   - inicializo el objeto de la clase y conecto la signal al slot (self.close)
-   - cuando presiono el mouse, capturo el evento y emito la nueva signal
-   - la nueva signal al estar conectada a close cierra el programa
-    
-   
-import sys
-from PyQt5.QtCore import pyqtSignal, QObject
-from PyQt5.QtWidgets import QMainWindow, QApplication
-
-class Communicate(QObject):    
-    closeApp = pyqtSignal() 
-    
-class Example(QMainWindow):    
-    def __init__(self):
-        super().__init__()        
-        self.initUI()
-                
-    def initUI(self):      
-        self.c = Communicate()
-        self.c.closeApp.connect(self.close)               
-        self.setGeometry(300, 300, 290, 150)
-        self.setWindowTitle('Emit signal')
-        self.show()
-                
-    def mousePressEvent(self, event):        
-        self.c.closeApp.emit()
-        
-        
-if __name__ == '__main__':    
-    app = QApplication(sys.argv)
-    ex = Example()
-    sys.exit(app.exec_()) 
-
-   
-
-** Lins
-   http://zetcode.com/gui/pyqt5/eventssignals/
-
-  
-  
+  ** 
 * QtCreator
 ** Archivo resources
    - creo una carpeta dentro del proyecto resources y pongo los archivos que quiero, fotos, iconos, etc.
@@ -550,115 +461,3 @@ if __name__ == '__main__':
 *** la suma de la altura de los widgets es mayor a lo que me muestra creator
     - aumento la geometria del grafico desde 1024 x 768 a 1024 x 900
     - corrijo los widgets o agrego los espaciadores y vuelvo a mi geometria original
-
-* Python General
-** Link
-   https://pythoncheatsheet.org
-
-** String Formatting C-Style
-   Python uses C-style string formatting to create new, formatted strings. The "%" operator
-   is used to format a set of variables enclosed in a "tuple" (a fixed size list), together
-   with a format string, which contains normal text together with "argument specifiers", 
-   special symbols like "%s" and "%d".
-
-   Let's say you have a variable called "name" with your user name in it, and you would then
-   like to print(out a greeting to that user.)
-
-*** String Simple
-    name = MED
-    print("Hello , %s!" % name)
-
-*** String Multiple
-    name = "John"
-    age = 34
-    print("%s is %d years old." % (name, age))
-
-    Any object which is not a string can be formatted using the %s operator as well.
-    The string which returns from the "repr" method of that object is formatted as the string.
-    For example:
-
-    mylist= [1, 2, 3]
-    print("mi nueva lista: %s" % mylist)
-
-*** Formatos especiales
-    For example, '%03.2f'
-
-*** Here are some basic argument specifiers you should know:
-
-    %s - String (or any object with a string representation, like numbers)
-
-    %d - Integers
-
-    %f - Floating point numbers
-
-    %.<number of digits>f - Floating point numbers with a fixed amount of digits to the right of the dot.
-
-    %x/%X - Integers in hex representation (lowercase/uppercase)
-
-** String Formatting New Style str.format
-
-   name = 'John'
-   age = 20'
-   print("Hello I'm {}, my age is {}".format(name, age))
-
-*** Formatos especiales
-    https://docs.python.org/3/library/string.html
-    replacement_field ::=  "{" [field_name] ["!" conversion] [":" format_spec] "}"
-    {:d} 
-
-**** Integer
-    The available integer presentation types are:
-
-    Type	Meaning
-    'b'	Binary format. Outputs the number in base 2.
-    'c'	Character. Converts the integer to the corresponding unicode character before printing.
-    'd'	Decimal Integer. Outputs the number in base 10.
-    'o'	Octal format. Outputs the number in base 8.
-    'x'	Hex format. Outputs the number in base 16, using lower-case letters for the digits above 9.
-    'X'	Hex format. Outputs the number in base 16, using upper-case letters for the digits above 9.
-    'n'	Number. This is the same as 'd', except that it uses the current locale setting to insert the appropriate number separator characters.
-    None	The same as 'd'.
-
-**** Floating
-     The available presentation types for floating point and decimal values are:
-
-     Type	Meaning
-     'e'	Exponent notation. Prints the number in scientific notation using the letter ‘e’ to indicate the exponent. The default precision is 6.
-     'E'	Exponent notation. Same as 'e' except it uses an upper case ‘E’ as the separator character.
-     'f'	Fixed-point notation. Displays the number as a fixed-point number. The default precision is 6.
-     'F'	Fixed-point notation. Same as 'f', but converts nan to NAN and inf to INF.
-     'g'	
-
-     General format. For a given precision p >= 1, this rounds the number to p significant digits and then
-     formats the result in either fixed-point format or in scientific notation, depending on its magnitude.
-
-     The precise rules are as follows: suppose that the result formatted with presentation type 'e' and
-     precision p-1 would have exponent exp. Then if -4 <= exp < p, the number is formatted with presentation
-     type 'f' and precision p-1-exp. Otherwise, the number is formatted with presentation type 'e' and
-     precision p-1. In both cases insignificant trailing zeros are removed from the significand, and
-     the decimal point is also removed if there are no remaining digits following it.
-
-     Positive and negative infinity, positive and negative zero, and nans, are formatted as inf, -inf,
-     0, -0 and nan respectively, regardless of the precision.
-
-     A precision of 0 is treated as equivalent to a precision of 1. The default precision is 6.
-
-     'G'	General format. Same as 'g' except switches to 'E' if the number gets too large. The representations of infinity and NaN are uppercased, too.
-     'n'	Number. This is the same as 'g', except that it uses the current locale setting to insert the appropriate number separator characters.
-     '%'	Percentage. Multiplies the number by 100 and displays in fixed ('f') format, followed by a percent sign.
-     None	Similar to 'g', except that fixed-point notation, when used, has at least one digit past the decimal point. The default precision is as high as needed to represent the particular value. The overall effect is to match the output of str() as altered by the other format modifiers.
-
-
-    For example, '%03.2f' can be translated to '{:03.2f}'
-   
-** Formatted String Literals or f-strings
-   name = 'Elizabeth'
-   f'Hello {name}!'
-   'Hello Elizabeth!
-
-   - It is even possible to do inline arithmetic with it:
-   >>> a = 5
-   >>> b = 10
-   >>> f'Five plus ten is {a + b} and not {2 * (a + b)}.'
-   'Five plus ten is 15 and not 30.'
-

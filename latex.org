@@ -72,6 +72,31 @@
    The titling package provides various user-friendly ways to modify title pages.
    It provides the macros \thetitle, \theauthor and \thedate which can be reused anywhere in your document.
 
+*** Multiples Autores
+    \author{
+    LastName1, FirstName1\\
+    \texttt{first1.last1@xxxxx.com}
+    \and
+    LastName2, FirstName2\\
+    \texttt{first2.last2@xxxxx.com}
+    }
+    \title{Usage of the \texttt{\textbackslash author} command}
+
+    \begin{document}
+    \maketitle
+    \end{document}
+
+*** Mejores titulos
+    https://en.wikibooks.org/wiki/LaTeX/Title_Creation
+
+*** Subtitle
+    - la clase de documento articulo no tiene macro \subtitle, se lo puede agregar 
+      directamente dentro de \title
+    \title{Title \\ Subtitle}
+
+    - se puede definir el documento como scrartcl que si tiene macro \subtitle
+      \documentclass{scrartcl}
+
 ** Latex
    {\LaTeX}
 
@@ -243,6 +268,9 @@
 ** Mayusculas grandes y chicas Small Caps
    \textsc{deleu}    #va a salir todo en mayusculas de diferente altura
 
+** Salto de pagina
+   \pagebreak
+
 ** Margenes y tamanio de hoja
    - uso el paquete geometry
 
@@ -267,6 +295,52 @@
 
    \includegraphics[width=0.7\textwidth]{archivo.png}
 
+** Basics of Labels and Referencing
+   \label{marker}
+   The marker can be seen as a name that we give to the object that we want to reference. 
+   It's important to add \label after a numbered element e.g. *\section, \subsection, \caption* etc, 
+   otherwise the label won't "latch on" to the correct number or counter.
+
+   \ref{marker}
+   This prints the number assigned to the object labeled by marker.
+
+   \pageref{marker}
+   This prints the number of the page where the object labeled by marker appears.
+
+** Bibliografia simple
+   - https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+   - antes del final del documento \end{document}
+   \begin{thebibliography}{9}
+
+   \bibitem{lamport94}
+   Leslie Lamport,
+   \textit{\LaTeX: a document preparation system},
+   Addison Wesley, Massachusetts,
+   2nd edition,
+  1994.
+
+  \end{thebibliography}
+
+  - lo llamo con \cite{cite_key}
+
+*** Otro simple
+    \begin{thebibliography}{1}
+
+    \bibitem{notes} John W. Dower {\em Readings compiled for History
+    21.479.}  1991.
+
+    \bibitem{impj}  The Japan Reader {\em Imperial Japan 1800-1945} 1973:
+    Random House, N.Y.
+
+    \bibitem{norman} E. H. Norman {\em Japan's emergence as a modern
+    state} 1940: International Secretariat, Institute of Pacific
+    Relations.
+
+    \bibitem{fo} Bob Tadashi Wakabayashi {\em Anti-Foreignism and Western
+    Learning in Early-Modern Japan} 1986: Harvard University Press.
+
+    \end{thebibliography}
+
 ** Figuras
    - mismo paquete anterior, le agrega nombre y ajusta en el texto
      ademas la acomoda en la hoja independiente de donde se llame, donde le parezca que queda mejor
@@ -277,6 +351,24 @@
    \end{center}
    \caption{Esta es la maldita figura}
    \end{figure}
+
+   - si lo quiero en ese exacto lugar \begin{figure}[h!]
+     para referenciarlo ~\ref{fig:maldita}
+
+   \begin{figure}[h!]
+   \includegraphics[width=0.7\textwidth]{fig1.png}
+   \caption{Esta es la maldita figura}
+   \label{fig:maldita}
+   \end{figure}
+
+*** Modificadores []
+h	Place the float here, i.e., approximately at the same point it occurs in the source text (however, not exactly at the spot)
+t	Position at the top of the page.
+b	Position at the bottom of the page.
+p	Put on a special page for floats only.
+!	Override internal parameters LaTeX uses for determining "good" float positions.
+H	Places the float at precisely the location in the LaTeX code. 
+        Requires the float package,[1] i.e., \usepackage{float}. USAR ESTE SI QUIERO LA FOTO JUSTO AHI
 
 ** Figuras mezcladas con texto - o texto y texto - label y ref
    - usa lel paquete wrapfig
@@ -300,14 +392,6 @@
    - en el documento
      please refer to \ref{prueba_fig}
 
-** Texto en Columnas
-   \begin{columns}
-   \column{.5\textwidth}
-   texto
-   \column{.5\textwidth}
-   otro texto
-   \end{columns}
-
 ** Funciones NEWCOMMAND
    - toma dos argumentos 
      \newcommand{\nombre_cmd}{lo que hace}
@@ -321,6 +405,16 @@
    - para definir el formato de una parte de la pagina
      \begin{minipage}[t]{.15\textwidth}
      \end{minipage}
+
+   - dos minipage pegadas deben salir en columna mientras no se supere \textwith, pero
+     no me funciona
+
+** Columnas
+   - pruebo con tablas
+     \begin{tabular}{ l r }
+   \includegraphics[width=0.35\textwidth]{images/induction_motor.jpg} &
+   \includegraphics[width=0.55\textwidth]{images/auxiliary_winding_scheme.png}\\  
+   \end{tabular}
 
 ** HyperLinks
    - uso el paquete hyperref que me permite manipular los links
@@ -336,6 +430,14 @@
    To print your equations in display mode use one of these delimiters:
    \[ \], $$ $$, \begin{displaymath} \end{displaymath} or 
    \begin{equation} \end{equation}
+
+*** Punto para multipliar
+    \cdot
+
+*** Subscripts and superscripts
+   cos-1 --> cos^{-1}
+
+   cos \phi_{sc}
 
 *** Letras griegas, operadores y otros
     Greek letters	\alpha \beta \gamma \rho \sigma \delta \epsilon
@@ -383,6 +485,15 @@
     \end{align*}
 
     \frac{1}{\sqrt{x}}
+
+*** Integrales
+    \int_lowerbound^upperbound
+
+    $\int_a^b f(x)dx$
+
+\begin{equation*}
+  ta = \int_0^{nr} \frac {2\pi(Jm - Jl)} {60(CM - CL)} dn
+\end{equation*}
 
 *** Matrices
     - usar paquetes anteriores
@@ -459,6 +570,15 @@
 *** Sections
     las sections forman links a cada slide
     \section{explicacion}
+
+*** Texto en Columnas
+    - esto es para el sistema de presentaciones [beamer]
+    \begin{columns}
+    \column{.5\textwidth}
+    texto
+    \column{.5\textwidth}
+    otro texto
+    \end{columns}
 
 
 

@@ -2,3 +2,6 @@
 
 ** Crear Archivo ZIP
     $ zip nombre.zip lista archivos
+
+** Para comprimir todo un directorio recursivo
+   $ zip -r dir_files

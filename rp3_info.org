@@ -186,3 +186,8 @@ su pi -c 'vncserver'
 #ahora va ok
 
 
+
+* Configuracion IP en raspbian
+
+** cambiar ip en raspbian (extraniamente en la conf del dhcpd)
+   /etc/dhcpcd.conf #activo los renglones de ip estatica

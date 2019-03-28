@@ -75,3 +75,18 @@
    - env     # me muestra todos los valores de las variables que conoce
    - export CFLAGS='-g -Wall'    # setea el valor de la variable
    - echo $USER    # me muestra el valor de una variable especial
+
+* Comandos de Networking
+** ping a todo un segmento
+   cortar con CTRL-c un monton de veces (1 por loop)
+   for i in $(seq 1 254); do ping -c1 -t 1 192.168.11.$i; done
+   
+   
+** todas las ip conocidas
+   arp -a
+
+** Conexion remota
+   ssh pi@192.168.1.100
+
+   ip / port
+   ssh pi@192.168.1.35 22

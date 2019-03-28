@@ -12,7 +12,7 @@
    slpkg -p <repo> <paquete>    #miro el estado del paquete;
    slpkg -p slonly qterminal
 
-** Cheque de dependencias antes de instalar
+** Chequeo de dependencias antes de instalar
    slpkg -t <repo> <paquete>    #chequeo las dependencias VERDE=OK, ROJO=FALTA;
    slpkg -t slonly qterminal
    
