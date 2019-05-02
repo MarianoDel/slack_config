@@ -8,7 +8,7 @@ ifconfig 		 //si existe la interface wlan0 me dice si tiene ip asignada (y cual 
 
 iwlist wlan0 scanning	 //me constesta las redes que ve en el aire con su ESSID
 iwlist wlan0 scanning | grep ESSID
-
+iwlist wlan0 scan 
 
 
 //archivos de configuracion
@@ -23,6 +23,8 @@ iwlist wlan0 scanning | grep ESSID
 //para generar la clave wpa conociendo el ESSID y la clave
 wpa_passphrase [ssid] [password]
 
+7865638124
+
 ###### A VECES VE LA RED PERO NO CONSIGUE IP PORQUE EL DHCP YA TERMINO O NO TIENE CLAVE
 #con wpa_gui conecto la red
 #como root
@@ -35,4 +37,14 @@ wpa_passphrase [ssid] [password]
 
 #para correr nuevamente wpa
 ./rc.inet1 reboot
+
+
+## para script
+touch /tmp/scan.txt
+iwlist wlan0 scan >> /tmp/scan.txt
+grep ESSID /tmp/scan.txt
+/etc/rc.d/rc.inet1 stop
+/etc/rc.d/rc.inet1 start
+
+
 

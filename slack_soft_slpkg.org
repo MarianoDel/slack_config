@@ -16,28 +16,45 @@
    slpkg -t <repo> <paquete>    #chequeo las dependencias VERDE=OK, ROJO=FALTA;
    slpkg -t slonly qterminal
    
-** Instalopaquete y dependencias
+** Instalo paquete y dependencias
    slpkg -s <repo> <paquete>    #instalo paquete resolviendo dependencias;
    slpkg -s slonly qterminal
 
+** Buscar paquete instalado
+   slpkg -f <paquete>
+
+** Borrar paquete instalado
+   slpkg -r <paquete>
 
 * Qué es Slpkg
-Slpkg es un potente gestor de paquetes para Slackware. Es capaz de calcular automáticamente las dependencias y puede proporcionar datos administrativos sobre los paquetes. Dice su página oficial que hace más fácil mantener grupos de máquinas sin tener que actualizar cada una de forma manual.
-Slpkg funciona en conformidad con los estándares de organización utilizados en la creación de paquetes por slackbuilds.org. También utiliza las instrucciones estándares de Slackware Linux para la instalación, actualización o eliminación de paquetes.
-¿Qué hace que Slpkg sea diferente a otros administradores? La facilidad de uso es su principal objetivo, así como la facilidad de comprensión y utilización, la utilización de colores para resaltar los nombres de paquetes y mensajes de advertencia, entre otros.
-También soporta múltiples fuentes (repositorios de terceros y Slackbuilds), y es posible instalar los paquetes oficiales directamente de los repositorios oficiales de Slackware. Puede comprobar las actualizaciones para los paquetes también, antes de instalarlos.
+  Slpkg es un potente gestor de paquetes para Slackware. Es capaz de calcular automáticamente las 
+  dependencias y puede proporcionar datos administrativos sobre los paquetes. Dice su página oficial
+  que hace más fácil mantener grupos de máquinas sin tener que actualizar cada una de forma manual.
+  
+  Slpkg funciona en conformidad con los estándares de organización utilizados en la creación de 
+  paquetes por slackbuilds.org. También utiliza las instrucciones estándares de Slackware Linux para
+  la instalación, actualización o eliminación de paquetes.
+  
+  ¿Qué hace que Slpkg sea diferente a otros administradores? La facilidad de uso es su principal 
+  objetivo, así como la facilidad de comprensión y utilización, la utilización de colores para 
+  resaltar los nombres de paquetes y mensajes de advertencia, entre otros.
+  
+  También soporta múltiples fuentes (repositorios de terceros y Slackbuilds), y es posible 
+  instalar los paquetes oficiales directamente de los repositorios oficiales de Slackware. 
+  Puede comprobar las actualizaciones para los paquetes también, antes de instalarlos.
+
 ** Características:
-Resuelve dependencias
-Visualiza dependencias
-Varias opciones
-Varios repositorios
-Fácil configuración
-Totalmente configurable
-Adaptable
-Tiene opciones de gran alcance
-Compila paquetes
-Veloz
-Seguro
+   - Resuelve dependencias
+   - Visualiza dependencias
+   - Varias opciones
+   - Varios repositorios
+   - Fácil configuración
+   - Totalmente configurable
+   - Adaptable
+   - Tiene opciones de gran alcance
+   - Compila paquetes
+   - Veloz
+   - Seguro
 
 ** Configuración
 Después de instalarlo, necesitas configurar los repositorios. Para ello debes editar el archivo:
@@ -146,3 +163,9 @@ Eliminar paquetes con “_Sbo”
 [ delete ] –> enum34-1.0.4-x86_64-1_SBo
 Si usas “–check-list” aparece el siguiente cuadro de diálogo como en este caso:
 # slpkg -r _SBo --tag --checklist
+
+* DONDE QUEDAN LOS SCRIPTS y paquetes
+   el soft queda distribuido en el sistema, el binario y los scripts quedan alojados en:
+   /var/log/packages
+   /var/log/scripts
+   /var/log/removed_scripts	#para los paquetes borrados

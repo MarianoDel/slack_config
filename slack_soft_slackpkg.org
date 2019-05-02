@@ -21,6 +21,11 @@ https://gnustav.org/operating-system/gestion-de-paquetes-en-slackware-linux.html
 
    no se borran ni actualizan paquetes instalados desde SlackBuilds.org y repositorio AlienBob
 
+* DONDE QUEDAN LOS SCRIPTS y paquetes
+   el soft queda distribuido en el sistema, el binario y los scripts quedan alojados en:
+   /var/log/packages
+   /var/log/scripts
+   /var/log/removed_scripts	#para los paquetes borrados
 
 * OLD Tutorial
 ** Introduction
@@ -48,12 +53,13 @@ https://gnustav.org/operating-system/gestion-de-paquetes-en-slackware-linux.html
    (such as patches) will be downloaded.
 
 ** Search
-   You can search in official Slackware packages for any *FILE* in the Slackware distribution. Do you need a strange library?
+   You can search in official Slackware packages for any *FILE* in the Slackware distribution. Do you need
+   a strange library?
    Use search to find it.
 
    # slackpkg search filename
-   All packages that contain the "filename" file will be shown with status showing whether the packages are installed or not,
-   and if not, you can download and install them with other slackpkg commands.
+   All packages that contain the "filename" file will be shown with status showing whether the packages
+   are installed or not, and if not, you can download and install them with other slackpkg commands.
 
 ** Install
    The instalation of a package is very easy. You only need to type:
@@ -65,15 +71,15 @@ https://gnustav.org/operating-system/gestion-de-paquetes-en-slackware-linux.html
    As an example:
    
    # slackpkg install n/dhcp
-   will download and install dhcp and dhcpcd. You can't install an already installed package; for this, you need to upgrade
-   the package.
+   will download and install dhcp and dhcpcd. You can't install an already installed package; for this, you 
+   need to upgrade the package.
 
 ** Upgrade
-   Upgrade works in the same way as install. The only difference is that upgrade can re-install already installed packages and/or
-   upgrade installed packages with a new version of them.
+   Upgrade works in the same way as install. The only difference is that upgrade can re-install 
+   already installed packages and/or upgrade installed packages with a new version of them.
 
-   Upgrade can't install new packages; you need to install the package first and then do an upgrade (or you can install the upgraded
-   package to start with and save time).
+   Upgrade can't install new packages; you need to install the package first and then do an upgrade 
+   (or you can install the upgraded package to start with and save time).
 
 ** Reinstall
    In case you mistakenly corrupt something, the reinstall option is provided.
@@ -85,12 +91,14 @@ https://gnustav.org/operating-system/gestion-de-paquetes-en-slackware-linux.html
    will remove all packages with "kde" in their name.
 
 ** Blacklist -- MUY IMPORTANTE --
-   With this command, you can "blacklist" certain packages. Packages blacklisted can't be installed, upgraded, or removed using
-   the slackpkg utility. If you want to remove some package from the blacklist, you will need to edit /etc/slackpkg/blacklist.
+   With this command, you can "blacklist" certain packages. Packages blacklisted can't be installed, 
+   upgraded, or removed using the slackpkg utility. If you want to remove some package from the 
+   blacklist, you will need to edit /etc/slackpkg/blacklist.
 
 ** Download
-   Tells slackpkg to download the packages, but not to install them. They will be in /var/cache/packages, and you can
-   install/upgrade/reinstall them later (or burn them to CD).
+   Tells slackpkg to download the packages, but not to install them. They will be in 
+   /var/cache/packages
+   and you can install/upgrade/reinstall them later (or burn them to CD).
 
 ** Info
    Print information about the package(s): compressed and uncompressed size, description, etc...

@@ -616,3 +616,7 @@
    - M-x load-theme    #muestra lista de posibilidades
 
      
+** Combinations swallow by terminal
+   - para ver las combinaciones que si llegan
+   C-h l (M-x view-lossage)
+   

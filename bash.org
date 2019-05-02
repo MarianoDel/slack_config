@@ -67,6 +67,63 @@
 ** BashScript
     http://mywiki.wooledge.org/BashGuide/CommandsAndArguments
 
+** AWK BashScripts
+*** Imprimir lineas salteadas desde un archivo
+    - awk '(NR-1)%5<3' file
+    - NR numero de linea
+
+    - awk '{if((NR-1) % 5<=2){print $0}}' file
+    - It will only print first 3 lines in sequence of 5 lines. 
+    Because (NR-1)%5 will give output like 0 1 2 3 4, and first 3 lines 
+    are less than equal to 2. So it will only print them.
+
+** Imprimir algunas lineas de un archivo
+*** con awk como mas arriba
+*** head si es la primera linea
+    head -1 file.txt
+
+*** sed para lineas salteadas
+    - imprimir solo la primera linea, -n quita salida default (todas las lineas)
+      sed -n 1p file.txt
+
+    - To extract a range of lines, say lines 2 to 4, you can execute either of the following:
+    $ sed -n 2,4p somefile.txt
+    $ sed '2,4!d' somefile.txt
+
+    - Note that the comma specifies a range (from the line before the comma to the line after).
+    What if the lines you want to extract are not in sequence, say lines 1 to 2, and line 4?
+    $ sed -n -e 1,2p -e 4p somefile.txt
+
+*** Numeros de lineas en un archivo
+    grep -n ESSID scan.txt |awk -F: '{print $1}'
+
+    grep -n ESSID scan.txt |sed -n 's/^\([0-9]*\)[:].*/\1/p'
+
+    The -n means not to print anything unless it's explicitly requested. 
+    s - substitute
+    / - beginning of patter to match
+    ^ - The null character at the start of the line
+    \(....\) - store this in the pattern buffer
+    [0-9]* - match any number of occurrences numbers in the range 0-9
+    [:] - match the ":" character
+    .* - match any number of any characters (the rest of the line)
+    / - end on the match patter and beginning on the replace pattern
+    \1 - the first entry in the pattern buffer ( what was stored with \(...\) )
+    / - end of the replace pattern
+    p - print
+
+*** Enteros en Bash
+    In bash, one does not "convert an argument to an integer to perform arithmetic".
+    In bash, variables are treated as integer or string depending on context.
+    To perform arithmetic, you should invoke the arithmetic expansion operator $((...)).
+    For example:
+
+    $ a=2
+    $ echo "$a + 1"
+    2 + 1
+    $ echo "$((a + 1))"
+    3
+
 ** Comandos: pushd popd
    - para cambiar de directorio al que despues quiero volver
      pushp /home/med    #me lleva al directorio /home/med guardando el actual

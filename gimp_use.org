@@ -33,6 +33,9 @@
    - si la imagen tiene un color que quiero copiar uso la herramienta
      color picker (la que tiene una gota)
 
+   - ese color es el que aparece en el cuadro de color, si quiero saber el valor
+     abro el cuadro
+
 ** Dibujar Linea recta
    - elegir paintbrush
      hacer el primer punto en la imagen
@@ -48,6 +51,12 @@
     - si quiero pintar por afuera Invert Selection
     - si quiero cambiar tamanio edito el cuadro moviendo los laterales
 
+
+** Texto
+   - cada texto me los escribe en un layer diferente
+   - cuando lo selecciono me permite editarlo
+   - si le quiero cambiar color, propiedades tipo tamanio, lo debo pintar dentro del 
+     recuadro y aplicar los cambios
 
 ** Fondo Transparente (si es blanco)
    - Crear Layer canal alpha

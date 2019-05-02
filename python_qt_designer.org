@@ -537,6 +537,9 @@ if __name__ == '__main__':
   
   
 * QtCreator
+** qt y css
+   https://thesmithfam.org/blog/2009/09/10/qt-stylesheets-tutorial/
+
 ** Archivo resources
    - creo una carpeta dentro del proyecto resources y pongo los archivos que quiero, fotos, iconos, etc.
 
@@ -661,4 +664,7 @@ if __name__ == '__main__':
    >>> b = 10
    >>> f'Five plus ten is {a + b} and not {2 * (a + b)}.'
    'Five plus ten is 15 and not 30.'
+
+** ToLower()
+   str(sender.text()).lower()
 

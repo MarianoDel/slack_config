@@ -191,3 +191,278 @@ su pi -c 'vncserver'
 
 ** cambiar ip en raspbian (extraniamente en la conf del dhcpd)
    /etc/dhcpcd.conf #activo los renglones de ip estatica
+
+* Boot Sequence
+** The boot sequence of the Raspberry Pi is basically this:
+   - Stage 1 boot is in the on-chip ROM. Loads Stage 2 in the L2 cache
+   - Stage 2 is bootcode.bin. Enables SDRAM and loads Stage 3
+   - Stage 3 is loader.bin. It knows about the .elf format and loads start.elf
+   - start.elf loads kernel.img. It then also reads config.txt, cmdline.txt and bcm2835.dtb 
+     If the dtb file exists, it is loaded at 0×100 & kernel @ 0×8000 
+     If disable_commandline_tags is set it loads kernel @ 0×0 
+     Otherwise it loads kernel @ 0×8000 and put ATAGS at 0×100
+   - kernel.img is then run on the ARM.
+
+   *Everything is run on the GPU until kernel.img is loaded on the ARM.*
+
+** Otro link bastante bueno de la secuencia
+   https://wiki.beyondlogic.org/index.php?title=Understanding_RaspberryPi_Boot_Process
+
+** Otro para limpiar mensajes
+   https://scribles.net/customizing-boot-up-screen-on-raspberry-pi/
+
+*** wrap del web anterior
+    This is a steps to customize Raspberry Pi’s boot up screen, specifically to change the splash
+    image and remove unwanted images and texts. 
+    By default, Raspbian Jessie Desktop displays below during boot up before starting desktop GUI.
+
+    1. Rainbow image
+    2. Raspberry Pi Logo (image of four raspberries in the top left corner)
+    3. Boot message log
+    4. Blinking cursor for boot message logs (at the top left corner)
+    5. Splash Image (“Welcome to pixel”)
+    6. One-line text under splash image
+
+    By following the steps below, we’ll remove (1)-(4) and (6), then replace the default splash 
+    image with whatever you want to display at (5).
+
+    Assumption:
+    You should have your own splash image somewhere. In the steps below, assuming that the file 
+    name of the splash image is “my_splash.png” and it’s located home directory. (i.e. “~/my_splash.png”)
+
+    Here are the steps:
+
+    Remove Rainbow Screen
+    Open “/boot/config.txt” as root.
+
+    # sudo nano /boot/config.txt  
+
+    Then add below line at the end of the file.
+
+    # disable_splash=1  
+
+    Remove text message under splash image:
+    Open “/usr/share/plymouth/themes/pix/pix.script” as root.
+
+    # sudo nano /usr/share/plymouth/themes/pix/pix.script  
+
+    Then, remove (or comment out) four lines below:
+
+    # message_sprite = Sprite();  
+    # message_sprite.SetPosition(screen_width * 0.1, screen_height * 0.9,  10000);  
+    # my_image = Image.Text(text, 1, 1, 1);  
+    # message_sprite.SetImage(my_image);  
+
+    Note : This is a quick and dirty method I found. It works, but there might be better way.
+
+    Remove Boot Messages
+    Open “/boot/cmdline.txt” as root.
+
+    # sudo nano /boot/cmdline.txt  
+
+    Then, replace “console=tty1” with “console=tty3”. This redirects boot messages to tty3.
+
+    Remove other things
+    Still in “/boot/cmdline.txt”, add below at the end of the line
+
+    # splash quiet plymouth.ignore-serial-consoles logo.nologo vt.global_cursor_default=0  
+
+    Here are brief explanations.
+    ‘splash’ : enables splash image
+    ‘quiet’ : disable boot message texts
+    ‘plymouth.ignore-serial-consoles’ : not sure about this but seems it’s required when use Plymouth.
+    ‘logo.nologo’ : removes Raspberry Pi logo in top left corner.
+    ‘vt.global_cursor_default=0’ : removes blinking cursor.
+
+    Note : The first three should be there by default, but make sure if those exist.
+
+    Replace Splash Image
+    Now, everything unwanted images and texts are gone. Let’s replace the default splash 
+    image (/usr/share/plymouth/themes/pix/splash.png) with your own splash image.
+
+    # sudo cp ~/my_splash.png /usr/share/plymouth/themes/pix/splash.png  
+
+    Note : As described in above assumption, “my_splash.png” should be your new splash image.
+
+    Verify the costumed boot up screen
+    Check the boot up screen by simply rebooting.
+
+    # sudo reboot 
+
+
+** Plymouth
+   https://www.freedesktop.org/wiki/Software/Plymouth/
+
+** Hard LEDs
+   All models of Raspberry Pi
+   LED1: Green, labelled ACT: SD card access
+   LED2: Red, labelled PWR: 3.3V power is present
+
+   It's also possible to decode which part of the boot process the Raspberry Pi is stalling at.
+   Here's a list of what the various flashing modes from the ACT/OK LED mean.
+
+   3 flashes: start.elf not found
+   4 flashes: start.elf not launched
+   7 flashes: kernel.img not found
+   8 flashes: SDRAM not recognized. 
+     You need newer bootcode.bin/start.elf firmware, or your SDRAM is damaged.
+
+
+* Tiempos de arranque
+** systemd-analyze
+   sudo systemd-analyze blame
+
+   output:
+          2.011s dev-mmcblk0p2.device
+          1.708s raspi-config.service
+          1.328s networking.service
+           940ms dhcpcd.service
+           840ms keyboard-setup.service
+           575ms systemd-logind.service
+           534ms lightdm.service
+           430ms systemd-timesyncd.service
+           413ms systemd-udevd.service
+           409ms systemd-udev-trigger.service
+           357ms udisks2.service
+           356ms dev-mqueue.mount
+           342ms wpa_supplicant.service
+           328ms systemd-fsck@dev-mmcblk0p1.service
+           322ms sys-kernel-debug.mount
+           260ms user@1000.service
+           251ms rsyslog.service
+           250ms kmod-static-nodes.service
+           248ms fake-hwclock.service
+           241ms systemd-journald.service
+           238ms systemd-modules-load.service
+           204ms avahi-daemon.service
+           181ms systemd-fsck-root.service
+           177ms systemd-fsck@dev-mmcblk0p3.service
+           176ms systemd-tmpfiles-setup.service
+           169ms systemd-tmpfiles-setup-dev.service
+           161ms systemd-journal-flush.service
+           111ms console-setup.service
+           108ms systemd-sysctl.service
+           106ms systemd-random-seed.service
+           102ms plymouth-start.service
+            94ms systemd-user-sessions.service
+            92ms systemd-update-utmp.service
+            82ms wifi-country.service
+            81ms polkit.service
+            81ms alsa-restore.service
+            81ms plymouth-read-write.service
+            78ms boot.mount
+            76ms plymouth-quit-wait.service
+            76ms plymouth-quit.service
+            74ms nfs-config.service
+            71ms systemd-remount-fs.service
+            69ms home.mount
+            64ms openvpn.service
+            61ms rc-local.service
+            60ms triggerhappy.service
+            54ms systemd-update-utmp-runlevel.service
+            54ms sys-kernel-config.mount
+            49ms run-rpc_pipefs.mount
+            40ms sys-fs-fuse-connections.mount
+
+** Optimizations
+   https://freedesktop.org/wiki/Software/systemd/Optimizations/
+
+   http://www.samplerbox.org/article/fastbootrpi
+
+   https://www.myhelpfulguides.com/2018/10/20/how-improve-raspberry-pi-boot-time-raspbian-lite/
+
+   https://haydenjames.io/raspberry-pi-3-overclock/
+
+   
+* rpi-update
+  hace un update del kernel
+  https://github.com/Hexxeh/rpi-update
+
+  $sudo apt-get install rpi-update
+  
+  $sudo rpi-update
+
+* Ejecutar programa GUI solo contra Xwindow
+** Arranque tipico Rasbian Stretch
+   https://www.raspberrypi.org/forums/viewtopic.php?t=133691
+
+   This next part focuses on installing a GUI on top of Raspbian Lite. In order to have a GUI, we need these 4 things:
+
+    1. Display Server
+    2. Desktop Environment
+    3. Window Manager
+    4. Login Manager
+
+   Since we need 4 things, to make life easier, these 4 things are:
+
+    1. Xorg Display Server
+    2. Raspberry Pi Desktop (RPD) or Lightweight X11 Desktop Environment (LXDE) or XFCE Desktop Environment (XFCE) or MATE Desktop Environment (MATE)
+    3. Openbox Window Manager (RPD/LXDE) or XFWM Window Manager (XFCE) or Marco Window Manager (MATE)
+    4. LightDM Login Manager
+
+** xinitrc    
+   /etc/X11/xinit/xinitrc
+   es un script que corre deben correr todos los WM (windows manager), llama al script de session
+
+** Xsession
+   /etc/X11/Xsession 
+   crea archivo de errores de la session actual /home/pi o en el usuario que corra la session
+   ejecuta scripts uno por uno dentro de /etc/X11/Xsession.d
+   los parametros de cada script los toma de Xsession
+
+** Algunos mensajes en .xsession-errors
+ Xsession: X session started for pi at Mon 29 Apr 14:47:52 UTC 2019
+ ** Message: main.vala:102: Session is LXDE-pi
+ ** Message: main.vala:103: DE is LXDE
+ ** Message: main.vala:134: log directory: /home/pi/.cache/lxsession/LXDE-pi
+ ** Message: main.vala:135: log path: /home/pi/.cache/lxsession/LXDE-pi/run.log
+
+** De alguna manera corre LightDM o LXDE
+   cuando corre LXDE el archivo de autostart de programas es
+   /home/pi/.config/lxsession/LXDE-pi/autostart
+   que contiene:
+   @lxpanel --profile LXDE-pi
+   @pcmanfm --desktop --profile LXDE-pi
+   @/bin/bash /home/pi/lipo1/lipo1.sh
+   @xscreensaver -no-splash
+   @point-rpi
+
+* Start X11 and just one application
+** con xsession
+   en /home/pi creo .xsession
+
+   lo va a llamar automatico despues de lightdm
+   
+   #!/bin/sh
+   exec /usr/bin/python3 /home/pi/lipo1/main.py
+
+   si hay errores o sigue sin correr revisar
+   /home/pi/.xsession-errors
+
+*** demora 17.5 segundos en correr y alrededor de 8 el plymouth para mostrar splash
+
+*** demora 8 segundos plymouth y 20 21 aprox. al program en X GUI, ya los 17 tiene el GUI
+   
+** con ~/.xinitrc file
+   startx is a wrapper for xinit which starts an xserver and one client program. 
+   It should do exactly what you want.
+   limpiar este archivo si existe o crearlo
+   
+   #!/bin/sh
+   
+   exec chromium --kiosk
+
+   This will then be applied if you are using a graphical login, so that you do not have to 
+   boot to console. To test it from the console, try startx with no arguments.
+   
+** Cuando se elije en raspi-config Desktop-Autologin
+   ejecuta lo siguiente en el script, usa lightdm
+
+    if [ -e /etc/init.d/lightdm ]; then
+          systemctl set-default graphical.target
+          ln -fs /etc/systemd/system/autologin@.service /etc/systemd/system/getty.target.wants/getty@tty1.service
+          sed /etc/lightdm/lightdm.conf -i -e "s/^\(#\|\)autologin-user=.*/autologin-user=$SUDO_USER/"
+          disable_raspi_config_at_boot
+    else
+          whiptail --msgbox "Do 'sudo apt-get install lightdm' to allow configuration of boot to desktop" 20 60 2
+          return 1
