@@ -192,7 +192,7 @@ su pi -c 'vncserver'
 ** cambiar ip en raspbian (extraniamente en la conf del dhcpd)
    /etc/dhcpcd.conf #activo los renglones de ip estatica
 
-* Boot Sequence
+* Boot Sequence y limpiar mensajes de arranque
 ** The boot sequence of the Raspberry Pi is basically this:
    - Stage 1 boot is in the on-chip ROM. Loads Stage 2 in the L2 cache
    - Stage 2 is bootcode.bin. Enables SDRAM and loads Stage 3
@@ -289,7 +289,6 @@ su pi -c 'vncserver'
 
     # sudo reboot 
 
-
 ** Plymouth
    https://www.freedesktop.org/wiki/Software/Plymouth/
 
@@ -308,7 +307,7 @@ su pi -c 'vncserver'
      You need newer bootcode.bin/start.elf firmware, or your SDRAM is damaged.
 
 
-* Tiempos de arranque
+* Medir de Tiempos de arranque en systemd
 ** systemd-analyze
    sudo systemd-analyze blame
 
@@ -466,3 +465,43 @@ su pi -c 'vncserver'
     else
           whiptail --msgbox "Do 'sudo apt-get install lightdm' to allow configuration of boot to desktop" 20 60 2
           return 1
+
+* Update del sistema completo incluido el kernel
+** Update primero, para sincronizar repositorios
+   sudo apt-get update
+
+** Upgrade para bajar el soft mas nuevo de cada paquete (Actualiza el kernel)
+   sudo apt-get upgrade
+
+* Kernel Recompile
+** Cross Compile
+   - tanto en cross compile como en native compile, me quedo sin teclado 
+     luego de aplicar el custom kernel.
+   - Error: Failed to start load kernel modules
+
+** Native Compile
+   - hacer update y upgrade del sistema
+     $ sudo apt-get update
+     $ sudo apt-get upgrade
+   - bajar programas auxiliares para compilar
+     $ sudo apt-get install git bc bison flex libssl-dev
+   - bajar el kernel tree
+     $ git clone --depth=1 https://github.com/raspberrypi/linux
+
+   - Raspberry Pi 2, Pi 3, Pi 3+, and Compute Module 3 default build configuration
+     $ cd linux
+     $ KERNEL=kernel7
+     $ make bcm2709_defconfig
+
+   - Compilar e instalar
+     $ make -j2 zImage 
+     $ make -j2 modules 
+     $ make dtbs
+     $ sudo make modules_install
+     $ sudo cp arch/arm/boot/dts/*.dtb /boot/
+     $ sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
+     $ sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
+     $ sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
+
+** Solo los headers
+   $ sudo apt-get install raspberrypi-kernel-headers

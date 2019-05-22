@@ -74,6 +74,9 @@
 ** Redondear bordes con filtro
    - Filters -> Decor -> Round Borders
 
+** Escalar Imagen (cambio de resolucion)
+   Image -> Scale Image
+
 ** Links
 http://www.todogimp.com/?q=tutoriales&tid=11&tid_1=14&tid_2=All
 
