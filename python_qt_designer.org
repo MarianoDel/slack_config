@@ -536,7 +536,7 @@ if __name__ == '__main__':
 
   
   
-* QtCreator
+* QtDesiger QtCreator
 ** qt y css
    https://thesmithfam.org/blog/2009/09/10/qt-stylesheets-tutorial/
 
@@ -553,6 +553,25 @@ if __name__ == '__main__':
 *** la suma de la altura de los widgets es mayor a lo que me muestra creator
     - aumento la geometria del grafico desde 1024 x 768 a 1024 x 900
     - corrijo los widgets o agrego los espaciadores y vuelvo a mi geometria original
+
+** Background Image con StyleSheet
+*** Background del MainWindow
+    Dialog { background-image: url(:/Images/background.png); }
+
+    Como resource puedo hacer:
+    1.- Agrego archivo resources -> agrego imagen
+    2.- Edito css del Dialog -> Add resources -> elijo el resouce que quiero
+        background-image: url(:/newPrefix/Inicio listo.jpg);
+
+*** Background de algun Widget
+    qApp->setStyleSheet("QWidget {background-image: url(./image.png) }");
+
+    myWidget->setStyleSheet("background-image: url(./image.png)")
+
+** Importante en Rpi3
+   para pantalla completa hacer coincidir la resolucion de pantalla
+   $ raspi-config
+   con el tamanio de la foto en backround-image
 
 * Python General
 ** Link
