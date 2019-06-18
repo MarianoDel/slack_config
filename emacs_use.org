@@ -161,7 +161,7 @@
    M-x c-mode        //si quisiera editar un archivo con formato C, ej .txt .ino
 
 ** Customizaciones
-~/.emacs	    //lee el la lista de customizaciones antes de arrancar
+   ~/.emacs	    //lee el la lista de customizaciones antes de arrancar
 
 *** para customizar colores, fondo highlight
     M-x customize
@@ -184,7 +184,6 @@
     C-j	//activa el modo
     (define-key global-map (kbd "RET") 'newline-and-indent)	//global en .emacs
 
-
 ** Line endings and escape characters
    http://ergoemacs.org/emacs/emacs_line_ending_char.html
    C-q C-j pone ^J (line feed '\n')
@@ -199,7 +198,6 @@
 
 ** Ver el kill-ring
    C-h v kill-ring
-
 
 ** BOOKMARKS, Registers & Rectangles
 *** Bookmarks
@@ -285,7 +283,6 @@
    C-c C-c envia un final de trabajo a la terminal -> C-c
    C-x k para salir
 
-
 ** #### FLYSPELL ISPELL ASPELL ####
 *** Ispell
     - Revisa el documento de arriba abajo proponiendo cambios de palabras
@@ -302,10 +299,16 @@
 
 *** Flyspell
    - Revisa como estan escritas las palabras a medida que se escriben
-     M-x flyspell
+     o que se avanza en la pagina, es un minor-mode
+     M-x flyspell-mode
 
 **** Enable flyspell for comments in source code
-    M-x flyspell-prog-mode
+     - Este modo revisa a medida que se escribe, de otra forma hay que caminar
+       sobre las palabras para que las analice
+     M-x flyspell-prog-mode
+
+**** Disable flyspell
+     M-x flyspell-mode
 
 *** Dictionary Aspell
     which aspell
@@ -321,7 +324,6 @@
      make
      make install
     
-
 ** #### FILE MANAGER WITH DIRED ####
 *** formas de arrancarlo
    M-x dired
@@ -407,9 +409,6 @@
    - wb graba archivo b
    - q sale
    - ? help toggle
-
-
-
 
 ** #### MULTIPLE CURSORS ####
    https://github.com/magnars/multiple-cursors.el
