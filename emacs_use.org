@@ -286,6 +286,42 @@
    C-x k para salir
 
 
+** #### FLYSPELL ISPELL ASPELL ####
+*** Ispell
+    - Revisa el documento de arriba abajo proponiendo cambios de palabras
+      por default usa los diccionarios de aspell como motor
+     
+    # todo el buffer
+    M-x ispell-buffer
+
+    # solo un area, marcar el area y luego
+    M-x ispell
+
+    # cambiar diccionario
+    M-x ispell-change-dictionary
+
+*** Flyspell
+   - Revisa como estan escritas las palabras a medida que se escriben
+     M-x flyspell
+
+**** Enable flyspell for comments in source code
+    M-x flyspell-prog-mode
+
+*** Dictionary Aspell
+    which aspell
+    aspell dump dicts
+    aspell dump personal    //solo las palabras agregadas
+
+**** Agregar un diccionario, instalar como root
+     www.aspell.net
+     ftp://ftp.gnu.org/gnu/aspell/dict/0index.html
+     ftp://ftp.gnu.org/gnu/aspell/dict/
+     bajar el diccionario, leer README
+     ./configure
+     make
+     make install
+    
+
 ** #### FILE MANAGER WITH DIRED ####
 *** formas de arrancarlo
    M-x dired
@@ -614,7 +650,6 @@
 ** color-theme
    - M-x customize-theme
    - M-x load-theme    #muestra lista de posibilidades
-
      
 ** Combinations swallow by terminal
    - para ver las combinaciones que si llegan

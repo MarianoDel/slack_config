@@ -69,8 +69,15 @@
 
    - lo llamo con \Author
 
+*** titling package
    The titling package provides various user-friendly ways to modify title pages.
    It provides the macros \thetitle, \theauthor and \thedate which can be reused anywhere in your document.
+
+*** Without Author
+    \author{}
+
+    - para evitar el espacio vacio
+    \title{Prueba titles \vspace{-4ex}}
 
 *** Multiples Autores
     \author{
@@ -96,6 +103,7 @@
 
     - se puede definir el documento como scrartcl que si tiene macro \subtitle
       \documentclass{scrartcl}
+
 
 ** Latex
    {\LaTeX}
@@ -441,6 +449,7 @@ H	Places the float at precisely the location in the LaTeX code.
 
 *** Letras griegas, operadores y otros
     Greek letters	\alpha \beta \gamma \rho \sigma \delta \epsilon
+                        \Omega \omega
 
     Binary operators	\times \otimes \oplus \cup \cap
 
