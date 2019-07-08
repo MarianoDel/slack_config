@@ -99,6 +99,19 @@ M-x org-html-export-to-html \rightarrow me genera archivo html
   @-1$-2..@-1   3 fields in the row above, starting from 2 columns on the left
   @I..II        between first and second hline, short for @I..@II
 
+**** Para evaluar el campo
+     - lo indico con := (@1$1 + @1$2)
+     - hace la cuenta y automaticamente agrega la funcion en el renglon #+TBLFM:
+
+**** Para editar las formulas
+     If you prefer, you can edit formulas in the minibuffer: 
+     use C-c = for editing column formulas or C-u C-c = for field formulas.
+
+     But you can also edit formulas more interactively in a dedicated buffer 
+     by typing C-c '. This new buffer lists all the formulas for the table at 
+     point and provides facilities to edit the references.
+
+
 https://orgmode.org/manual/References.html#References
 
 |--------+--------------+--------------------------+----------------------------------------------+---+---|
