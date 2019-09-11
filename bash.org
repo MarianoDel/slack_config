@@ -23,7 +23,8 @@
    echo $PATH
 
 ** Buscar Archivo recursivo con los detalles de cada archivo
-   find -name hard.h |xargs ls -alF
+   find -name hard.h |xargs ls -alFt
+
 ** BUSQUEDA POR TEXTO DENTRO DEL ARCHIVO
    grep -lir "main.py" * //busca una linea main.py dentro de archivos con nombre *
    grep -i	//ignore case
@@ -132,6 +133,10 @@
    - env     # me muestra todos los valores de las variables que conoce
    - export CFLAGS='-g -Wall'    # setea el valor de la variable
    - echo $USER    # me muestra el valor de una variable especial
+** PDF Merge
+   gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=merged.pdf D100W_VER1,0_MICRO_TOP.pdf D100W_VER1,0_MICRO_BOT.pdf D100W_VER1,0_MICRO_SCH.pdf
+
+   gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=merged.pdf file1.pdf file2.pdf file_end.pdf
 
 * Comandos de Networking
 ** ping a todo un segmento
@@ -147,3 +152,16 @@
 
    ip / port
    ssh pi@192.168.1.35 22
+** Enviar un paquete UDP
+   - desde la linea de comando
+     echo -n "hello" >/dev/udp/localhost/6454
+
+   - con netcat
+     echo -n "hello" | nc -4u -q1 localhost 8000
+* Ver archivos Binarios
+** Para archivos .bin usar hexdump
+   hexdump file.bin
+   hexdump -C file.bin
+
+** Checksum de archivos binarios
+   - 0xFF - (sum of all bytes without carry, mod8())

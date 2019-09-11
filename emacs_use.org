@@ -276,6 +276,12 @@
    C-c C-c envia un final de trabajo a la terminal -> C-c
    C-c k para salir
 
+*** ESHELL abrir archivo
+    C-x C-f setea automaticamente el directorio que estoy viendo con eshell
+
+    los comandos emacs funcionan directamente en la linea de comandos:
+    find-file nombre_archivo
+
 ** Modo Terminal enlaces serie
    M-x serial-term 
    C-c C-j modo edicion de linea
@@ -354,7 +360,10 @@
    n move below
    p move above
    C-s buscar con I-search
-   
+
+*** Crear nuevo archivo en el directorio
+    C-x C-f elegir nombre, lo crea en el directorio que estoy viendo con dired
+
    #### END DIRED ####
 
 ** #### FILE MANAGER WITH LIST-BUFFER IBUFFER ####

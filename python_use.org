@@ -1,3 +1,76 @@
+* PARA INSTALAR PYTHON EN SLACKWARE
+
+  busco paquete en www.slackbuilds.org
+  buscar paquete setuptools o pysetuptools e instalar
+  buscar paquete pip e instalar
+
+** PARA INSTALAR PAQUETES DESDE SLACKBUILDS.ORG
+*** Recordatorio
+   slackbuilds.org	    //buscar el paquete con la version del slackware correspondiente 14.1 (en este ejemplo)
+   
+   bajar el slackbuid y el soft original	//generalmente queda en Downloads (spyder por ejemplo)
+   
+   gunzip spyder.tar.gz
+   tar -xvf spyder.tar
+   
+   cd spyder	//ir al directorio principal creado y hacer ejecutable el slackbuid
+   
+   chmod +x spyder.SlackBuild
+   
+   cp spyder-2.3.8.zip ./spyder	//copiar el soft al directorio principal del build
+   
+   ./spyder.SlackBuild 		//ejecutar el slackbuild
+   
+   generalmente el paquete quede en /tmp
+   
+   cd /tmp
+   
+   installpkg spyder-2.3.8
+
+*** Revisar documentos en archivos slack_soft_*.org
+
+** USANDO PIP
+   //pip busca informacion de paquetes para python asi:
+   pip search "numpy"
+
+   //pip muestra informacion de lo instalado
+   pip show numpy
+
+   //pip instala asi:
+   pip install numpy
+
+   pip install --upgrade numpy	//hace un upgrade del soft
+
+   //pip borra o desinstala paquetes asi:
+   pip uninstall numpy
+
+** PARA ARMAR LA BIBLIOTECA CIENTIFICA DE SCIPY
+   slackbuilds setuptools
+   slackbuilds pip
+   slackbuilds blas
+   slackbuilds lapack
+   pip install numpy
+   pip install scipy
+   pip install matplotlib
+   pip install ipython
+   pip install pandas
+   pip install sympy
+
+** PARA CAMBIAR EL PYTHON QUE SE ESTA UTILIZANDO
+   #voy a dejar la posibilidad de utilizar python 2.7 actualmente instalado
+   instalo el nuevo python 3.6 (de nuevo para slack 14.2)
+
+   ##PARA MOVERME ENTRE VERSIONES
+   cd /usr/bin
+   ls python*		#me muestra la lista de python instalados en la maquina
+
+   ls -l python	#me muestra como esta actualmente el hardlink
+   lrwxrwxrwx 1 root root 7  5 sept. 07:04 python -> python3
+
+   ln -sf python2.7 python		#creo el nuevo hardlink
+   ls -l python
+   lwxrwxrwx 1 root root 7 Dec 11 19:28 python -> python2
+
 * PARA UTILIZAR SCRIPTS PYTHON EN SLACKWARE
 
 #puedo correr scripts desde la consola con python y el nombre del script
@@ -31,6 +104,62 @@ if len(sys.argv) != 2:
    # pip3 install --upgrade pip
 
 * Scientific Python
+
+** Numpy
+*** Arrays ndarray
+    import numpy as np
+
+    a = np.array([0, 0.5, 1.0, 1.5, 2.0])
+    type(a)
+    >>> numpy.ndarray
+
+**** Operaciones en ndarray
+     a.sum()    ;;suma todos los elementos del array
+     
+     a.std()    ;;desviacion estandar de los elementos del array
+
+     a.cumsum()    ;;running cumsum, suma elementos anteriores y los pone en los nuevos
+
+**** Operaciones vectorizadas en el ndarray
+     Cuando se realiza una operaion al array, la opracion se aplica a todos los elementos
+     a * 2    ;;multiplica todos los elementos de a por 2
+
+     a ** 2    ;;todos los elementos de a al cuadrado
+
+**** Crear matrices con los ndarray
+     In [103]: b = np.array([a, a * 2])
+     b
+     Out[103]: array([[ 0. , 0.5, 1. , 1.5, 2. ],
+     [ 0. , 1. , 2. , 3. , 4. ]])
+     In [104]: b[0] # first row
+     Out[104]: array([ 0. , 0.5, 1. , 1.5, 2. ])
+     In [105]: b[0, 2] # third element of first row
+     Out[105]: 1.0
+     In [106]: b.sum()
+     Out[106]: 15.0
+
+**** Inicializar "instanciar" ndarray
+     np.array([1, 2, 3])    ;;debo indicar todos los elementos
+
+     - en los que siguen puedo especificar dtype y order
+     np.zeros([shape], [dtype = ], [order = ])
+
+     np.ones()
+
+     np.ones_like()
+
+     dtype Description Example
+     t Bit field t4 (4 bits)
+     b Boolean b (true or false)
+     i Integer i8 (64 bit)
+     u Unsigned integer u8 (64 bit)
+     f Floating point f8 (64 bit)
+     c Complex floating point c16 (128 bit)
+     O Object 0 (pointer to object)
+     S, a String S24 (24 characters)
+     U Unicode U24 (24 Unicode characters)
+     V Other V12 (12-byte data block)
+
 
 ** Matplotlib
 *** Format Strings
@@ -98,3 +227,37 @@ if len(sys.argv) != 2:
      and the 'CN' colors that index into the default property cycle.
      If the color is the only part of the format string, you can additionally
      use any matplotlib.colors spec, e.g. full names ('green') or hex strings ('#008000').
+* PYTHON Virtual Enviroments
+  A Virtual Environment is a tool to keep the dependencies required by different projects
+  in separate places, by creating virtual Python environments for them. It solves the
+  “Project X depends on version 1.x but, Project Y needs 4.x” dilemma, and keeps your global
+  site-packages directory clean and manageable.
+
+  For example, you can work on a project which requires Django 1.10 while also maintaining
+  a project which requires Django 1.8.
+
+** Install virtualenv via pip:
+   pip install virtualenv
+
+** Test your installation
+   virtualenv --version
+
+** Create a virtual environment for a project:
+   cd my_project_folder
+   virtualenv my_project
+
+** To begin using the virtual environment, it needs to be activated:
+   source my_project/bin/activate
+   #o el que utilizo
+   . my_project/bin/activate
+
+** Install packages as usual, for example:
+   pip install requests
+
+** If you are done working in the virtual environment for the moment, you can deactivate it:
+   deactivate
+
+** To delete a virtual environment, just delete its folder. (In this case, it would be rm -rf my_project.)
+   rm -rf my_project
+
+

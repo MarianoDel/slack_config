@@ -1,0 +1,20 @@
+* USO DE ARDUINO IDE
+
+** Sketchbook Location
+   - aca se guardan los proyectos propios y las bibliotecas
+     subdirectorio libraries
+
+   ##las librerias (bibliotecas) originales estan guardadas en:
+   ##ESP8266
+   ./home/med/.arduino15/packages/esp8266/hardware/esp8266/2.3.0/libraries/esp8266/examples/Blink
+
+   /home/med/Arduino/libraries/Blynk
+
+** Borrar Library
+   - ubicar library (en Sketchbook Location)
+     File -> Preferences:
+     /home/med/Arduino
+
+   - Borrar la Library que no quiero desde el sistema
+     cerrar IDE
+     

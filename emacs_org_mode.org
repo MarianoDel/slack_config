@@ -37,8 +37,12 @@ C-c C-o org-open-at-point, abre el link
    C-c C-c completa el item con X o lo limpia
 
 ** Markup
-You can make words *bold*, /italic/, _underlined_, =code= and ~verbatim~, and, if you must, +strike-through+.
-
+   You can make words *bold*, 
+   /italic/, 
+   _underlined_, 
+   =code= and 
+   ~verbatim~, 
+   and, if you must, +strike-through+.
 
 ** Movement
 C-c C-n Next heading.
