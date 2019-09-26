@@ -673,6 +673,20 @@ if __name__ == '__main__':
 
     For example, '%03.2f' can be translated to '{:03.2f}'
    
+** format Built-in Method
+   # integer
+   print(format(123, "d"))
+   
+   # float arguments
+   print(format(123.4567898, "f"))
+   
+   # binary format
+   print(format(12, "b"))
+
+** hex Built-in Method
+   number = 435
+   print(number, 'in hex =', hex(number))
+
 ** Formatted String Literals or f-strings
    name = 'Elizabeth'
    f'Hello {name}!'

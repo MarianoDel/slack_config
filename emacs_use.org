@@ -663,3 +663,55 @@
    - para ver las combinaciones que si llegan
    C-h l (M-x view-lossage)
    
+
+* EMACS Calc
+  https://github.com/ahyatt/emacs-calc-tutorials/blob/master/more_algebra.org
+
+** Guardar valor en una variable
+   s s
+   x = 5
+   # guarda 5 en la variable x
+
+** Agregar Expresion algebraica
+   - uso la comilla simple
+   '1/1000
+
+*** Para evaluar =, por ejemplo pi
+    'pi 
+    =
+
+** Scientific Functions
+*** raiz
+**** Algebraica
+    'sqrt()
+
+**** Stack
+    Q    raiz cuadrada del stack
+
+*** potencia
+**** Algebraica
+     '2^2
+
+**** Stack
+     P 2^    pi al cuadrado
+
+*** numero pi
+**** Algebraica
+     'pi    
+
+     para evaluarlo =
+
+**** Stack
+     P
+
+*** numero e
+**** Algebraica
+     'exp()
+
+**** Stack
+
+** Evaluar Stack
+   $ ultimo resultado
+   $$ ante ultimo resultado
+
+   '$ - $$    resta ultimo con ante ultimo

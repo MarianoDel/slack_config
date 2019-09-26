@@ -107,19 +107,19 @@
    http://openocd.org/doc/html/Config-File-Guidelines.html#Config-File-Guidelines
 
 
-** GDB con Emacs - GUD -
-*** si quiero usar otro programa en vez de gdb
-    (setq gud-gdb-command-name "arm-none-eabi-gdb")
-    hasta ahora no va, habra que probar mas
-    https://github.com/SL-RU/stm32-emacs/blob/master/stm32.el
+* GDB con Emacs - GUD -
+** si quiero usar otro programa en vez de gdb
+   (setq gud-gdb-command-name "arm-none-eabi-gdb")
+   hasta ahora no va, habra que probar mas
+   https://github.com/SL-RU/stm32-emacs/blob/master/stm32.el
 
-*** todo a mano
-    ir al directorio del archivo .elf
-    M-x gdb
-    (run like this) arm-none-eabi-gdb -i=mi
-    (gdb) target remote localhost:3333
-    (gdb) file Template_F030_rom.elf
-    (gdb) 
+** todo a mano
+   ir al directorio del archivo .elf
+   M-x gdb
+   (run like this) arm-none-eabi-gdb -i=mi
+   (gdb) target remote localhost:3333
+   (gdb) file Template_F030_rom.elf
+   (gdb) 
 
 * DEBUG con DDD
   $ddd --eval-command="target remote localhost:3333" --debugger arm-none-eabi-gdb Template_F030_rom.elf

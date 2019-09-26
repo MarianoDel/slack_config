@@ -102,7 +102,209 @@ if len(sys.argv) != 2:
 
 ** Upgrade de PiP
    # pip3 install --upgrade pip
+* PYTHON Virtual Enviroments
+  A Virtual Environment is a tool to keep the dependencies required by different projects
+  in separate places, by creating virtual Python environments for them. It solves the
+  “Project X depends on version 1.x but, Project Y needs 4.x” dilemma, and keeps your global
+  site-packages directory clean and manageable.
 
+  For example, you can work on a project which requires Django 1.10 while also maintaining
+  a project which requires Django 1.8.
+
+** Install virtualenv via pip:
+   pip install virtualenv
+
+** Test your installation
+   virtualenv --version
+
+** Create a virtual environment for a project:
+   cd my_project_folder
+   virtualenv my_project
+
+** To begin using the virtual environment, it needs to be activated:
+   source my_project/bin/activate
+   #o el que utilizo
+   . my_project/bin/activate
+
+** Install packages as usual, for example:
+   pip install requests
+
+** If you are done working in the virtual environment for the moment, you can deactivate it:
+   deactivate
+
+** To delete a virtual environment, just delete its folder. (In this case, it would be rm -rf my_project.)
+   rm -rf my_project
+
+* PYTHON on Console
+** Python program that uses print, end
+   # Change end argument to avoid newline.
+   print("Hi, ", end="")
+   print("how are you?")
+
+   # Output
+   $ Hi, how are you?
+
+** Python program that uses format, print
+   # Print formatted string.
+   value = 10
+   print(str.format("There are {} apples", value))
+
+   # Output
+   $ There are 10 apples
+
+** Python program that uses input
+
+   # Get input from console.
+   s = input()
+   print("You typed", s)
+   
+   # Use if-statement on input.
+   if s == "a":
+   print("Letter a detected")
+   else:
+   print("Not letter a")
+   
+   # Output
+   $ a
+   $ You typed a
+   $ Letter a detected
+
+** Python program that interacts with user
+   # Continue while true.
+   while True:
+   # Get input.
+   value = input()
+
+   # Break if user types q.
+   if value == "q":
+   break
+
+   # Display value.
+   print("You typed: ", value)
+
+   # Exit message.
+   print("You quit.")
+
+   # Output
+   $ 1
+   $ You typed:  1
+   $ 2
+   $ You typed:  2
+   $ 3
+   $ You typed:  3
+   $ q
+   $ You quit.
+
+** Python program that converts console input
+   print("Enter number:")
+   # Get input and convert it to an integer.
+   value = input()
+   number1 = int(value)
+
+   print("Again:")
+   value = input()
+   number2 = int(value)
+
+   print("Product:")
+   # Multiply the two numbers.
+   print(number1 * number2)
+
+   # Output
+   $ Enter number:
+   $ 10
+   $ Again:
+   $ 2
+   $ Product:
+   $ 20
+
+** Python program that uses print, file argument
+   # Open this file for writing.
+   f = open("C:\\profiles\\perls.txt", "w")
+
+   # Print lines to the file.
+   print("Some text", file=f)
+   print("Some more text", file=f)
+
+   # File contents: perls.txt
+   # Some text
+   # Some more text
+
+** Working with Directories
+*** Get current Directory
+    import os
+    currentDirectory = os.getcwd()
+
+*** Change current Directory
+    import os
+    os.chdir('/home/varun')
+
+*** Get current Filename
+    - This won't work if you've already used os.chdir() to change 
+      your current working directory, since the value of the __file__ 
+      constant is relative to the current working directory and is not 
+      changed by an os.chdir() call.
+
+    import os 
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+
+*** Current relative, etc
+    import os
+ 
+    dirpath = os.getcwd()
+    print("current directory is : " + dirpath)
+    foldername = os.path.basename(dirpath)
+    print("Directory name is : " + foldername)
+    scriptpath = os.path.realpath(__file__)
+    print("Script path is : " + scriptpath)
+
+** Working with Files
+*** Para abrir o crear archivos
+    import os
+
+    f = os.open(nombre)
+    f = os.open(nombre, flags=...)
+
+    f.close()
+
+*** Flags tipicos
+    The following constants are options for the flags.
+    They can be combined using the bitwise OR operator |.
+    Some of them are not available on all platforms.
+
+    os.O_RDONLY − open for reading only
+    os.O_WRONLY − open for writing only
+    os.O_RDWR − open for reading and writing
+    os.O_NONBLOCK − do not block on open
+    os.O_APPEND − append on each write
+    os.O_CREAT − create file if it does not exist
+    os.O_TRUNC − truncate size to 0
+    os.O_EXCL − error if create and file exists
+    os.O_SHLOCK − atomically obtain a shared lock
+    os.O_EXLOCK − atomically obtain an exclusive lock
+    os.O_DIRECT − eliminate or reduce cache effects
+    os.O_FSYNC − synchronous writes
+    os.O_NOFOLLOW − do not follow symlinks
+
+*** Binary Files
+    with open("myfile", "rb") as f:
+    byte = f.read(1)
+    while byte != b"":
+        # Do stuff with byte.
+        byte = f.read(1)
+
+*** Flags for binary
+    open() Parameters
+    file - path-like object (representing a file system path) giving the pathname
+    mode (optional) - mode while opening a file. If not provided, it defaults to 'r' (open for reading in text mode). Available file modes are:
+    Mode	Description
+    'r'	    Open a file for reading. (default)
+    'w'	    Open a file for writing. Creates a new file if it does not exist or truncates the file if it exists.
+    'x'	    Open a file for exclusive creation. If the file already exists, the operation fails.
+    'a'	    Open for appending at the end of the file without truncating it. Creates a new file if it does not exist.
+    't'	    Open in text mode. (default)
+    'b'	    Open in binary mode.
+    '+'	    Open a file for updating (reading and writing)
+    
 * Scientific Python
 
 ** Numpy
@@ -227,37 +429,52 @@ if len(sys.argv) != 2:
      and the 'CN' colors that index into the default property cycle.
      If the color is the only part of the format string, you can additionally
      use any matplotlib.colors spec, e.g. full names ('green') or hex strings ('#008000').
-* PYTHON Virtual Enviroments
-  A Virtual Environment is a tool to keep the dependencies required by different projects
-  in separate places, by creating virtual Python environments for them. It solves the
-  “Project X depends on version 1.x but, Project Y needs 4.x” dilemma, and keeps your global
-  site-packages directory clean and manageable.
 
-  For example, you can work on a project which requires Django 1.10 while also maintaining
-  a project which requires Django 1.8.
 
-** Install virtualenv via pip:
-   pip install virtualenv
+** SQRT
+*** Con Math
+    import math
 
-** Test your installation
-   virtualenv --version
+    math.sqrt( x )
 
-** Create a virtual environment for a project:
-   cd my_project_folder
-   virtualenv my_project
+*** Con Numpy
+    np.sqrt(x)
 
-** To begin using the virtual environment, it needs to be activated:
-   source my_project/bin/activate
-   #o el que utilizo
-   . my_project/bin/activate
+* Create Strings
+** With str function
+   s_name = "med"
+   age = 18
+   ex1 = "my name is " + s_name + " and I am " + str(age) + " years old."
 
-** Install packages as usual, for example:
-   pip install requests
+** With format method
+   s_name = "med"
+   age = 18
+   ex2 = "my name is {0} and I am {1} years old.".format(s_name, age)
 
-** If you are done working in the virtual environment for the moment, you can deactivate it:
-   deactivate
+** With %
+   s_name = "med"
+   age = 18
+   ex3 = "my name is %s and I am %i years old." %(s_name, age)
+   
+** With F Strings
+   - puedo usar f o F
+   - puedo usar comillas simples o dobles ' "
+   - puedo operar dentro de las llaves {age + 2}
+    
+   s_name = "med"
+   age = 18
+   ex4 = f"my name is {s_name} and I am {age} years old."
 
-** To delete a virtual environment, just delete its folder. (In this case, it would be rm -rf my_project.)
-   rm -rf my_project
+
+   
+** Links
+   https://www.youtube.com/watch?v=0fq69_9iEqc
+   
+   https://www.youtube.com/watch?v=nghuHvKLhJA
+
+* Algunos Archivos - Documentos que uso de referencia
+  # C-c C-o para abrir links
+  [[./pyqt_bkp.org][pyqt_bkp.org -- algo de pyqt]] 
+  [[./python_qt_designer.org][python_qt_designer.org -- algo sobre el designer]]   
 
 
