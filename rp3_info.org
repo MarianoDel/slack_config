@@ -543,3 +543,23 @@ EndSection
 
 ** Solo los headers
    $ sudo apt-get install raspberrypi-kernel-headers
+
+* RASPBERRY PI -RPI3- con Slackware ARM
+** Instalacion SARPI
+   - como instalar Slackware ARM en Raspberry PI
+     http://sarpi.fatdog.eu/index.php?p=sarpi
+
+** Hardware o Configuracion adicional
+   - cosas como RTC en el I2C
+     http://sarpi.fatdog.eu/index.php?p=projects
+
+** Usar link arriba para el RTC
+*** Para verificar hora del RTC
+    hwclock -r && date    #muestra la hora del rtc y la del sistema
+
+*** Para poner el RTC en hora desde Internet
+    - una vez instalado el RTC y con la conexion a Internet funcionando
+      # ntpdate pool.ntp.org && hwclock -w
+    
+    - ahora debo quitar la actualizacion de la hora por internet en rc.local
+      

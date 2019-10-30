@@ -165,3 +165,4 @@
 
 ** Checksum de archivos binarios
    - 0xFF - (sum of all bytes without carry, mod8())
+     cksum

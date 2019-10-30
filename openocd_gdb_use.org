@@ -107,6 +107,16 @@
    http://openocd.org/doc/html/Config-File-Guidelines.html#Config-File-Guidelines
 
 
+** Grabar Nuevo BIN sin desconectar GDB
+*** Desde la consola GDB
+    monitor reset halt
+    monitor flash probe 0
+    monitor stm32f1x mass_erase 0
+    monitor flash write_bank 0 main.bin 0
+    
+*** Tengo que cargar los nuevos simbolos
+    File Template_F030_rom.elf
+
 * GDB con Emacs - GUD -
 ** si quiero usar otro programa en vez de gdb
    (setq gud-gdb-command-name "arm-none-eabi-gdb")

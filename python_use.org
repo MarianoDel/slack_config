@@ -305,6 +305,14 @@ if len(sys.argv) != 2:
     'b'	    Open in binary mode.
     '+'	    Open a file for updating (reading and writing)
     
+** Working with other programs
+*** En forma sincronica espero el resultado
+    import os
+    print(os.popen("echo Hello, World!").read())
+
+    import os
+    print(os.system('notepad.exe'))
+
 * Scientific Python
 
 ** Numpy
@@ -362,7 +370,12 @@ if len(sys.argv) != 2:
      U Unicode U24 (24 Unicode characters)
      V Other V12 (12-byte data block)
 
+*** Convert numpy float array to int array
+    x = np.array([0.3, 1.2])
 
+    x.astype(int)
+    print(x)
+    array[0 ,1]
 ** Matplotlib
 *** Format Strings
     A format string consists of a part for color, marker and line:
@@ -471,6 +484,50 @@ if len(sys.argv) != 2:
    https://www.youtube.com/watch?v=0fq69_9iEqc
    
    https://www.youtube.com/watch?v=nghuHvKLhJA
+
+* Manipulate Strings
+** Split strings
+   st = "hola 224"
+   s_h, s_num = st.split(' ')
+
+   st = "hola_guachin"
+   s_h, s_g = st.split('_')
+   
+* PYTHON try except
+   1 (x,y) = (5,0)
+   2 try:
+   3   z = x/y
+   4 except ZeroDivisionError as e:
+   5   z = e # representation: "<exceptions.ZeroDivisionError instance at 0x817426c>"
+   6 print z # output: "integer division or modulo by zero"
+
+
+   1 import sys
+   2 try:
+   3   untrusted.execute()
+   4 except: # catch *all* exceptions
+   5   e = sys.exc_info()[0]
+   6   write_to_page( "<p>Error: %s</p>" % e )
+
+* Python Threads
+  Utiliza dos modulos distintos, _thread que es thread en python2 y el
+  nuevo modulo threading
+
+  import _thread
+  import threading
+
+** modulo _thread
+   #Syntax
+   #thread.start_new_thread ( function, args[, kwargs] )
+   from _thread import start_new_thread
+
+   start_new_thread ( function, ())    #funcion sin argumentos
+
+   start_new_thread ( function, (2, ))    #funcion con un argumento
+   
+
+** modulo threading
+
 
 * Algunos Archivos - Documentos que uso de referencia
   # C-c C-o para abrir links
