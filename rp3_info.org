@@ -171,6 +171,9 @@ su pi -c 'vncserver'
 
    - para copiar archivos los marco en dired y elijo el directorio tramp de destino
 
+*** Si en la PC local tengo la info de la IP rpi3
+    /med@rpi3:
+    
 * PUERTO SERIE EN RASPBERRY PI3
 ** parece que por default ya viene activo el puerto serie
    ls -l /dev/ttyAMA0
@@ -561,5 +564,80 @@ EndSection
     - una vez instalado el RTC y con la conexion a Internet funcionando
       # ntpdate pool.ntp.org && hwclock -w
     
-    - ahora debo quitar la actualizacion de la hora por internet en rc.local
-      
+    - ahora debo quitar la actualizacion de la hora por internet
+      comentar la linea en rc.local
+      ntpdate 0.pool.ntp.org > /dev/null 2>&1
+
+*** Setear el Clock del SO desde el hwclock
+    - en /etc/rc.d/rc.local
+      hwclock -s
+
+** Actualizar Slackware ARM
+*** Link SARPi
+    http://sarpi.fatdog.eu/index.php?p=slackupdate
+
+*** Metodo slackpkg
+    - elegir solo un mirror en
+      /etc/slackpkg/mirrors
+
+    - la primera vez que lo corro debo actualizar GPG
+      slackpkg update gpg
+
+    - bajar actualizaciones
+      slackpkg update
+
+    - instalar nuevo
+      slackpkg install-new
+
+    - upgrade all
+      slackpkg upgrade-all
+
+**** Remove pkg
+     - para borrar paquetes uso:
+       slackpkg remove kde
+
+**** Blacklist
+     - los paquetes listados en el blacklist, no pueden ser instalados actualizados o removidos
+       /etc/slackpkg/blacklist
+
+**** Clean System
+     Remove all the packages that don't belong to a standard Slackware installation 
+     (packages that are not in the official package set). With this option, you can 
+     clean up your system, removing third-party packages as well as those packages 
+     that were removed from the official Slackware package set.
+     
+     If you have some third party packages that you would like to keep, you can 
+     temporarily add them to the list of blacklisted packages before you run the 
+     "clean-system" command.
+
+**** Actualizar todo
+     upgrade-all
+     Keep your packages synced with the slackware tree. This is the "good" way to 
+     upgrade the whole system. Remember use install-new before run upgrade-all.
+
+**** Instalar paquetes nuevos de la distribucion
+     install-new
+     Install packages that were added to Slackware distribution. Run this if you are 
+     upgrading your system to another Slackware version or if you are using Slackware -current.
+
+
+**** Buscar paquetes
+     http://ftp.arm.slackware.com/slackwarearm/slackwarearm-current/slackware/
+     slackpkg search libraw
+
+     slackpkg file-search libMagickWand    #me dice que paquete contiene la lib
+
+*** Metodo rpi-update
+    - link sarpi
+      http://sarpi.fatdog.eu/index.php?p=rpiupdate
+
+
+** Ejecutar comandos automaticos al inicio rc.local
+   - rc.local corre al inicio antes de dar el promt de tty (runlevel 3) o arrancar X (runlevel 4)
+   - si quiero meter mis scripts automaticos deben soportar daemonize
+   - o correrlos en background con & al final de la linea
+     
+
+** WiFi knows bugs
+   https://www.linuxquestions.org/questions/slackware-arm-108/raspberry-pi-3-b-wifi-nic-not-found-4175627137/
+

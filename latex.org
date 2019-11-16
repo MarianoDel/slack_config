@@ -172,6 +172,14 @@
      \item leche
      \item huevos
 
+*** Lista desplazada
+    - uso el paquete \usepackage{enumitem}, y corro la lista con leftmargin
+    \begin{itemize}[leftmargin=2cm]
+    \item Hallar Hz del sistema.
+    \item Polos y Ceros de Hz.
+    \item Graficar en el plano Z.
+    \end{itemize}
+
 ** Nombres y referencias
    - para agregar un nombre a una seccion lo hago con el comando label
      \setion{Lista\label{lista1}}
@@ -438,7 +446,7 @@ H	Places the float at precisely the location in the LaTeX code.
    To print your equations in display mode use one of these delimiters:
    \[ \], $$ $$, \begin{displaymath} \end{displaymath} or 
    \begin{equation} \end{equation}
-
+   
 *** Punto para multipliar
     \cdot
 
@@ -554,7 +562,8 @@ H	Places the float at precisely the location in the LaTeX code.
 
 
 ** Código dentro del archivo
-   - con el paquete \usepackage{listings}
+*** Con el paquete listing
+    \usepackage{listings}
 
    \begin{lstlisting}    
    #include "utils.h"
@@ -564,6 +573,15 @@ H	Places the float at precisely the location in the LaTeX code.
    return (int) (a*a*a);
    }
    \end{lstlisting}
+
+*** Con verbatim
+    \begin{verbatim}
+    tiempo_de_simulacion = 0.1
+    freq = 50
+    t = np.linspace(0, tiempo_de_simulacion, num=2000)
+    y = 311 * np.sin(2* np.pi * freq * t)
+    \end{verbatim}
+
 
 ** Presentaciones con Beamer
    https://www.youtube.com/watch?v=zEjBCQhND2c&index=8&list=PL-p5XmQHB_JSQvW8_mhBdcwEyxdVX0c1T

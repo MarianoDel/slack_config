@@ -235,9 +235,13 @@ git push –u eclipse_p4 master
    5. ahora puedo remover los directorios viejos del disco
 
 ** USOS MAS COMUNES – PATCH (MERGE DE SOLO UN ARCHIVO)
-#cuando tengo 2 branches A y B, resuelven cosas distintas pero el archivo f es común a los #dos, en B se cambia f, pero sería útil tenerlo en A también. Entonces debo hacer un merge de #solo f en A desde B.
-git checkout A
-git checkout –-patch B f
+*** Tengo 2 Branches A y B
+    - resuelven cosas distintas pero el archivo f es común a los dos
+    - en B se cambia f, pero sería útil tenerlo en A también. 
+    - Entonces debo hacer un merge de solo f en A desde B.
+    $ git checkout A
+    $ git checkout –-patch B f    #esto ahora no me funciona
+    $ git checkout B f    #esto me funciona bien
 
 #agregar solo un archivo
 git checkout A
