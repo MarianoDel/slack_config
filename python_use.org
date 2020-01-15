@@ -453,6 +453,18 @@ if len(sys.argv) != 2:
 *** Con Numpy
     np.sqrt(x)
 
+* Scientific Python version instalada
+** Para conocer la version
+   - abrir una consola
+   python3
+
+   >>> import scipy
+   >>> scipy.__version__
+   >>> '1.0.0'
+
+** Update de la version instalada
+   # pip3 install --upgrade scipy
+
 * Create Strings
 ** With str function
    s_name = "med"

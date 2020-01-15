@@ -169,3 +169,26 @@ https://ftp.gnu.org/old-gnu/Manuals/gdb-5.1.1/html_node/gdb_192.html#SEC197
 
 
 
+
+* VER ARCHIVOS HEX - BINARIOS
+** xxd
+   $ xxd mem.bin
+
+* PASAR ARCHIVOS iHEX A BINARIOS
+** Con arm-none-eabi-objcopy
+   objcopy -I ihex Demo.hex -O binary Demo.bin
+
+   objcopy -I binary blinky.bin -O ihex blinky.hex
+
+* PASAR DE BINARIOS A ARM ASSEMBLER
+  arm-none-eabi-objdump -D -EL -bbinary -marm LPC2292_UP_NO_1.bin > LPC2292_UP_NO_1.s
+
+
+* Ver archivos Binarios
+** Para archivos .bin usar hexdump
+   hexdump file.bin
+   hexdump -C file.bin
+
+** Checksum de archivos binarios
+   - 0xFF - (sum of all bytes without carry, mod8())
+     cksum
