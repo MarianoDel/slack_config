@@ -476,6 +476,8 @@ if len(sys.argv) != 2:
    age = 18
    ex2 = "my name is {0} and I am {1} years old.".format(s_name, age)
 
+   "Hello {0}, your balance is {1:9.3f}".format("Adam", 230.2345)
+
 ** With %
    s_name = "med"
    age = 18
@@ -522,6 +524,7 @@ if len(sys.argv) != 2:
    6   write_to_page( "<p>Error: %s</p>" % e )
 
 * Python Threads
+
   Utiliza dos modulos distintos, _thread que es thread en python2 y el
   nuevo modulo threading
 
@@ -540,10 +543,127 @@ if len(sys.argv) != 2:
 
 ** modulo threading
 
+* Python Threads threading share data
+** With Mutex for critical sections
+   - En general uso variables globales y un lock global
+     el thread que pida el lock con acquire queda en espera hasta conseguirlo
+   - En la funcion del nuevo thread accedo a la variable global, declaro global
+     el lock no lo necesita (ser declarado global) lo uso directamente
+
+     m = threading.Lock()
+
+     # basic operations
+     m.acquire()    #acquire the lock
+     m.release()    #release the lock
+
+*** Formato sin lock
+    x = 0    #valor a compartir
+    
+    def foo:
+        global x
+        for i in range(10000):
+            x += 1
+
+    def bar:
+        global x
+        for i in range(10000):
+            x -= 1
+    
+    t1 = threading.Thread(target=foo)
+    t2 = threading.Thread(target=bar)
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()    #espero que termine
+    print (x)    #tiene que ser 0 pero NOOO!
+
+
+*** Formato con lock
+    x_lock.acquire()
+    x += 1
+    x_lock.release()
+
+*** Formato con with
+    x = 0
+    x_lock = threading.Lock()
+
+    with x_lock:
+        # seccion critica
+        x = x + 1
+
+* Python Generators Iterators
+** Generators
+  The difference between iterables and generators: once you’ve burned 
+  through a generator once, you’re done, no more data:
+    generator = (word + '!' for word in 'baby let me iterate ya'.split())
+    # The generator object is now created, ready to be iterated over.
+    # No exclamation marks added yet at this point.
+    
+    for val in generator: # real processing happens here, during iteration
+        print val,
+    $ baby! let! me! iterate! ya!
+    
+    for val in generator:
+        print val,
+    # Nothing printed! No more data, generator stream already exhausted above.
+
+** Iterators
+   On the other hand, an iterable creates a new iterator every time it’s looped
+   over (technically, every time iterable.__iter__() is called, such as when
+   Python hits a “for” loop):
+
+   class BeyonceIterable(object):
+       def __iter__(self):
+   """
+   The iterable interface: return an iterator from __iter__().
+   
+   Every generator is an iterator implicitly (but not vice versa!),
+   so implementing `__iter__` as a generator is the easiest way
+   to create streamed iterables.
+   
+   """
+           for word in 'baby let me iterate ya'.split():
+               yield word + '!'  # uses yield => __iter__ is a generator
+ 
+    iterable = BeyonceIterable()
+ 
+    for val in iterable:  # iterator created here
+        print val,
+    $ baby! let! me! iterate! ya!
+ 
+    for val in iterable:  # another iterator created here
+        print val,
+    $ baby! let! me! iterate! ya!
+
+* Python system calls os.system - subprocess
+** os.system
+   import os
+   myCmd = 'ls -la'
+   os.system(myCmd)
+
+** subprocess
+   - con este puedo ver el resultado del comando
+   import subprocess
+   subprocess.run(["ls", "-l"])
 
 * Algunos Archivos - Documentos que uso de referencia
   # C-c C-o para abrir links
   [[./pyqt_bkp.org][pyqt_bkp.org -- algo de pyqt]] 
   [[./python_qt_designer.org][python_qt_designer.org -- algo sobre el designer]]   
+
+* Ver procesos y threads en Linux 
+** Con Python code
+   https://eecs485staff.github.io/p4-mapreduce/python-processes-threads-sockets.html
+
+   $ pgrep -af example_thread
+   4457 python3 example_thread.py
+   $ ps -m 4457
+   PID TTY      STAT   TIME COMMAND
+   4457 pts/2    -      4:13 python3 example_thread.py
+    - -        Sl+   0:49 -    # S: interrumpible sleep (waiting an event)
+    - -        Rl+   0:51 -    # R: running or runnable l: multi-thread
+    - -        Sl+   0:51 -
+    - -        Sl+   0:50 -
+    - -        Sl+   0:50 -
 
 

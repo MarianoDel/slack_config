@@ -176,7 +176,6 @@ app.exec_()
 ** A FUTURO, VER pyqtdeploy
 http://pyqt.sourceforge.net/Docs/pyqtdeploy/
 
-
 ** links:
 http://pyqt.sourceforge.net/Docs/PyQt5/designer.html
 
@@ -319,7 +318,6 @@ app.exec_()
 ** #### A FUTURO, VER pyqtdeploy #####
    http://pyqt.sourceforge.net/Docs/pyqtdeploy/
 
-
 * Todo referido a la parte grafica qt-css
 https://www.youtube.com/watch?v=_sAGY_4Ptsw
 min 12.30 agrega qframe
@@ -412,37 +410,102 @@ https://stackoverflow.com/questions/9465047/make-an-animated-wave-with-drawpolyl
 ** #Matplotlib
    http://www.labri.fr/perso/nrougier/teaching/matplotlib/#ipython-and-the-pylab-mode
 
-* PushButton checkeable
+* QPushButton no hiphen
 ** Para que no aparezca el hiphen en el nombre 
    - focus policy No Focus
 
+* QPushButton checkeable
 ** Chekeable
    - si lo quiero autoexcluir lo hago desde el codigo con la funcion
    if (button.isChecked() == True):
        button.toggle()
    
-* PushButton still pressed
+* QPushButton still pressed
 ** no hay nuevos eventos si el boton sigue presionado
    - se puede disparar un timer y revisar si el boton sigue presionado
 ** utilizo las seniales pressed() released()
    - con esto conozco cuando lo apretaron y cuando lo soltaron
 
-* PushButton Image
+* QPushButton Image
 ** con imagenes en archivos resources
    - voy a las propiedades icon -> elijo icon desde resources
    - muevo el tamanio de la imagen con el tamanio del icono
 
-* PushButton Text
+* QPushButton Text
 ** setear el texto
    - con el metodo setText self.ui.pbutton.setText("Click here!")
 ** averiguar el texto
    - str_name = self.ui.pbutton.text()
+
+* QPushButton change style sheet from code
+  self.pushButton.setStyleSheet("background-color: red")
+
+* QPushButton some styles
+QPushButton {
+color: #333;
+border: 2px solid #555;    #o rgb(xx,xx,xx);
+border-radius: 20px;
+border-style: outset;
+background: qradialgradient(
+cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #888
+);
+padding: 5px;
+}
+
+QPushButton:hover {
+background: qradialgradient(
+cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb
+);
+}
+
+QPushButton:pressed {
+border-style: inset;
+background: qradialgradient(
+cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #ddd
+);
+}
+* QPushButton button transparent
+** Para no tener la forma del boton
+   - uso stylesheet, en este caso fondo blanco
+     background-color: rgb(255, 255, 255);
+     border: 0px;
+     color: rgb(55, 52, 53);
+  
+* QPushButton enable/disable
+** Hay dos métodos
+   setEnabled() and isEnabled()
+   - si lo quiero desactivar
+     Button.setEnable(False)
+   - si lo quiero activar
+     Button.setEnable(True)
+
+* QPushButton raise
+** Uso esta propiedad para que el widget aparezca arriba de otro
+   self.ui.Button.raise_()
 
 * Qlabel
 ** para obtener el texto
    - str1 = qlabel.text()
 ** para escribir texto
    - qlabel.setText(str1)
+
+* QlineEdit
+** Cambiar el color de la seleccion de texto
+   - con StyleSheet, esta es la forma correcta si quiero mas efectos con el mismo pseudo-state
+     los meto dentro de los parentesis
+   QLineEdit:focus {
+   background-color: rgb(170, 170, 255);
+   }
+
+** Para direccionar el widget a estilizar desde un StyleSheet de Dialog
+   QLineEdit#minuteLineEdit:hover {background-color: rgb(170, 170, 255)};
+
+** Si quiero cambiar en funcion de algun movimiento
+   - uso pseudo-states
+     https://doc.qt.io/qt-5/stylesheet-syntax.html
 
 * Pasar de str a int, float
 ** pasar a int
@@ -489,6 +552,13 @@ https://stackoverflow.com/questions/9465047/make-an-animated-wave-with-drawpolyl
     btn1.clicked.connect(self.buttonClicked)            
     btn2.clicked.connect(self.buttonClicked)
 
+**** Si quiero conocer el nombre del objeto que llamo
+    def buttonClicked(self):      
+        sender = self.sender()
+        if sender.objectName() == 'triangularButton':
+            #do this
+
+**** Texto de sender
     #con el metodo sender conozco quien me llamo, y en particular me quedo con el texto
     def buttonClicked(self):      
         sender = self.sender()
@@ -533,10 +603,20 @@ if __name__ == '__main__':
 
 ** Lins
    http://zetcode.com/gui/pyqt5/eventssignals/
+  
+* Imagen de fondo solo en Dialog
+** Cuando cambio el stylesheet background-image todos los widgets lo heredan
+   Tengo que decir que es el background solo de ese widget
+   QDialog {background-image: url(:/imag/resources/fondo_con_logo_1280x800.png)};  
 
-  
-  
 * QtDesiger QtCreator
+** First Layout
+   https://www.youtube.com/watch?v=gWa2rqe8l6E&list=PLS1QulWo1RIZiBcTr5urECberTITj7gjA&index=7
+   - poner cualquier widget, pushButton por ejemplo
+   - click derecho en el MainWindow o Dialog
+   - Layout-> Vertical
+     con eso toma el layout principal y se lo asigna al Dialogo o MainWindow
+     
 ** qt y css
    https://thesmithfam.org/blog/2009/09/10/qt-stylesheets-tutorial/
 
@@ -572,6 +652,33 @@ if __name__ == '__main__':
    para pantalla completa hacer coincidir la resolucion de pantalla
    $ raspi-config
    con el tamanio de la foto en backround-image
+
+* Dialog call another Dialog
+** Link riverbank
+   https://www.riverbankcomputing.com/static/Docs/PyQt4/qdialog.html
+
+** En Dialog_01/02 poner algun boton que llame a la funcion
+
+*** Dialog_02 class write the following method: 
+def callAnotherQMainWindow(self)
+    self.close()
+    self.dialog_01 = Dialog_01()
+    self.dialog_01.show()
+    self.dialog_01.raise_()
+
+*** Dialog_01 class write this method:
+def callAnotherQMainWindow(self)
+    self.close()
+    self.dialog_02 = Dialog_02()
+    self.dialog_02.show()
+    self.dialog_02.raise_()
+
+** Si el nuevo Dialogo es modal (no retorna control hasta que termine)
+   lo muestro con .exec_()
+
+** Si el nuevo Dialogo es no-modal (retorna el control)
+   lo muestro con .show()
+   y el control vuelve a la ventana principal, la que llamo al dialogo
 
 * Python General
 ** Link
@@ -701,3 +808,11 @@ if __name__ == '__main__':
 ** ToLower()
    str(sender.text()).lower()
 
+** Int to String with formatting
+   For someone who wants to convert int to string in specific digits, the below method is recommended.
+
+   month = "{0:04d}".format(localtime[1])
+
+   For Python 3.6+ the same behavior can be achieved with f-strings:
+   
+   print(f"{1:02d}")

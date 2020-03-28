@@ -10,7 +10,7 @@
 ** Buscar paquete y revisar info
    slpkg -F <paquete>
    slpkg -p <repo> <paquete>    #miro el estado del paquete;
-   slpkg -p slonly qterminal
+   slpkg -p slonly qterminal    #aca qterminal es el nombre del programa
 
 ** Chequeo de dependencias antes de instalar
    slpkg -t <repo> <paquete>    #chequeo las dependencias VERDE=OK, ROJO=FALTA;

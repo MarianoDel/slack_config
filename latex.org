@@ -588,7 +588,7 @@ H	Places the float at precisely the location in the LaTeX code.
 
    \documentclass{beamer}
 
-   \usethem{Frankfurt}
+   \usetheme{Frankfurt}
 
 *** Slides
     \begin{frame}

@@ -66,6 +66,10 @@
    ln -s ~/tmp/sdcc/device/include/pic14/pic16regs.h pic16regs.h
 
 ** BashScript
+*** Comenzar el archivo script con 
+    #!/bin/bash
+
+*** Links
     http://mywiki.wooledge.org/BashGuide/CommandsAndArguments
 
 ** AWK BashScripts

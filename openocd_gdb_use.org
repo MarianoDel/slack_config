@@ -131,6 +131,10 @@
    (gdb) file Template_F030_rom.elf
    (gdb) 
 
+   para grabar un nuevo elf
+   (gdb) monitor reset halt
+   (gdb) load nucleo_rom.elf
+
 * DEBUG con DDD
   $ddd --eval-command="target remote localhost:3333" --debugger arm-none-eabi-gdb Template_F030_rom.elf
 

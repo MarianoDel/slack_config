@@ -641,3 +641,21 @@ EndSection
 ** WiFi knows bugs
    https://www.linuxquestions.org/questions/slackware-arm-108/raspberry-pi-3-b-wifi-nic-not-found-4175627137/
 
+
+* Instalar Python 3.6.1
+  Python-3.6.1 no esta en el repo de rpi
+
+  sudo apt-get update
+  sudo apt-get install libssl-dev
+  # aca en realidad hice
+  sudo apt install libffi-dev libbz2-dev liblzma-dev libsqlite3-dev libncurses5-dev libgdbm-dev zlib1g-dev libreadline-dev libssl-dev tk-dev build-essential libncursesw5-dev libc6-dev openssl git
+  wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz
+  tar xzvf Python-3.6.1.tgz
+  cd Python-3.6.1/
+  ./configure --enable-optimizations
+  # aca en realidad hice, porque sino tarda 4hs
+  ./configure 
+  make -j4
+  # aca hice porque al final de la compilacion me daba problemos de permisos
+  sudo make -j -l 4
+  sudo make install

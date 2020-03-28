@@ -35,6 +35,7 @@
 
    - ese color es el que aparece en el cuadro de color, si quiero saber el valor
      abro el cuadro
+     *ojo* cuando uso pantalla completa puede ser que el cuadro quede escondido
 
 ** Dibujar Linea recta
    - elegir paintbrush
@@ -76,6 +77,9 @@
 
 ** Escalar Imagen (cambio de resolucion)
    Image -> Scale Image
+** Escalar parte de una Imagen
+   Selecciono la parte a escalar
+   Rect Selction Tool, copio y pego, me crea un floating layer, segundo boton en el layer y escalo
 
 ** Links
 http://www.todogimp.com/?q=tutoriales&tid=11&tid_1=14&tid_2=All
